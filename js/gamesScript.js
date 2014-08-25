@@ -1,8 +1,8 @@
 var game = new Phaser.Game(800, 600, Phaser.AUTO, '', { preload: preload, create: create, update: update });
 
 function preload() {
-    game.load.image("tile", "img/tile.png")
-    game.load.image("ball", "img/ball.png")
+    game.load.image("tile", "img/tile.png");
+    game.load.image("ball", "img/ball.png");
 }
 var GROUND_WIDTH = 16;
 var GROUND_HEIGHT = 16;
@@ -21,7 +21,7 @@ var lastMoveTimestamp = 0;
 function create() {
 
     //input
-    cursors = game.input.keyboard.createCursorKeys()
+    cursors = game.input.keyboard.createCursorKeys();
 
 
     ground = game.add.group();
@@ -38,51 +38,59 @@ function create() {
 
 function update() {
     if (cursors.up.isDown) {
-        moveObjectInGrid(ball, "UP");
+        if (game.time.now > lastMoveTimestamp) {
+            moveSpriteInGrid(ball, "UP");
+            lastMoveTimestamp = game.time.now + MOVE_DELAY;
+        }
     }
 
     if (cursors.down.isDown) {
-        moveObjectInGrid(ball, "DOWN");
+        if (game.time.now > lastMoveTimestamp) {
+            moveSpriteInGrid(ball, "DOWN");
+            lastMoveTimestamp = game.time.now + MOVE_DELAY;
+        }
     }
 
     if (cursors.right.isDown) {
-        moveObjectInGrid(ball, "RIGHT");
+        if (game.time.now > lastMoveTimestamp) {
+            moveSpriteInGrid(ball, "RIGHT");
+            lastMoveTimestamp = game.time.now + MOVE_DELAY;
+        }
     }
 
     if (cursors.left.isDown) {
-        moveObjectInGrid(ball, "LEFT")
+        if (game.time.now > lastMoveTimestamp) {
+            moveSpriteInGrid(ball, "LEFT");
+            lastMoveTimestamp = game.time.now + MOVE_DELAY
+        }
     }
-
 }
 
 /**
- * Moves
+ * Moves sprite in grid
  *
- * @param object the object you want to move
- * @param direction UP, DOWN, LEFT, RIGHT
+ * @param sprite the sprite you want to move
+ * @param direction{string} UP, DOWN, LEFT, RIGHT
  */
-function moveObjectInGrid(object, direction) {
+function moveSpriteInGrid(sprite, direction) {
 
-    if (game.time.now > lastMoveTimestamp) {
-        switch (direction) {
-            case "UP":
-                object.y -= TILE_HEIGHT;
-                break;
-            case "DOWN":
-                object.y += TILE_HEIGHT;
-                break;
-            case "LEFT":
-                object.x -= TILE_WIDTH;
-                break;
-            case "RIGHT":
-                object.x += TILE_WIDTH;
-                break;
-            default:
-                alert("ERROR: Invalid direction at moveObjectInGrid()");
-                break;
-        }
-
-        lastMoveTimestamp = game.time.now + MOVE_DELAY;
+    switch (direction) {
+        case "UP":
+            sprite.y -= TILE_HEIGHT;
+            break;
+        case "DOWN":
+            sprite.y += TILE_HEIGHT;
+            break;
+        case "LEFT":
+            sprite.x -= TILE_WIDTH;
+            break;
+        case "RIGHT":
+            sprite.x += TILE_WIDTH;
+            break;
+        default:
+            alert("ERROR: Invalid direction at moveSpriteInGrid()");
+            break;
     }
+
 }
 
