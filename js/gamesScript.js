@@ -1,23 +1,27 @@
-var game = new Phaser.Game(800, 600, Phaser.AUTO, '', { preload: preload, create: create, update: update });
 
-function preload() {
-    game.load.image("tile", "img/tile.png");
-    game.load.image("ball", "img/ball.png");
-}
-var LEVEL_WIDTH = 16;
-var LEVEL_HEIGHT = 16;
 
 var TILE_HEIGHT = 32;
 var TILE_WIDTH = 32;
+
+var LEVEL_WIDTH = 16;
+var LEVEL_HEIGHT = 16;
+
+
+var game = new Phaser.Game((LEVEL_WIDTH * TILE_WIDTH), (LEVEL_HEIGHT * TILE_HEIGHT), Phaser.AUTO, '', { preload: preload, create: create, update: update });
 
 var MOVE_DELAY = 200;
 
 var level = [];
 
-
 var ball;
 var cursors;
 var lastMoveTimestamp = 0;
+
+
+function preload() {
+    game.load.image("tile", "img/tile.png");
+    game.load.image("ball", "img/ball.png");
+}
 
 
 function create() {
@@ -28,8 +32,7 @@ function create() {
     //input
     cursors = game.input.keyboard.createCursorKeys();
 
-
-
+    //game objects
     ball = game.add.sprite(32, 32, "ball")
 }
 
@@ -90,6 +93,7 @@ function moveSpriteInGrid(sprite, direction) {
     }
 
 }
+
 /**
  * Generates level and stores it in the 2D Array level
  */
