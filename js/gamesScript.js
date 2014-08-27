@@ -9,7 +9,8 @@ var LEVEL_HEIGHT = 16;
 
 var game = new Phaser.Game((LEVEL_WIDTH * TILE_WIDTH), (LEVEL_HEIGHT * TILE_HEIGHT), Phaser.AUTO, '', { preload: preload, create: create, update: update });
 
-var MOVE_DELAY = 200;
+var MOVE_DELAY = 230;
+var BALL_EASING = Phaser.Easing.Cubic.InOut;
 
 var level = [];
 
@@ -33,65 +34,51 @@ function create() {
     cursors = game.input.keyboard.createCursorKeys();
 
     //game objects
-    ball = game.add.sprite(32, 32, "ball")
+    ball = game.add.sprite(32, 32, "ball");
+    ball.gridPosition = new Phaser.Point(1,1);
 }
 
 function update() {
     if (cursors.up.isDown) {
         if (game.time.now > lastMoveTimestamp) {
-            moveSpriteInGrid(ball, "UP");
+            moveSpriteInGrid(ball, 0, -1);
             lastMoveTimestamp = game.time.now + MOVE_DELAY;
         }
     }
 
     if (cursors.down.isDown) {
         if (game.time.now > lastMoveTimestamp) {
-            moveSpriteInGrid(ball, "DOWN");
+            moveSpriteInGrid(ball, 0, 1);
             lastMoveTimestamp = game.time.now + MOVE_DELAY;
         }
     }
 
     if (cursors.right.isDown) {
         if (game.time.now > lastMoveTimestamp) {
-            moveSpriteInGrid(ball, "RIGHT");
+            moveSpriteInGrid(ball, 1, 0);
             lastMoveTimestamp = game.time.now + MOVE_DELAY;
         }
     }
 
     if (cursors.left.isDown) {
         if (game.time.now > lastMoveTimestamp) {
-            moveSpriteInGrid(ball, "LEFT");
+            moveSpriteInGrid(ball, -1, 0);
             lastMoveTimestamp = game.time.now + MOVE_DELAY
         }
     }
 }
 
 /**
- * Moves sprite in grid
- *
- * @param sprite the sprite you want to move
- * @param direction{String} UP, DOWN, LEFT, RIGHT
+ * Move a sprite in the grid
+ * @param sprite {Phaser.Sprite} the sprite you want to move
+ * @param x {Number} the movement amount on the x axis
+ * @param y {Number} the movement amount on the y axis
  */
-function moveSpriteInGrid(sprite, direction) {
+function moveSpriteInGrid(sprite, x, y) {
+    sprite.gridPosition.x += x;
+    sprite.gridPosition.y += y;
 
-    switch (direction) {
-        case "UP":
-            sprite.y -= TILE_HEIGHT;
-            break;
-        case "DOWN":
-            sprite.y += TILE_HEIGHT;
-            break;
-        case "LEFT":
-            sprite.x -= TILE_WIDTH;
-            break;
-        case "RIGHT":
-            sprite.x += TILE_WIDTH;
-            break;
-        default:
-            alert("ERROR: Invalid direction at moveSpriteInGrid()");
-            break;
-    }
-
+    game.add.tween(sprite).to({x: sprite.gridPosition.x * TILE_WIDTH, y: sprite.gridPosition.y * TILE_HEIGHT}, MOVE_DELAY, BALL_EASING, true);
 }
 
 /**
