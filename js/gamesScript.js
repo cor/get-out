@@ -4,11 +4,18 @@ var TILE_WIDTH = 32;
 var LEVEL_WIDTH = 16;
 var LEVEL_HEIGHT = 16;
 
+var TileEnum = {
+    None : 0,
+    Ground : 1
+
+};
 
 var game = new Phaser.Game((LEVEL_WIDTH * TILE_WIDTH), (LEVEL_HEIGHT * TILE_HEIGHT), Phaser.AUTO, '', { preload: preload, create: create, update: update });
 
 var MOVE_DELAY = 200;
 var BALL_EASING = Phaser.Easing.Cubic.InOut;
+
+
 
 var level = [];
 
@@ -16,8 +23,8 @@ var ball;
 var cursors;
 var lastMoveTimestamp = 0;
 
-
 function preload() {
+    console.log("LOG | Preload running");
     game.load.image("tile", "img/tile.png");
     game.load.image("ball", "img/ball.png");
 }
@@ -25,6 +32,7 @@ function preload() {
 
 function create() {
 
+    console.log("LOG | Create running");
     generateLevel();
     renderLevel();
 
@@ -40,28 +48,28 @@ function create() {
 function update() {
     if (cursors.up.isDown) {
         if (game.time.now > lastMoveTimestamp) {
-            moveSpriteInGrid(ball, 0, -ball.tilesPerMove);
+            moveSpriteInGrid(ball, new Phaser.Point(0, -ball.tilesPerMove));
             lastMoveTimestamp = game.time.now + MOVE_DELAY;
         }
     }
 
     if (cursors.down.isDown) {
         if (game.time.now > lastMoveTimestamp) {
-            moveSpriteInGrid(ball, 0, ball.tilesPerMove);
+            moveSpriteInGrid(ball, new Phaser.Point(0, ball.tilesPerMove));
             lastMoveTimestamp = game.time.now + MOVE_DELAY;
         }
     }
 
     if (cursors.right.isDown) {
         if (game.time.now > lastMoveTimestamp) {
-            moveSpriteInGrid(ball, ball.tilesPerMove, 0);
+            moveSpriteInGrid(ball, new Phaser.Point(ball.tilesPerMove, 0));
             lastMoveTimestamp = game.time.now + MOVE_DELAY;
         }
     }
 
     if (cursors.left.isDown) {
         if (game.time.now > lastMoveTimestamp) {
-            moveSpriteInGrid(ball, -ball.tilesPerMove, 0);
+            moveSpriteInGrid(ball, new Phaser.Point(-ball.tilesPerMove, 0));
             lastMoveTimestamp = game.time.now + MOVE_DELAY;
         }
     }
@@ -70,13 +78,12 @@ function update() {
 /**
  * Move a sprite in the grid
  * @param sprite {Phaser.Sprite} the sprite you want to move
- * @param x {Number} the movement amount on the x axis
- * @param y {Number} the movement amount on the y axis
+ * @param vector {Phaser.Point} the move vector
  */
-function moveSpriteInGrid(sprite, x, y) {
-    if (gridPositionIsValid(sprite.gridPosition.x + x, sprite.gridPosition.y + y)) {
-        sprite.gridPosition.x += x;
-        sprite.gridPosition.y += y;
+function moveSpriteInGrid(sprite, vector) {
+    if (gridPositionIsValid(sprite.gridPosition.x + vector.x, sprite.gridPosition.y + vector.y)) {
+        sprite.gridPosition.x += vector.x;
+        sprite.gridPosition.y += vector.y;
         game.add.tween(sprite).to({x: sprite.gridPosition.x * TILE_WIDTH, y: sprite.gridPosition.y * TILE_HEIGHT}, MOVE_DELAY, BALL_EASING, true);
     }
 }
@@ -100,7 +107,7 @@ function generateLevel() {
     for (var i = 0; i < LEVEL_HEIGHT; i++) {
         var levelRow = [];
         for (var j = 0; j < LEVEL_WIDTH; j++) {
-            levelRow[j]=0;
+            levelRow[j] = TileEnum.Ground;
         }
         level[i]=levelRow;
     }
@@ -115,7 +122,7 @@ function renderLevel() {
     for (var i = 0; i < level.length; i++) {
         for (var j = 0; j < level[i].length; j++) {
             switch (level[i][j]) {
-                case 0:
+                case TileEnum.Ground:
                     ground.create(j * TILE_WIDTH, i * TILE_HEIGHT, "tile");
                     break;
                 default :
