@@ -6,8 +6,8 @@ var LEVEL_HEIGHT = 16;
 
 var TileEnum = {
     None : 0,
-    Ground : 1
-
+    Ground : 1,
+    Button : 2
 };
 
 var game = new Phaser.Game((LEVEL_WIDTH * TILE_WIDTH), (LEVEL_HEIGHT * TILE_HEIGHT), Phaser.AUTO, '', { preload: preload, create: create, update: update });
@@ -24,16 +24,16 @@ var cursors;
 var lastMoveTimestamp = 0;
 
 function preload() {
-    console.log("LOG | Preload running");
     game.load.image("tile", "img/tile.png");
     game.load.image("ball", "img/ball.png");
+    game.load.image("button", "img/button.png");
 }
 
 
 function create() {
 
-    console.log("LOG | Create running");
     generateLevel();
+    level[4][5] = TileEnum.Button;
     renderLevel();
 
     //input
@@ -124,6 +124,9 @@ function renderLevel() {
             switch (level[i][j]) {
                 case TileEnum.Ground:
                     ground.create(j * TILE_WIDTH, i * TILE_HEIGHT, "tile");
+                    break;
+                case TileEnum.Button:
+                    ground.create(j * TILE_WIDTH, i * TILE_HEIGHT, "button");
                     break;
                 default :
                     alert("ERROR | INVALID level[][] value");
