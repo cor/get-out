@@ -26,9 +26,8 @@ var lastMoveTimestamp = 0;
 function preload() {
     game.load.image("tile", "img/tile.png");
     game.load.image("ball", "img/ball.png");
-    game.load.image("button", "img/button.png");
+    game.load.image("button_on", "img/button_on.png");
 }
-
 
 function create() {
 
@@ -126,7 +125,7 @@ function renderLevel() {
                     ground.create(j * TILE_WIDTH, i * TILE_HEIGHT, "tile");
                     break;
                 case TileEnum.Button:
-                    ground.create(j * TILE_WIDTH, i * TILE_HEIGHT, "button");
+                    ground.create(j * TILE_WIDTH, i * TILE_HEIGHT, "button_on");
                     break;
                 default :
                     alert("ERROR | INVALID level[][] value");
@@ -134,4 +133,20 @@ function renderLevel() {
             }
         }
     }
+}
+
+/**
+ * @param point {Phaser.Point} gridPosition
+ * @returns {TileEnum}
+ */
+function getTileAtPoint(point) {
+    return level[point.x][point.y];
+}
+
+/**
+ * @param point {Phaser.Point} gridPosition
+ * @param tile {TileEnum}
+ */
+function setTileAtPoint(point, tile) {
+    level[point.x][point.y] = tile;
 }
