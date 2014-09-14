@@ -16,6 +16,9 @@ class GameScene: SKScene {
     let joystick = SKSpriteNode(imageNamed: "joystick")
     let mapSize = CGSize(width: 5, height: 5)
     
+    var joystickVector = CGVector(dx: 0, dy: 0)
+    let joystickVectorMultiplier = 0.1
+    
     
     override func didMoveToView(view: SKView) {
         self.physicsWorld.gravity = CGVector(dx: 0, dy: 0)
@@ -23,7 +26,7 @@ class GameScene: SKScene {
         self.addChild(player.sprite)
         
         joystick.size = CGSize(width: 128, height: 128)
-        joystick.position = CGPoint(x: joystick.size.width / 2, y: joystick.size.height / 2)
+        joystick.position = CGPoint(x: joystick.size.width + 32, y: joystick.size.height / 2 + 16)
         joystick.texture?.filteringMode = .Nearest
         self.addChild(joystick)
     }
@@ -49,9 +52,6 @@ class GameScene: SKScene {
     func getTile(#x: Int, y: Int) -> Tile {
        return tiles[(y * Int(mapSize.width)) + x]
     }
-   
-    override func update(currentTime: CFTimeInterval) {
-    }
     
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
         
@@ -59,16 +59,31 @@ class GameScene: SKScene {
             let touchLocation = touch.locationInNode!(self)
             let dx = touchLocation.x - joystick.position.x
             let dy = touchLocation.y - joystick.position.y
-            println("dx \(dx), dy \(dy)")
-            player.sprite.runAction(SKAction.moveByX(dx, y: dy, duration: 0.5))
-            
+            joystickVector.dx = dx
+            joystickVector.dy = dy
         }
     }
     
     
     override func touchesMoved(touches: NSSet, withEvent event: UIEvent) {
         for touch: AnyObject in touches {
-            let touchLocation = touch.locationInNode(self)
+            let touchLocation = touch.locationInNode!(self)
+            let dx = touchLocation.x - joystick.position.x
+            let dy = touchLocation.y - joystick.position.y
+            joystickVector.dx = dx
+            joystickVector.dy = dy
         }
+    }
+    
+    override func touchesEnded(touches: NSSet, withEvent event: UIEvent) {
+        joystickVector = CGVector(dx: 0, dy: 0)
+    }
+    
+    override func update(currentTime: CFTimeInterval) {
+        println("dx: \(joystickVector.dx) dy: \(joystickVector.dy) ")
+        let dx = joystickVector.dx * CGFloat(joystickVectorMultiplier)
+        let dy = joystickVector.dy * CGFloat(joystickVectorMultiplier)
+        let moveAction =  SKAction.moveByX(dx, y: dy, duration: 0.1)
+        player.sprite.runAction(moveAction)
     }
 }
