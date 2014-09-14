@@ -10,13 +10,14 @@ import SpriteKit
 
 class Joystick {
     
-    let sprite = SKSpriteNode(imageNamed: "joystick")
+    let sprite: SKSpriteNode
     var vector = CGVector(dx: 0, dy: 0)
     let vectorMultiplier: CGFloat = 0.1
     
     init() {
+        sprite = SKSpriteNode(imageNamed: "joystick")
         sprite.size = CGSize(width: 128, height: 128)
-        sprite.position = CGPoint(x: sprite.size.width + 32, y: sprite.size.height / 2)
+        sprite.position = CGPoint(x: sprite.size.width + 32, y: sprite.size.height / 2 + 16)
         sprite.texture?.filteringMode = .Nearest
     }
     

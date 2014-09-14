@@ -23,8 +23,8 @@ class GameScene: SKScene {
     override func didMoveToView(view: SKView) {
         self.physicsWorld.gravity = CGVector(dx: 0, dy: 0)
         addTiles()
-        self.addChild(player.sprite)
         self.addChild(joystick.sprite)
+        self.addChild(player.sprite)
     }
     
     func addTiles() {
