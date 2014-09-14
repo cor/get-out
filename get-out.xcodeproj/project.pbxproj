@@ -18,6 +18,8 @@
 		87D6421819C5CBF000A12784 /* tile_example.png in Resources */ = {isa = PBXBuildFile; fileRef = 87D6421719C5CBF000A12784 /* tile_example.png */; };
 		87D6421A19C5D43100A12784 /* tile_floor.png in Resources */ = {isa = PBXBuildFile; fileRef = 87D6421919C5D43100A12784 /* tile_floor.png */; };
 		87D6421E19C5E8F200A12784 /* character.png in Resources */ = {isa = PBXBuildFile; fileRef = 87D6421D19C5E8F200A12784 /* character.png */; };
+		87D6422019C5EA3600A12784 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D6421F19C5EA3600A12784 /* Player.swift */; };
+		87D6422219C5F60100A12784 /* joystick.png in Resources */ = {isa = PBXBuildFile; fileRef = 87D6422119C5F60100A12784 /* joystick.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +48,8 @@
 		87D6421719C5CBF000A12784 /* tile_example.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tile_example.png; sourceTree = "<group>"; };
 		87D6421919C5D43100A12784 /* tile_floor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tile_floor.png; sourceTree = "<group>"; };
 		87D6421D19C5E8F200A12784 /* character.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = character.png; sourceTree = "<group>"; };
+		87D6421F19C5EA3600A12784 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		87D6422119C5F60100A12784 /* joystick.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = joystick.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,14 +91,15 @@
 		8734315D19BB74C400050D5B /* get-out */ = {
 			isa = PBXGroup;
 			children = (
-				8734316019BB74C400050D5B /* AppDelegate.swift */,
-				8734316219BB74C400050D5B /* GameScene.sks */,
-				8734316419BB74C400050D5B /* GameScene.swift */,
-				8734316619BB74C400050D5B /* GameViewController.swift */,
-				8734316819BB74C400050D5B /* Main.storyboard */,
-				8734316B19BB74C400050D5B /* Images.xcassets */,
-				8734315E19BB74C400050D5B /* Supporting Files */,
 				878FE39319C5AA8A00E3DA63 /* Tile.swift */,
+				87D6421F19C5EA3600A12784 /* Player.swift */,
+				8734316419BB74C400050D5B /* GameScene.swift */,
+				8734315E19BB74C400050D5B /* Supporting Files */,
+				8734316B19BB74C400050D5B /* Images.xcassets */,
+				8734316019BB74C400050D5B /* AppDelegate.swift */,
+				8734316619BB74C400050D5B /* GameViewController.swift */,
+				8734316219BB74C400050D5B /* GameScene.sks */,
+				8734316819BB74C400050D5B /* Main.storyboard */,
 			);
 			path = "get-out";
 			sourceTree = "<group>";
@@ -102,6 +107,7 @@
 		8734315E19BB74C400050D5B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				87D6422119C5F60100A12784 /* joystick.png */,
 				87D6421D19C5E8F200A12784 /* character.png */,
 				87D6421919C5D43100A12784 /* tile_floor.png */,
 				87D6421719C5CBF000A12784 /* tile_example.png */,
@@ -213,6 +219,7 @@
 				8734316319BB74C400050D5B /* GameScene.sks in Resources */,
 				8734316A19BB74C400050D5B /* Main.storyboard in Resources */,
 				87D6421E19C5E8F200A12784 /* character.png in Resources */,
+				87D6422219C5F60100A12784 /* joystick.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -232,6 +239,7 @@
 			files = (
 				8734316519BB74C400050D5B /* GameScene.swift in Sources */,
 				878FE39419C5AA8A00E3DA63 /* Tile.swift in Sources */,
+				87D6422019C5EA3600A12784 /* Player.swift in Sources */,
 				8734316719BB74C400050D5B /* GameViewController.swift in Sources */,
 				8734316119BB74C400050D5B /* AppDelegate.swift in Sources */,
 			);

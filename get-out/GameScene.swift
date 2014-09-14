@@ -12,15 +12,20 @@ import SpriteKit
 class GameScene: SKScene {
     
     var tiles: [Tile] = []
-    let character = SKSpriteNode(imageNamed: "character")
+    let player = Player()
+    let joystick = SKSpriteNode(imageNamed: "joystick")
     let mapSize = CGSize(width: 5, height: 5)
     
     
     override func didMoveToView(view: SKView) {
+        self.physicsWorld.gravity = CGVector(dx: 0, dy: 0)
         addTiles()
-        character.position = CGPoint(x: 100, y: 100)
-        character.texture?.filteringMode = .Nearest
-        self.addChild(character)
+        self.addChild(player.sprite)
+        
+        joystick.size = CGSize(width: 128, height: 128)
+        joystick.position = CGPoint(x: joystick.size.width / 2, y: joystick.size.height / 2)
+        joystick.texture?.filteringMode = .Nearest
+        self.addChild(joystick)
     }
     
     func addTiles() {
@@ -52,8 +57,14 @@ class GameScene: SKScene {
         
         for touch: AnyObject in touches {
             let touchLocation = touch.locationInNode!(self)
+            let dx = touchLocation.x - joystick.position.x
+            let dy = touchLocation.y - joystick.position.y
+            println("dx \(dx), dy \(dy)")
+            player.sprite.runAction(SKAction.moveByX(dx, y: dy, duration: 0.5))
+            
         }
     }
+    
     
     override func touchesMoved(touches: NSSet, withEvent event: UIEvent) {
         for touch: AnyObject in touches {
