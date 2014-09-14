@@ -11,23 +11,42 @@ import SpriteKit
 class Tile {
     
     var sprite: SKSpriteNode
+    
     var gridPosition: CGPoint
-    var color: UIColor
-    var size: CGSize
+    var textureName: String
+    
+    let size: CGSize
     
     init() {
         gridPosition = CGPoint(x: 0, y: 0)
-        color = UIColor.redColor()
         size = CGSize(width: 64, height: 64)
+        textureName = "tile_example"
         
-        sprite = SKSpriteNode(color: color, size: size)
+        sprite = SKSpriteNode()
+        sprite.size = size
         sprite.anchorPoint = CGPoint(x: 0, y: 0)
+        
         updatePosition()
+        updateTexture()
     }
     
     convenience init(gridPosition: CGPoint){
         self.init()
         self.gridPosition = gridPosition
+        updatePosition()
+    }
+    
+    convenience init(textureName: String) {
+        self.init()
+        self.textureName = textureName
+        updateTexture()
+    }
+    
+    convenience init(textureName: String, gridPosition: CGPoint) {
+        self.init()
+        self.textureName = textureName
+        self.gridPosition = gridPosition
+        updateTexture()
         updatePosition()
     }
     
@@ -38,4 +57,11 @@ class Tile {
         let newPosition = CGPoint(x: newX, y: newY)
         sprite.position = newPosition
     }
+    
+    // Update actual image to represent imageName
+    func updateTexture() {
+        sprite.texture = SKTexture(imageNamed: textureName)
+        sprite.texture?.filteringMode = SKTextureFilteringMode.Nearest
+    }
 }
+

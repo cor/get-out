@@ -15,6 +15,8 @@
 		8734316C19BB74C400050D5B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8734316B19BB74C400050D5B /* Images.xcassets */; };
 		8734317819BB74C400050D5B /* get_outTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8734317719BB74C400050D5B /* get_outTests.swift */; };
 		878FE39419C5AA8A00E3DA63 /* Tile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878FE39319C5AA8A00E3DA63 /* Tile.swift */; };
+		87D6421819C5CBF000A12784 /* tile_example.png in Resources */ = {isa = PBXBuildFile; fileRef = 87D6421719C5CBF000A12784 /* tile_example.png */; };
+		87D6421A19C5D43100A12784 /* tile_floor.png in Resources */ = {isa = PBXBuildFile; fileRef = 87D6421919C5D43100A12784 /* tile_floor.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +42,8 @@
 		8734317619BB74C400050D5B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8734317719BB74C400050D5B /* get_outTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = get_outTests.swift; sourceTree = "<group>"; };
 		878FE39319C5AA8A00E3DA63 /* Tile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tile.swift; sourceTree = "<group>"; };
+		87D6421719C5CBF000A12784 /* tile_example.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tile_example.png; sourceTree = "<group>"; };
+		87D6421919C5D43100A12784 /* tile_floor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tile_floor.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +100,8 @@
 		8734315E19BB74C400050D5B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				87D6421919C5D43100A12784 /* tile_floor.png */,
+				87D6421719C5CBF000A12784 /* tile_example.png */,
 				8734315F19BB74C400050D5B /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -198,6 +204,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				87D6421819C5CBF000A12784 /* tile_example.png in Resources */,
+				87D6421A19C5D43100A12784 /* tile_floor.png in Resources */,
 				8734316C19BB74C400050D5B /* Images.xcassets in Resources */,
 				8734316319BB74C400050D5B /* GameScene.sks in Resources */,
 				8734316A19BB74C400050D5B /* Main.storyboard in Resources */,

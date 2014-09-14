@@ -12,22 +12,29 @@ import SpriteKit
 class GameScene: SKScene {
     
     var tiles: [Tile] = []
+    let mapSize = CGSize(width: 3, height: 2)
     
     override func didMoveToView(view: SKView) {
-        tiles.append(Tile(gridPosition: CGPoint(x: 2, y: 2)))
+        addTiles()
+    }
+    
+    func addTiles() {
+        
+        // Create new tiles and add them to the tiles array
+        for horizontalTileRow in 0..<Int(self.mapSize.height) {
+            for verticalTileRow in 0..<Int(self.mapSize.width) {
+                let position = CGPoint(x: verticalTileRow, y: horizontalTileRow)
+                let tile = Tile(textureName: "tile_floor", gridPosition: position)
+                tiles.append(tile)
+            }
+        }
+        
+        // Add tiles from the tiles array to the scene
         for tile in tiles {
             self.addChild(tile.sprite)
         }
         
     }
-    
-    
-    
-    
-    
-    
-    
-    
     
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
         
