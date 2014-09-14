@@ -14,6 +14,7 @@
 		8734316A19BB74C400050D5B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8734316819BB74C400050D5B /* Main.storyboard */; };
 		8734316C19BB74C400050D5B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8734316B19BB74C400050D5B /* Images.xcassets */; };
 		8734317819BB74C400050D5B /* get_outTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8734317719BB74C400050D5B /* get_outTests.swift */; };
+		878FE39419C5AA8A00E3DA63 /* Tile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878FE39319C5AA8A00E3DA63 /* Tile.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +39,7 @@
 		8734317119BB74C400050D5B /* get-outTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "get-outTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8734317619BB74C400050D5B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8734317719BB74C400050D5B /* get_outTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = get_outTests.swift; sourceTree = "<group>"; };
+		878FE39319C5AA8A00E3DA63 /* Tile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tile.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +88,7 @@
 				8734316819BB74C400050D5B /* Main.storyboard */,
 				8734316B19BB74C400050D5B /* Images.xcassets */,
 				8734315E19BB74C400050D5B /* Supporting Files */,
+				878FE39319C5AA8A00E3DA63 /* Tile.swift */,
 			);
 			path = "get-out";
 			sourceTree = "<group>";
@@ -216,6 +219,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8734316519BB74C400050D5B /* GameScene.swift in Sources */,
+				878FE39419C5AA8A00E3DA63 /* Tile.swift in Sources */,
 				8734316719BB74C400050D5B /* GameViewController.swift in Sources */,
 				8734316119BB74C400050D5B /* AppDelegate.swift in Sources */,
 			);
@@ -403,6 +407,7 @@
 				8734317D19BB74C400050D5B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8734317E19BB74C400050D5B /* Build configuration list for PBXNativeTarget "get-outTests" */ = {
 			isa = XCConfigurationList;
@@ -411,6 +416,7 @@
 				8734318019BB74C400050D5B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
