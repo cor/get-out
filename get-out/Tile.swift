@@ -53,7 +53,7 @@ class Tile {
     // Update actual position to represent grid position
     func updatePosition() {
         let newX = gridPosition.x * size.width
-        let newY = gridPosition.y * size.height
+        let newY = gridPosition.y * size.height + 160
         let newPosition = CGPoint(x: newX, y: newY)
         sprite.position = newPosition
     }
@@ -63,5 +63,6 @@ class Tile {
         sprite.texture = SKTexture(imageNamed: textureName)
         sprite.texture?.filteringMode = SKTextureFilteringMode.Nearest
     }
+    
 }
 

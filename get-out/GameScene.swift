@@ -12,10 +12,15 @@ import SpriteKit
 class GameScene: SKScene {
     
     var tiles: [Tile] = []
-    let mapSize = CGSize(width: 3, height: 2)
+    let character = SKSpriteNode(imageNamed: "character")
+    let mapSize = CGSize(width: 5, height: 5)
+    
     
     override func didMoveToView(view: SKView) {
         addTiles()
+        character.position = CGPoint(x: 100, y: 100)
+        character.texture?.filteringMode = .Nearest
+        self.addChild(character)
     }
     
     func addTiles() {
@@ -36,6 +41,13 @@ class GameScene: SKScene {
         
     }
     
+    func getTile(#x: Int, y: Int) -> Tile {
+       return tiles[(y * Int(mapSize.width)) + x]
+    }
+   
+    override func update(currentTime: CFTimeInterval) {
+    }
+    
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
         
         for touch: AnyObject in touches {
@@ -47,8 +59,5 @@ class GameScene: SKScene {
         for touch: AnyObject in touches {
             let touchLocation = touch.locationInNode(self)
         }
-    }
-   
-    override func update(currentTime: CFTimeInterval) {
     }
 }
