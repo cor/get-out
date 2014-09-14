@@ -13,7 +13,7 @@ class GameScene: SKScene {
     
     var tiles: [Tile] = []
     let player = Player()
-    let joystick = SKSpriteNode(imageNamed: "joystick")
+    let joystick = Joystick()
     let mapSize = CGSize(width: 5, height: 5)
     
     var joystickVector = CGVector(dx: 0, dy: 0)
@@ -24,11 +24,7 @@ class GameScene: SKScene {
         self.physicsWorld.gravity = CGVector(dx: 0, dy: 0)
         addTiles()
         self.addChild(player.sprite)
-        
-        joystick.size = CGSize(width: 128, height: 128)
-        joystick.position = CGPoint(x: joystick.size.width + 32, y: joystick.size.height / 2 + 16)
-        joystick.texture?.filteringMode = .Nearest
-        self.addChild(joystick)
+        self.addChild(joystick.sprite)
     }
     
     func addTiles() {
@@ -57,33 +53,25 @@ class GameScene: SKScene {
         
         for touch: AnyObject in touches {
             let touchLocation = touch.locationInNode!(self)
-            let dx = touchLocation.x - joystick.position.x
-            let dy = touchLocation.y - joystick.position.y
-            joystickVector.dx = dx
-            joystickVector.dy = dy
+            joystick.updateVector(touchLocation)
         }
     }
     
     
     override func touchesMoved(touches: NSSet, withEvent event: UIEvent) {
+        
         for touch: AnyObject in touches {
             let touchLocation = touch.locationInNode!(self)
-            let dx = touchLocation.x - joystick.position.x
-            let dy = touchLocation.y - joystick.position.y
-            joystickVector.dx = dx
-            joystickVector.dy = dy
+            joystick.updateVector(touchLocation)
         }
     }
     
     override func touchesEnded(touches: NSSet, withEvent event: UIEvent) {
-        joystickVector = CGVector(dx: 0, dy: 0)
+        joystick.updateVector(nil)
     }
     
     override func update(currentTime: CFTimeInterval) {
-        println("dx: \(joystickVector.dx) dy: \(joystickVector.dy) ")
-        let dx = joystickVector.dx * CGFloat(joystickVectorMultiplier)
-        let dy = joystickVector.dy * CGFloat(joystickVectorMultiplier)
-        let moveAction =  SKAction.moveByX(dx, y: dy, duration: 0.1)
+        let moveAction =  SKAction.moveByX(joystick.vector.dx, y: joystick.vector.dy, duration: 0.1)
         player.sprite.runAction(moveAction)
     }
 }
