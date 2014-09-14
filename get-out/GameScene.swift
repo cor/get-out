@@ -11,30 +11,34 @@ import SpriteKit
 
 class GameScene: SKScene {
     
-    var testTile = SKSpriteNode(color: UIColor.redColor(), size: CGSize(width: 100, height: 100))
+    var tiles: [Tile] = []
     
     override func didMoveToView(view: SKView) {
-        println(self.size)
-        println(self.frame.size)
-        testTile.position = CGPoint(x: 100, y: 100)
-        testTile.anchorPoint = CGPoint(x: 0.5, y: 0.5)
-        self.addChild(testTile)
+        tiles.append(Tile(gridPosition: CGPoint(x: 2, y: 2)))
+        for tile in tiles {
+            self.addChild(tile.sprite)
+        }
         
     }
+    
+    
+    
+    
+    
+    
+    
+    
     
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
         
         for touch: AnyObject in touches {
             let touchLocation = touch.locationInNode!(self)
-            println(touchLocation)
-            
-            testTile.position = touchLocation
         }
     }
+    
     override func touchesMoved(touches: NSSet, withEvent event: UIEvent) {
         for touch: AnyObject in touches {
             let touchLocation = touch.locationInNode(self)
-            testTile.position = touchLocation
         }
     }
    

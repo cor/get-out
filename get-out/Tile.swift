@@ -10,12 +10,32 @@ import SpriteKit
 
 class Tile {
     
-    let sprite = SKSpriteNode(color: UIColor.redColor(), size: CGSize(width: 100, height: 100))
+    var sprite: SKSpriteNode
+    var gridPosition: CGPoint
+    var color: UIColor
+    var size: CGSize
     
     init() {
-        println("much init")
-        sprite.position = CGPoint(x: 0, y: 0)
+        gridPosition = CGPoint(x: 0, y: 0)
+        color = UIColor.redColor()
+        size = CGSize(width: 64, height: 64)
         
+        sprite = SKSpriteNode(color: color, size: size)
+        sprite.anchorPoint = CGPoint(x: 0, y: 0)
+        updatePosition()
     }
-
+    
+    convenience init(gridPosition: CGPoint){
+        self.init()
+        self.gridPosition = gridPosition
+        updatePosition()
+    }
+    
+    // Update actual position to represent grid position
+    func updatePosition() {
+        let newX = gridPosition.x * size.width
+        let newY = gridPosition.y * size.height
+        let newPosition = CGPoint(x: newX, y: newY)
+        sprite.position = newPosition
+    }
 }
