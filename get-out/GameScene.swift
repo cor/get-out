@@ -16,9 +16,6 @@ class GameScene: SKScene {
     var joystick: Joystick = Joystick()
     let mapSize = CGSize(width: 5, height: 5)
     
-    var joystickVector = CGVector(dx: 0, dy: 0)
-    let joystickVectorMultiplier = 0.1
-    
     override func didMoveToView(view: SKView) {
         self.physicsWorld.gravity = CGVector(dx: 0, dy: 0)
         addTiles()
@@ -55,6 +52,7 @@ class GameScene: SKScene {
         for touch: AnyObject in touches {
             let touchLocation = touch.locationInNode!(self)
             joystick.updateVector(touchLocation)
+            player.startAnimation()
         }
     }
     
@@ -69,10 +67,14 @@ class GameScene: SKScene {
     
     override func touchesEnded(touches: NSSet, withEvent event: UIEvent) {
         joystick.updateVector(nil)
+        player.stopAnimation()
     }
     
     override func update(currentTime: CFTimeInterval) {
-        let moveAction =  SKAction.moveByX(joystick.vector.dx, y: joystick.vector.dy, duration: 0.1)
-        player.sprite.runAction(moveAction)
+        if joystick.vector != nil {
+//            let moveAction =  SKAction.moveByX(joystick.vector!.dx, y: joystick.vector!.dy, duration: 0.1)
+//            player.sprite.runAction(moveAction)
+        }
+        player.update(joystick.vector)
     }
 }

@@ -11,7 +11,7 @@ import SpriteKit
 class Joystick {
     
     let sprite: SKSpriteNode
-    var vector = CGVector(dx: 0, dy: 0)
+    var vector: CGVector? = nil
     let vectorMultiplier: CGFloat = 0.1
     let centerRadius: CGFloat = 10
     
@@ -36,7 +36,7 @@ class Joystick {
                 dy: (dy > +centerRadius || dy < -centerRadius ? dy * vectorMultiplier : 0)
             )
         } else {
-            vector = CGVector(dx: 0, dy: 0)
+            vector = nil
         }
     }
 }

@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		870A6A7219C71E16001A2ABE /* WalkImages.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 870A6A7119C71E16001A2ABE /* WalkImages.atlas */; };
+		870A6A7419C7216E001A2ABE /* joystick.png in Resources */ = {isa = PBXBuildFile; fileRef = 870A6A7319C7216E001A2ABE /* joystick.png */; };
+		870A6A7619C72193001A2ABE /* tile_floor.png in Resources */ = {isa = PBXBuildFile; fileRef = 870A6A7519C72193001A2ABE /* tile_floor.png */; };
 		8734316119BB74C400050D5B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8734316019BB74C400050D5B /* AppDelegate.swift */; };
 		8734316319BB74C400050D5B /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 8734316219BB74C400050D5B /* GameScene.sks */; };
 		8734316519BB74C400050D5B /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8734316419BB74C400050D5B /* GameScene.swift */; };
@@ -15,11 +18,7 @@
 		8734316C19BB74C400050D5B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8734316B19BB74C400050D5B /* Images.xcassets */; };
 		8734317819BB74C400050D5B /* get_outTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8734317719BB74C400050D5B /* get_outTests.swift */; };
 		878FE39419C5AA8A00E3DA63 /* Tile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878FE39319C5AA8A00E3DA63 /* Tile.swift */; };
-		87D6421819C5CBF000A12784 /* tile_example.png in Resources */ = {isa = PBXBuildFile; fileRef = 87D6421719C5CBF000A12784 /* tile_example.png */; };
-		87D6421A19C5D43100A12784 /* tile_floor.png in Resources */ = {isa = PBXBuildFile; fileRef = 87D6421919C5D43100A12784 /* tile_floor.png */; };
-		87D6421E19C5E8F200A12784 /* character.png in Resources */ = {isa = PBXBuildFile; fileRef = 87D6421D19C5E8F200A12784 /* character.png */; };
 		87D6422019C5EA3600A12784 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D6421F19C5EA3600A12784 /* Player.swift */; };
-		87D6422219C5F60100A12784 /* joystick.png in Resources */ = {isa = PBXBuildFile; fileRef = 87D6422119C5F60100A12784 /* joystick.png */; };
 		87D6422419C5FE7300A12784 /* Joystick.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D6422319C5FE7300A12784 /* Joystick.swift */; };
 /* End PBXBuildFile section */
 
@@ -34,6 +33,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		870A6A7119C71E16001A2ABE /* WalkImages.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = WalkImages.atlas; sourceTree = "<group>"; };
+		870A6A7319C7216E001A2ABE /* joystick.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = joystick.png; sourceTree = "<group>"; };
+		870A6A7519C72193001A2ABE /* tile_floor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tile_floor.png; sourceTree = "<group>"; };
+		870A6A7719C737E1001A2ABE /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; name = MyPlayground.playground; path = ../../../Desktop/MyPlayground.playground; sourceTree = "<group>"; };
 		8734315B19BB74C400050D5B /* get-out.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "get-out.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8734315F19BB74C400050D5B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8734316019BB74C400050D5B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -46,11 +49,7 @@
 		8734317619BB74C400050D5B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8734317719BB74C400050D5B /* get_outTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = get_outTests.swift; sourceTree = "<group>"; };
 		878FE39319C5AA8A00E3DA63 /* Tile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tile.swift; sourceTree = "<group>"; };
-		87D6421719C5CBF000A12784 /* tile_example.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tile_example.png; sourceTree = "<group>"; };
-		87D6421919C5D43100A12784 /* tile_floor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tile_floor.png; sourceTree = "<group>"; };
-		87D6421D19C5E8F200A12784 /* character.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = character.png; sourceTree = "<group>"; };
 		87D6421F19C5EA3600A12784 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
-		87D6422119C5F60100A12784 /* joystick.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = joystick.png; sourceTree = "<group>"; };
 		87D6422319C5FE7300A12784 /* Joystick.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Joystick.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -93,10 +92,14 @@
 		8734315D19BB74C400050D5B /* get-out */ = {
 			isa = PBXGroup;
 			children = (
+				870A6A7519C72193001A2ABE /* tile_floor.png */,
 				878FE39319C5AA8A00E3DA63 /* Tile.swift */,
 				87D6421F19C5EA3600A12784 /* Player.swift */,
+				870A6A7719C737E1001A2ABE /* MyPlayground.playground */,
 				8734316419BB74C400050D5B /* GameScene.swift */,
 				87D6422319C5FE7300A12784 /* Joystick.swift */,
+				870A6A7319C7216E001A2ABE /* joystick.png */,
+				870A6A7119C71E16001A2ABE /* WalkImages.atlas */,
 				8734315E19BB74C400050D5B /* Supporting Files */,
 				8734316B19BB74C400050D5B /* Images.xcassets */,
 				8734316019BB74C400050D5B /* AppDelegate.swift */,
@@ -110,10 +113,6 @@
 		8734315E19BB74C400050D5B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				87D6422119C5F60100A12784 /* joystick.png */,
-				87D6421D19C5E8F200A12784 /* character.png */,
-				87D6421919C5D43100A12784 /* tile_floor.png */,
-				87D6421719C5CBF000A12784 /* tile_example.png */,
 				8734315F19BB74C400050D5B /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -216,13 +215,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				87D6421819C5CBF000A12784 /* tile_example.png in Resources */,
-				87D6421A19C5D43100A12784 /* tile_floor.png in Resources */,
+				870A6A7419C7216E001A2ABE /* joystick.png in Resources */,
+				870A6A7219C71E16001A2ABE /* WalkImages.atlas in Resources */,
 				8734316C19BB74C400050D5B /* Images.xcassets in Resources */,
 				8734316319BB74C400050D5B /* GameScene.sks in Resources */,
+				870A6A7619C72193001A2ABE /* tile_floor.png in Resources */,
 				8734316A19BB74C400050D5B /* Main.storyboard in Resources */,
-				87D6421E19C5E8F200A12784 /* character.png in Resources */,
-				87D6422219C5F60100A12784 /* joystick.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
