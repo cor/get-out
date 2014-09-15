@@ -13,11 +13,12 @@ class Joystick {
     let sprite: SKSpriteNode
     var vector = CGVector(dx: 0, dy: 0)
     let vectorMultiplier: CGFloat = 0.1
+    let centerRadius: CGFloat = 10
     
     init() {
         sprite = SKSpriteNode(imageNamed: "joystick")
         sprite.size = CGSize(width: 128, height: 128)
-        sprite.position = CGPoint(x: sprite.size.width + 32, y: sprite.size.height / 2 + 16)
+        sprite.position = CGPoint()
         sprite.texture?.filteringMode = .Nearest
     }
     
@@ -25,12 +26,15 @@ class Joystick {
         self.init()
         sprite.position = position
     }
-    
+
     func updateVector(touchLocation: CGPoint?) {
         if touchLocation != nil {
-            let dx = (touchLocation!.x - sprite.position.x) * vectorMultiplier
-            let dy = (touchLocation!.y - sprite.position.y) * vectorMultiplier
-            vector = CGVector(dx: dx, dy: dy)
+            let dx = (touchLocation!.x - sprite.position.x)
+            let dy = (touchLocation!.y - sprite.position.y)
+            vector = CGVector(
+                dx: (dx > +centerRadius || dx < -centerRadius ? dx * vectorMultiplier : 0),
+                dy: (dy > +centerRadius || dy < -centerRadius ? dy * vectorMultiplier : 0)
+            )
         } else {
             vector = CGVector(dx: 0, dy: 0)
         }

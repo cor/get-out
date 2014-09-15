@@ -13,17 +13,18 @@ class GameScene: SKScene {
     
     var tiles: [Tile] = []
     let player = Player()
-    let joystick = Joystick()
+    var joystick: Joystick = Joystick()
     let mapSize = CGSize(width: 5, height: 5)
     
     var joystickVector = CGVector(dx: 0, dy: 0)
     let joystickVectorMultiplier = 0.1
     
-    
     override func didMoveToView(view: SKView) {
         self.physicsWorld.gravity = CGVector(dx: 0, dy: 0)
         addTiles()
+        joystick = Joystick(position: CGPoint(x: 160, y: 80))
         self.addChild(joystick.sprite)
+        player.moveToTile(getTile(x: 2, y: 2))
         self.addChild(player.sprite)
     }
     
