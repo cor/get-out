@@ -22,12 +22,14 @@ class Player {
     var gridPosition: CGPoint
     var textureName: String
     var currentDirection: Direction? = nil
+    var currentAnimation: Direction? = nil
     
-    
+    let idleTexture = SKTexture(imageNamed: "player")
     var walkingFramesAtlas = SKTextureAtlas(named: "WalkImages")
     var walkingFrames: [SKTexture] = []
     
     let size: CGSize
+    let slowDownMultiplier: CGFloat = 0.7
     
     
     init() {
@@ -41,8 +43,9 @@ class Player {
         
         sprite.physicsBody = SKPhysicsBody(rectangleOfSize: size)
         
+        idleTexture.filteringMode = .Nearest
+        
         importWalkingFrames()
-        startAnimation()
     }
     
     func moveToTile(tile: Tile) {
@@ -75,20 +78,7 @@ class Player {
             move(vector: input!)
         }
         
-        
-        if let dir = currentDirection {
-            switch dir {
-            case .North:
-                println("walking north")
-            case .East:
-                println("walking east")
-            case .South:
-                println("walking south")
-            case .West:
-                println("walking west")
-            }
-        }
-        
+        updateAnimation()
      
     }
     
@@ -101,25 +91,21 @@ class Player {
         if dyPositive {
             
             if dy > dx && dy > -dx {
-                println("north!")
                 return .North
             }
         }
         if dxPositive {
             if dx > dy && dx > -dy {
-                println("East!")
                 return .East
             }
         }
         if !dyPositive {
             if dy < dx && dy < -dx {
-                println("South")
                 return .South
             }
         }
         if !dxPositive {
             if dx < dy && dx < -dy {
-                println("West")
                 return .West
             }
         }
@@ -137,18 +123,52 @@ class Player {
             sprite.physicsBody?.velocity.dx += vector!.dx
             sprite.physicsBody?.velocity.dy += vector!.dy
         } else {
-            sprite.physicsBody?.velocity.dx *= 0.9
-            sprite.physicsBody?.velocity.dy *= 0.9
+            sprite.physicsBody?.velocity.dx *= slowDownMultiplier
+            sprite.physicsBody?.velocity.dy *= slowDownMultiplier
         }
     }
     
-    func startAnimation() {
-        let animateAction = SKAction.animateWithTextures(walkingFrames, timePerFrame: 0.1, resize: false, restore: true)
-        let repeatedAction = SKAction.repeatActionForever(animateAction)
-        sprite.runAction(repeatedAction, withKey: "playerMoving")
+    func updateAnimation() {
+        
+        func startAnimation() {
+            let animateAction = SKAction.animateWithTextures(walkingFrames, timePerFrame: 0.1, resize: false, restore: true)
+            let repeatedAction = SKAction.repeatActionForever(animateAction)
+            sprite.runAction(repeatedAction, withKey: "playerMoving")
+        }
+    
+        func stopAnimation() {
+            sprite.removeActionForKey("playerMoving")
+            sprite.texture = idleTexture
+        }
+        
+        let velocity = sprite.physicsBody?.velocity
+        let direction = directionfromVector(velocity!)
+        
+        if direction != currentAnimation {
+            if direction != nil {
+                switch direction! {
+                case .North:
+                    println("north")
+                    startAnimation()
+                case .East:
+                    println("east")
+                    stopAnimation()
+                case .South:
+                    println("south")
+                    stopAnimation()
+                case .West:
+                    println("west")
+                    stopAnimation()
+                }
+                currentAnimation = direction
+            }
+            else {
+                currentAnimation = nil
+                stopAnimation()
+            }
+        }
+        
     }
     
-    func stopAnimation() {
-        sprite.removeActionForKey("playerMoving")
-    }
+    
 }

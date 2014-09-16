@@ -10,6 +10,7 @@
 		870A6A7219C71E16001A2ABE /* WalkImages.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 870A6A7119C71E16001A2ABE /* WalkImages.atlas */; };
 		870A6A7419C7216E001A2ABE /* joystick.png in Resources */ = {isa = PBXBuildFile; fileRef = 870A6A7319C7216E001A2ABE /* joystick.png */; };
 		870A6A7619C72193001A2ABE /* tile_floor.png in Resources */ = {isa = PBXBuildFile; fileRef = 870A6A7519C72193001A2ABE /* tile_floor.png */; };
+		87262AA919C830760052C448 /* player.png in Resources */ = {isa = PBXBuildFile; fileRef = 87262AA819C830760052C448 /* player.png */; };
 		8734316119BB74C400050D5B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8734316019BB74C400050D5B /* AppDelegate.swift */; };
 		8734316319BB74C400050D5B /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 8734316219BB74C400050D5B /* GameScene.sks */; };
 		8734316519BB74C400050D5B /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8734316419BB74C400050D5B /* GameScene.swift */; };
@@ -36,7 +37,7 @@
 		870A6A7119C71E16001A2ABE /* WalkImages.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = WalkImages.atlas; sourceTree = "<group>"; };
 		870A6A7319C7216E001A2ABE /* joystick.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = joystick.png; sourceTree = "<group>"; };
 		870A6A7519C72193001A2ABE /* tile_floor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tile_floor.png; sourceTree = "<group>"; };
-		870A6A7719C737E1001A2ABE /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; name = MyPlayground.playground; path = ../../../Desktop/MyPlayground.playground; sourceTree = "<group>"; };
+		87262AA819C830760052C448 /* player.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = player.png; sourceTree = "<group>"; };
 		8734315B19BB74C400050D5B /* get-out.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "get-out.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8734315F19BB74C400050D5B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8734316019BB74C400050D5B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -95,7 +96,6 @@
 				870A6A7519C72193001A2ABE /* tile_floor.png */,
 				878FE39319C5AA8A00E3DA63 /* Tile.swift */,
 				87D6421F19C5EA3600A12784 /* Player.swift */,
-				870A6A7719C737E1001A2ABE /* MyPlayground.playground */,
 				8734316419BB74C400050D5B /* GameScene.swift */,
 				87D6422319C5FE7300A12784 /* Joystick.swift */,
 				870A6A7319C7216E001A2ABE /* joystick.png */,
@@ -113,6 +113,7 @@
 		8734315E19BB74C400050D5B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				87262AA819C830760052C448 /* player.png */,
 				8734315F19BB74C400050D5B /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -215,6 +216,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				87262AA919C830760052C448 /* player.png in Resources */,
 				870A6A7419C7216E001A2ABE /* joystick.png in Resources */,
 				870A6A7219C71E16001A2ABE /* WalkImages.atlas in Resources */,
 				8734316C19BB74C400050D5B /* Images.xcassets in Resources */,

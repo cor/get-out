@@ -52,13 +52,12 @@ class GameScene: SKScene {
         for touch: AnyObject in touches {
             let touchLocation = touch.locationInNode!(self)
             joystick.updateVector(touchLocation)
-            player.startAnimation()
+
         }
     }
     
     
     override func touchesMoved(touches: NSSet, withEvent event: UIEvent) {
-        
         for touch: AnyObject in touches {
             let touchLocation = touch.locationInNode!(self)
             joystick.updateVector(touchLocation)
@@ -67,14 +66,9 @@ class GameScene: SKScene {
     
     override func touchesEnded(touches: NSSet, withEvent event: UIEvent) {
         joystick.updateVector(nil)
-        player.stopAnimation()
     }
     
     override func update(currentTime: CFTimeInterval) {
-        if joystick.vector != nil {
-//            let moveAction =  SKAction.moveByX(joystick.vector!.dx, y: joystick.vector!.dy, duration: 0.1)
-//            player.sprite.runAction(moveAction)
-        }
         player.update(joystick.vector)
     }
 }
