@@ -74,16 +74,7 @@ class Player {
         
         if direction != currentAnimation {
             if direction != nil {
-                switch direction! {
-                case .North:
-                    sprite.runAction(self.walkingFramesActions[.North]!, withKey: "playerMoving")
-                case .East:
-                    stopAnimation()
-                case .South:
-                    sprite.runAction(self.walkingFramesActions[.South]!, withKey: "playerMoving")
-                case .West:
-                    stopAnimation()
-                }
+                sprite.runAction(self.walkingFramesActions[direction!]!, withKey: "playerMoving")
                 currentAnimation = direction
             }
             else {
