@@ -12,7 +12,7 @@ class Joystick {
     
     let sprite: SKSpriteNode
     var vector: CGVector? = nil
-    let vectorMultiplier: CGFloat = 0.1
+    let vectorMultiplier: CGFloat = 1
     let centerRadius: CGFloat = 10
     
     init() {
@@ -31,10 +31,21 @@ class Joystick {
         if touchLocation != nil {
             let dx = (touchLocation!.x - sprite.position.x)
             let dy = (touchLocation!.y - sprite.position.y)
-            vector = CGVector(
-                dx: (dx > +centerRadius || dx < -centerRadius ? dx * vectorMultiplier : 0),
-                dy: (dy > +centerRadius || dy < -centerRadius ? dy * vectorMultiplier : 0)
-            )
+            
+            let maxDx = sprite.size.width / 2
+            let maxDy = sprite.size.height / 2
+            
+            // if the vector is too big (IE, pressed outside sprite), change vector to nil
+            if (dx > +maxDx || dx < -maxDx || dy > +maxDy || dy < -maxDy) {
+               vector = nil
+            }
+            else {
+                vector = CGVector(
+                    dx: (dx > +centerRadius || dx < -centerRadius ? dx * vectorMultiplier : 0),
+                    dy: (dy > +centerRadius || dy < -centerRadius ? dy * vectorMultiplier : 0)
+                )
+            }
+            
         } else {
             vector = nil
         }
