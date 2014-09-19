@@ -61,7 +61,8 @@ class Player {
         sprite.runAction(moveAction)
     }
     
-    func importWalkingFrames() {
+    //import walking frames from WalkImages.atlas and put them in the walkingFrames Dictionary
+    private func importWalkingFrames() {
         var tempWalkingFrames: [SKTexture] = []
         let imagesCount = walkingFramesAtlas.textureNames.count / 2
         for index in 1...imagesCount {
@@ -78,33 +79,76 @@ class Player {
             tempWalkingFrames.append(tempTexture)
         }
         self.walkingFrames[.North] = tempWalkingFrames
+   
     }
     
-    func createActionsFromFrames() {
+    //create SKAction animations from the walkingFrames Dictionary and put them in the walkingFramesActions Dictionary
+    private func createActionsFromFrames() {
+        let directionList = [Direction.North, Direction.South]
         
-        let animateAction = SKAction.animateWithTextures(walkingFrames[.South]!, timePerFrame: 0.1, resize: false, restore: true)
-        let repeatedAction = SKAction.repeatActionForever(animateAction)
-        walkingFramesActions[.South] = repeatedAction
+        for direction in directionList {
+            let animateAction = SKAction.animateWithTextures(walkingFrames[direction]!, timePerFrame: 0.1, resize: false, restore: true)
+            let repeatedAction = SKAction.repeatActionForever(animateAction)
+            walkingFramesActions[direction] = repeatedAction
+        }
+        
+    }
+    
+    private func updateAnimation() {
+    
+        func stopAnimation() {
+            sprite.removeActionForKey("playerMoving")
+            sprite.texture = idleTexture
+        }
+        
+        let velocity = sprite.physicsBody?.velocity
+        let direction = directionfromVector(velocity!)
+        
+        if direction != currentAnimation {
+            if direction != nil {
+                switch direction! {
+                case .North:
+                    println("north")
+                    sprite.runAction(self.walkingFramesActions[.North]!, withKey: "playerMoving")
+                case .East:
+                    println("east")
+                    stopAnimation()
+                case .South:
+                    println("south")
+                    sprite.runAction(self.walkingFramesActions[.South]!, withKey: "playerMoving")
+                case .West:
+                    println("west")
+                    stopAnimation()
+                }
+                currentAnimation = direction
+            }
+            else {
+                currentAnimation = nil
+                stopAnimation()
+            }
+        }
+        
     }
     
     func update(input: CGVector?) {
         
         move(vector: input)
-        
-        if input != nil {
-            directionfromVector(input!)
-            move(vector: input!)
-        }
-        
         updateAnimation()
      
     }
     
     func directionfromVector(vector:CGVector) -> Direction? {
+        
+        let minimumSpeedForDirection: CGFloat = 5
+        
         let dxPositive = vector.dx > 0
         let dyPositive = vector.dy > 0
         let dx = vector.dx
         let dy = vector.dy
+        
+        if !((dx > minimumSpeedForDirection || dx < -minimumSpeedForDirection) || (dy > minimumSpeedForDirection || dy < -minimumSpeedForDirection)) {
+            return nil
+        }
         
         if dyPositive {
             
@@ -128,63 +172,20 @@ class Player {
             }
         }
         
-        if Int(dx) == 0 && Int(dy) == 0 {
-            return nil
-        }
-        
         println("ERROR, INVALID VECTOR AT DIRECTION FROM VECTOR")
         return nil
     }
     
     func move(#vector: CGVector?) {
         if vector != nil {
-            sprite.physicsBody?.velocity.dx += vector!.dx
-            sprite.physicsBody?.velocity.dy += vector!.dy
+            sprite.physicsBody?.velocity.dx = vector!.dx
+            sprite.physicsBody?.velocity.dy = vector!.dy
         } else {
             sprite.physicsBody?.velocity.dx *= slowDownMultiplier
             sprite.physicsBody?.velocity.dy *= slowDownMultiplier
         }
     }
     
-    func updateAnimation() {
-        
-        func startAnimation() {
-            sprite.runAction(self.walkingFramesActions[.South]!, withKey: "playerMoving")
-        }
-    
-        func stopAnimation() {
-            sprite.removeActionForKey("playerMoving")
-            sprite.texture = idleTexture
-        }
-        
-        let velocity = sprite.physicsBody?.velocity
-        let direction = directionfromVector(velocity!)
-        
-        if direction != currentAnimation {
-            if direction != nil {
-                switch direction! {
-                case .North:
-                    println("north")
-                    startAnimation()
-                case .East:
-                    println("east")
-                    stopAnimation()
-                case .South:
-                    println("south")
-                    stopAnimation()
-                case .West:
-                    println("west")
-                    stopAnimation()
-                }
-                currentAnimation = direction
-            }
-            else {
-                currentAnimation = nil
-                stopAnimation()
-            }
-        }
-        
-    }
     
     
 }
