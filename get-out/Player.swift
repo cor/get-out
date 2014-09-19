@@ -17,40 +17,40 @@ class Player {
         case West
     }
     
+    // the Sprite
     var sprite: SKSpriteNode
+    let size: CGSize
     
-    var gridPosition: CGPoint
+    // Textures and Actions for animation
     var textureName: String
+    let idleTexture = SKTexture(imageNamed: "player")
+    let animationActionsFactory = AnimationActionsFactory()
+    let walkingFramesActions: [Direction:SKAction]
+    
+    // speeds
+    let slowDownMultiplier: CGFloat = 0.7
+    let speedMultiplier: CGFloat = 3
+    
+    
     var currentDirection: Direction? = nil
     var currentAnimation: Direction? = nil
     
-    let idleTexture = SKTexture(imageNamed: "player")
-    var walkingFramesAtlas = SKTextureAtlas(named: "WalkImages")
-    
-    var walkingFrames: [Direction:[SKTexture]] = [:]
-    var walkingFramesActions: [Direction:SKAction] = [:]
-    
-    let size: CGSize
-    let slowDownMultiplier: CGFloat = 0.7
-    
-    
     init() {
-        gridPosition = CGPoint(x: 0, y: 0)
         size = CGSize(width: 64, height: 64)
         textureName = "player_walk_south_1"
         
+        //sprite configuration
         sprite = SKSpriteNode(imageNamed: textureName)
-        sprite.texture?.filteringMode = .Nearest
+        sprite.texture?.filteringMode = .Nearest // fix for blurry pixel art
         sprite.size = size
-        
         sprite.physicsBody = SKPhysicsBody(rectangleOfSize: size)
         
-        idleTexture.filteringMode = .Nearest
-        
-        importWalkingFrames()
-        createActionsFromFrames()
+        idleTexture.filteringMode = .Nearest // fix for blurry pixel art
+        walkingFramesActions = animationActionsFactory.getActions()
+     
     }
     
+    // Move the player to a Tile
     func moveToTile(tile: Tile) {
         println(tile.sprite.position.x)
         println(tile.sprite.position.y)
@@ -61,39 +61,7 @@ class Player {
         sprite.runAction(moveAction)
     }
     
-    //import walking frames from WalkImages.atlas and put them in the walkingFrames Dictionary
-    private func importWalkingFrames() {
-        var tempWalkingFrames: [SKTexture] = []
-        let imagesCount = walkingFramesAtlas.textureNames.count / 2
-        for index in 1...imagesCount {
-            let textureName = "player_walk_south_\(index)"
-            let tempTexture = walkingFramesAtlas.textureNamed(textureName)
-            tempWalkingFrames.append(tempTexture)
-        }
-        self.walkingFrames[.South] = tempWalkingFrames
-        
-        tempWalkingFrames = []
-        for index in 1...imagesCount {
-            let textureName = "player_walk_north_\(index)"
-            let tempTexture = walkingFramesAtlas.textureNamed(textureName)
-            tempWalkingFrames.append(tempTexture)
-        }
-        self.walkingFrames[.North] = tempWalkingFrames
-   
-    }
-    
-    //create SKAction animations from the walkingFrames Dictionary and put them in the walkingFramesActions Dictionary
-    private func createActionsFromFrames() {
-        let directionList = [Direction.North, Direction.South]
-        
-        for direction in directionList {
-            let animateAction = SKAction.animateWithTextures(walkingFrames[direction]!, timePerFrame: 0.1, resize: false, restore: true)
-            let repeatedAction = SKAction.repeatActionForever(animateAction)
-            walkingFramesActions[direction] = repeatedAction
-        }
-        
-    }
-    
+    //Update Sprite to use the corerct animation from walkingFramesActions[:]
     private func updateAnimation() {
     
         func stopAnimation() {
@@ -108,16 +76,12 @@ class Player {
             if direction != nil {
                 switch direction! {
                 case .North:
-                    println("north")
                     sprite.runAction(self.walkingFramesActions[.North]!, withKey: "playerMoving")
                 case .East:
-                    println("east")
                     stopAnimation()
                 case .South:
-                    println("south")
                     sprite.runAction(self.walkingFramesActions[.South]!, withKey: "playerMoving")
                 case .West:
-                    println("west")
                     stopAnimation()
                 }
                 currentAnimation = direction
@@ -130,6 +94,7 @@ class Player {
         
     }
     
+    // gets called aprox. 60 times per second by the GameScene
     func update(input: CGVector?) {
         
         move(vector: input)
@@ -137,6 +102,7 @@ class Player {
      
     }
     
+    // returns an optional Direction value from a vector
     func directionfromVector(vector:CGVector) -> Direction? {
         
         let minimumSpeedForDirection: CGFloat = 5
@@ -176,10 +142,11 @@ class Player {
         return nil
     }
     
+    // moves the player by a vector, uses the speedMultiplier property
     func move(#vector: CGVector?) {
         if vector != nil {
-            sprite.physicsBody?.velocity.dx = vector!.dx
-            sprite.physicsBody?.velocity.dy = vector!.dy
+            sprite.physicsBody?.velocity.dx = vector!.dx * speedMultiplier
+            sprite.physicsBody?.velocity.dy = vector!.dy * speedMultiplier
         } else {
             sprite.physicsBody?.velocity.dx *= slowDownMultiplier
             sprite.physicsBody?.velocity.dy *= slowDownMultiplier
