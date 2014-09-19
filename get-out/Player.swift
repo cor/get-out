@@ -26,7 +26,9 @@ class Player {
     
     let idleTexture = SKTexture(imageNamed: "player")
     var walkingFramesAtlas = SKTextureAtlas(named: "WalkImages")
-    var walkingFrames: [SKTexture] = []
+    
+    var walkingFrames: [Direction:[SKTexture]] = [:]
+    var walkingFramesActions: [Direction:SKAction] = [:]
     
     let size: CGSize
     let slowDownMultiplier: CGFloat = 0.7
@@ -46,6 +48,7 @@ class Player {
         idleTexture.filteringMode = .Nearest
         
         importWalkingFrames()
+        createActionsFromFrames()
     }
     
     func moveToTile(tile: Tile) {
@@ -60,13 +63,28 @@ class Player {
     
     func importWalkingFrames() {
         var tempWalkingFrames: [SKTexture] = []
-        let imagesCount = walkingFramesAtlas.textureNames.count
+        let imagesCount = walkingFramesAtlas.textureNames.count / 2
         for index in 1...imagesCount {
             let textureName = "player_walk_south_\(index)"
             let tempTexture = walkingFramesAtlas.textureNamed(textureName)
             tempWalkingFrames.append(tempTexture)
         }
-        self.walkingFrames = tempWalkingFrames
+        self.walkingFrames[.South] = tempWalkingFrames
+        
+        tempWalkingFrames = []
+        for index in 1...imagesCount {
+            let textureName = "player_walk_north_\(index)"
+            let tempTexture = walkingFramesAtlas.textureNamed(textureName)
+            tempWalkingFrames.append(tempTexture)
+        }
+        self.walkingFrames[.North] = tempWalkingFrames
+    }
+    
+    func createActionsFromFrames() {
+        
+        let animateAction = SKAction.animateWithTextures(walkingFrames[.South]!, timePerFrame: 0.1, resize: false, restore: true)
+        let repeatedAction = SKAction.repeatActionForever(animateAction)
+        walkingFramesActions[.South] = repeatedAction
     }
     
     func update(input: CGVector?) {
@@ -131,9 +149,7 @@ class Player {
     func updateAnimation() {
         
         func startAnimation() {
-            let animateAction = SKAction.animateWithTextures(walkingFrames, timePerFrame: 0.1, resize: false, restore: true)
-            let repeatedAction = SKAction.repeatActionForever(animateAction)
-            sprite.runAction(repeatedAction, withKey: "playerMoving")
+            sprite.runAction(self.walkingFramesActions[.South]!, withKey: "playerMoving")
         }
     
         func stopAnimation() {
