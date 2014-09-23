@@ -16,13 +16,23 @@ class GameScene: SKScene {
     var joystick: Joystick = Joystick()
     let mapSize = CGSize(width: 5, height: 5)
     
+    let world = SKNode.node()
+    let camera = SKNode.node()
+    
     override func didMoveToView(view: SKView) {
         self.physicsWorld.gravity = CGVector(dx: 0, dy: 0)
         addTiles()
-        joystick = Joystick(position: CGPoint(x: 160, y: 80))
+        joystick = Joystick(position: CGPoint(x: 0, y: -164))
         self.addChild(joystick.sprite)
         player.moveToTile(getTile(x: 2, y: 2))
-        self.addChild(player.sprite)
+        world.addChild(player.sprite)
+        self.anchorPoint = CGPoint(x: 0.5, y: 0.5)
+        
+        camera.name = "camera";
+        
+        self.addChild(world)
+        world.addChild(camera)
+        joystick.sprite.zPosition = 9000
     }
     
     func addTiles() {
@@ -38,7 +48,7 @@ class GameScene: SKScene {
         
         // Add tiles from the tiles array to the scene
         for tile in tiles {
-            self.addChild(tile.sprite)
+            world.addChild(tile.sprite)
         }
         
     }
@@ -70,5 +80,19 @@ class GameScene: SKScene {
     
     override func update(currentTime: CFTimeInterval) {
         player.update(joystick.vector)
+        camera.position = player.sprite.position
+    }
+    
+    override func didFinishUpdate() {
+        if let camera = world.childNodeWithName("camera") {
+            self.centerOnNode(camera)
+        }
+    }
+    
+    func centerOnNode(node: SKNode) {
+        let cameraPositionInScene: CGPoint = node.scene!.convertPoint(node.position, fromNode: node.parent!)
+        
+        node.parent!.position = CGPoint(x: node.parent!.position.x - cameraPositionInScene.x, y: node.parent!.position.y - cameraPositionInScene.y)
+        println(world.position)
     }
 }
