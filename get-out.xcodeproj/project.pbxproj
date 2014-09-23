@@ -18,6 +18,8 @@
 		8734316A19BB74C400050D5B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8734316819BB74C400050D5B /* Main.storyboard */; };
 		8734316C19BB74C400050D5B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8734316B19BB74C400050D5B /* Images.xcassets */; };
 		8734317819BB74C400050D5B /* get_outTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8734317719BB74C400050D5B /* get_outTests.swift */; };
+		87694B1619D20FF90083C2E7 /* World.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87694B1519D20FF90083C2E7 /* World.swift */; };
+		87694B1819D212C60083C2E7 /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87694B1719D212C60083C2E7 /* Camera.swift */; };
 		878FE39419C5AA8A00E3DA63 /* Tile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878FE39319C5AA8A00E3DA63 /* Tile.swift */; };
 		87C280CF19CC90B200CED293 /* AnimationActionsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C280CE19CC90B200CED293 /* AnimationActionsFactory.swift */; };
 		87D6422019C5EA3600A12784 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D6421F19C5EA3600A12784 /* Player.swift */; };
@@ -50,6 +52,8 @@
 		8734317119BB74C400050D5B /* get-outTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "get-outTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8734317619BB74C400050D5B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8734317719BB74C400050D5B /* get_outTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = get_outTests.swift; sourceTree = "<group>"; };
+		87694B1519D20FF90083C2E7 /* World.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = World.swift; sourceTree = "<group>"; };
+		87694B1719D212C60083C2E7 /* Camera.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
 		878FE39319C5AA8A00E3DA63 /* Tile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tile.swift; sourceTree = "<group>"; };
 		87C280CE19CC90B200CED293 /* AnimationActionsFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationActionsFactory.swift; sourceTree = "<group>"; };
 		87D6421F19C5EA3600A12784 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
@@ -96,6 +100,8 @@
 			isa = PBXGroup;
 			children = (
 				870A6A7519C72193001A2ABE /* tile_floor.png */,
+				87694B1519D20FF90083C2E7 /* World.swift */,
+				87694B1719D212C60083C2E7 /* Camera.swift */,
 				878FE39319C5AA8A00E3DA63 /* Tile.swift */,
 				87D6421F19C5EA3600A12784 /* Player.swift */,
 				87C280CE19CC90B200CED293 /* AnimationActionsFactory.swift */,
@@ -249,7 +255,9 @@
 				87D6422419C5FE7300A12784 /* Joystick.swift in Sources */,
 				8734316719BB74C400050D5B /* GameViewController.swift in Sources */,
 				8734316119BB74C400050D5B /* AppDelegate.swift in Sources */,
+				87694B1619D20FF90083C2E7 /* World.swift in Sources */,
 				87C280CF19CC90B200CED293 /* AnimationActionsFactory.swift in Sources */,
+				87694B1819D212C60083C2E7 /* Camera.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
