@@ -53,17 +53,4 @@ class GameScene: SKScene {
         world.update(joystick.vector)
     }
     
-    override func didFinishUpdate() {
-        self.centerOnNode(world.camera.sprite)
-    }
-    
-    func centerOnNode(node: SKNode) {
-        
-        let cameraPositionInScene: CGPoint = node.scene!.convertPoint(node.position, fromNode: node.parent!)
-        let newPositoin = CGPoint(x: node.parent!.position.x - cameraPositionInScene.x, y: node.parent!.position.y - cameraPositionInScene.y)
-        let action = SKAction.moveTo(newPositoin, duration: 0.2)
-        action.timingMode = SKActionTimingMode.EaseOut
-        
-        node.parent!.runAction(action)
-    }
 }
