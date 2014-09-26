@@ -20,7 +20,7 @@ class Tile {
     init() {
         gridPosition = CGPoint(x: 0, y: 0)
         size = CGSize(width: 64, height: 64)
-        textureName = "tile_example"
+        textureName = "tile_floor"
         
         sprite = SKSpriteNode()
         sprite.size = size
@@ -53,7 +53,7 @@ class Tile {
     // Update actual position to represent grid position
     func updatePosition() {
         let newX = gridPosition.x * size.width
-        let newY = gridPosition.y * size.height + 160
+        let newY = gridPosition.y * size.height
         let newPosition = CGPoint(x: newX, y: newY)
         sprite.position = newPosition
     }

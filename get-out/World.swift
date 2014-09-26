@@ -12,14 +12,18 @@ class World {
     
     private var tiles: [Tile] = []
     private let mapSize = CGSize(width: 5, height: 5)
-    let sprite = SKNode.node()
+    let sprite: SKSpriteNode
     let camera = Camera()
     let player = Player()
     
     init() {
+        sprite = SKSpriteNode(color: UIColor.redColor(), size: CGSize(width: mapSize.width * 64, height: mapSize.height * 64))
+        sprite.anchorPoint = CGPoint(x:0, y:0)
+        sprite.zPosition = -100
         addTiles()
+        
         sprite.addChild(player.sprite)
-        player.moveToTile(getTile(x: 2, y: 2))
+        player.moveToTile(getTile(x: 2, y: 2)!)
         sprite.addChild(camera.sprite)
     }
     
@@ -27,26 +31,66 @@ class World {
         
         // Create new tiles and add them to the tiles array
         for horizontalTileRow in 0..<Int(self.mapSize.height) {
+            
             for verticalTileRow in 0..<Int(self.mapSize.width) {
+                
                 let position = CGPoint(x: verticalTileRow, y: horizontalTileRow)
                 let tile = Tile(textureName: "tile_floor", gridPosition: position)
                 tiles.append(tile)
             }
+            
         }
         
         // Add tiles from the tiles array to the scene
         for tile in tiles {
+            tile.sprite.zPosition = 10
             self.sprite.addChild(tile.sprite)
         }
         
     }
     
-    func getTile(#x: Int, y: Int) -> Tile {
-       return tiles[(y * Int(mapSize.width)) + x]
+    // return optional tile from x y coord
+    func getTile(#x: Int, y: Int) -> Tile? {
+        let possibleTileIndex = (y * Int(mapSize.width)) + x
+        
+        if !(possibleTileIndex < 0 || possibleTileIndex > (tiles.count - 1)) {
+            return tiles[possibleTileIndex]
+        } else {
+            return nil
+        }
+    }
+    
+    //return optional tile from gridPoint
+    func getTile(#gridPoint: CGPoint) -> Tile? {
+        let possibleTileIndex = (Int(gridPoint.y) * Int(mapSize.width)) + Int(gridPoint.x)
+        if !(possibleTileIndex < 0 || possibleTileIndex > (tiles.count - 1)) {
+            return tiles[possibleTileIndex]
+        }
+        else {
+            return nil
+        }
     }
     func update(joystickVector: CGVector?) {
         player.update(joystickVector)
         camera.sprite.position = player.sprite.position
         camera.centerOnNode(camera.sprite)
+        
+        func changeTextureUnderPlayer() {
+            if let tile = getTile(gridPoint: player.currentGridPosition) {
+            
+                if let currentTile = player.currentTile {
+                    
+                    if tile !== player.currentTile! {
+                        currentTile.sprite.texture = SKTexture(imageNamed: "tile_floor")
+                        currentTile.sprite.texture?.filteringMode = .Nearest
+                        tile.sprite.texture = SKTexture(imageNamed: "tile_example")
+                        tile.sprite.texture?.filteringMode = .Nearest
+                        player.currentTile = tile
+                    }
+                }
+            }
+        }
+        
+        changeTextureUnderPlayer()
     }
 }

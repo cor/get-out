@@ -24,6 +24,7 @@
 		87C280CF19CC90B200CED293 /* AnimationActionsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C280CE19CC90B200CED293 /* AnimationActionsFactory.swift */; };
 		87D6422019C5EA3600A12784 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D6421F19C5EA3600A12784 /* Player.swift */; };
 		87D6422419C5FE7300A12784 /* Joystick.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D6422319C5FE7300A12784 /* Joystick.swift */; };
+		87D93FD519D580D5000C2825 /* tile_example.png in Resources */ = {isa = PBXBuildFile; fileRef = 87D93FD419D580D5000C2825 /* tile_example.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,7 @@
 		87C280CE19CC90B200CED293 /* AnimationActionsFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationActionsFactory.swift; sourceTree = "<group>"; };
 		87D6421F19C5EA3600A12784 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		87D6422319C5FE7300A12784 /* Joystick.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Joystick.swift; sourceTree = "<group>"; };
+		87D93FD419D580D5000C2825 /* tile_example.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tile_example.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 		8734315D19BB74C400050D5B /* get-out */ = {
 			isa = PBXGroup;
 			children = (
+				87D93FD419D580D5000C2825 /* tile_example.png */,
 				870A6A7519C72193001A2ABE /* tile_floor.png */,
 				87694B1519D20FF90083C2E7 /* World.swift */,
 				87694B1719D212C60083C2E7 /* Camera.swift */,
@@ -229,6 +232,7 @@
 				870A6A7419C7216E001A2ABE /* joystick.png in Resources */,
 				870A6A7219C71E16001A2ABE /* WalkImages.atlas in Resources */,
 				8734316C19BB74C400050D5B /* Images.xcassets in Resources */,
+				87D93FD519D580D5000C2825 /* tile_example.png in Resources */,
 				8734316319BB74C400050D5B /* GameScene.sks in Resources */,
 				870A6A7619C72193001A2ABE /* tile_floor.png in Resources */,
 				8734316A19BB74C400050D5B /* Main.storyboard in Resources */,

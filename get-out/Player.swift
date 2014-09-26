@@ -31,7 +31,8 @@ class Player {
     let slowDownMultiplier: CGFloat = 0.7
     let speedMultiplier: CGFloat = 3
     
-    
+    var currentGridPosition: CGPoint
+    var currentTile: Tile?
     var currentDirection: Direction? = nil
     var currentAnimation: Direction? = nil
     
@@ -39,10 +40,14 @@ class Player {
         size = CGSize(width: 64, height: 64)
         textureName = "player_walk_south_1"
         
+        currentGridPosition = CGPoint()
+        currentTile = Tile()
+        
         //sprite configuration
         sprite = SKSpriteNode(imageNamed: textureName)
         sprite.texture?.filteringMode = .Nearest // fix for blurry pixel art
         sprite.size = size
+        sprite.zPosition = 100
         sprite.physicsBody = SKPhysicsBody(rectangleOfSize: size)
         
         idleTexture.filteringMode = .Nearest // fix for blurry pixel art
@@ -90,6 +95,7 @@ class Player {
         
         move(vector: input)
         updateAnimation()
+        updateCurrentGridPosition()
      
     }
     
@@ -144,6 +150,17 @@ class Player {
         }
     }
     
+    private func updateCurrentGridPosition() {
+        var position = sprite.position
+        
+        // adjust position to represent feet
+        position.x += 64
+        position.y += 32
     
+        var gridPoint = CGPoint(x: Int(position.x / 64) - 1, y: Int(position.y / 64) - 1)
+        println("x: \(Int(position.x / 64) - 1) y: \(Int(position.y / 64) - 1) ")
+        
+        currentGridPosition = gridPoint
+    }
     
 }
