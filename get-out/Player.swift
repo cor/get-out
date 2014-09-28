@@ -55,6 +55,11 @@ class Player {
      
     }
     
+    convenience init(position: CGPoint) {
+        self.init()
+        sprite.position = position
+    }
+    
     // Move the player to a Tile
     func moveToTile(tile: Tile) {
         println(tile.sprite.position.x)

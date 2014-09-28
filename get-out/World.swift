@@ -14,16 +14,16 @@ class World {
     private let mapSize = CGSize(width: 5, height: 5)
     let sprite: SKSpriteNode
     let camera = Camera()
-    let player = Player()
+    let player: Player
     
     init() {
         sprite = SKSpriteNode(color: UIColor.redColor(), size: CGSize(width: mapSize.width * 64, height: mapSize.height * 64))
         sprite.anchorPoint = CGPoint(x:0, y:0)
         sprite.zPosition = -100
+        player = Player(position: CGPoint(x: sprite.size.width / 2, y: sprite.size.height / 2))
         addTiles()
         
         sprite.addChild(player.sprite)
-        player.moveToTile(getTile(x: 2, y: 2)!)
         sprite.addChild(camera.sprite)
     }
     
