@@ -11,7 +11,7 @@ import SpriteKit
 class World {
     
     private var tiles: [Tile] = []
-    private let mapSize = CGSize(width: 5, height: 5)
+    private let mapSize = CGSize(width: 10, height: 10)
     let sprite: SKSpriteNode
     let camera = Camera()
     let player: Player

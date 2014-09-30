@@ -36,6 +36,9 @@ class Player {
     var currentDirection: Direction? = nil
     var currentAnimation: Direction? = nil
     
+    // stats
+    var isAlive: Bool = true
+    
     init() {
         size = CGSize(width: 64, height: 64)
         textureName = "player_walk_south_1"
