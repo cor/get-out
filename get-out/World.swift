@@ -20,6 +20,9 @@ class World {
         sprite = SKSpriteNode(color: UIColor.redColor(), size: CGSize(width: mapSize.width * 64, height: mapSize.height * 64))
         sprite.anchorPoint = CGPoint(x:0, y:0)
         sprite.zPosition = -100
+        
+        sprite.physicsBody = SKPhysicsBody(edgeLoopFromRect: self.sprite.frame)
+        
         player = Player(position: CGPoint(x: sprite.size.width / 2, y: sprite.size.height / 2))
         addTiles()
         
@@ -34,7 +37,7 @@ class World {
             
             for verticalTileRow in 0..<Int(self.mapSize.width) {
                 
-                let position = CGPoint(x: verticalTileRow, y: horizontalTileRow)
+                let position = GridPoint(x: verticalTileRow, y: horizontalTileRow)
                 let tile = Tile(textureName: "tile_floor", gridPosition: position)
                 tiles.append(tile)
             }
@@ -83,7 +86,7 @@ class World {
                     if tile !== player.currentTile! {
                         currentTile.sprite.texture = SKTexture(imageNamed: "tile_floor")
                         currentTile.sprite.texture?.filteringMode = .Nearest
-                        tile.sprite.texture = SKTexture(imageNamed: "tile_example")
+                        tile.sprite.texture = SKTexture(imageNamed: "tile_floor_selected")
                         tile.sprite.texture?.filteringMode = .Nearest
                         player.currentTile = tile
                     }

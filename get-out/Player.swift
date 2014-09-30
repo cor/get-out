@@ -48,7 +48,9 @@ class Player {
         sprite.texture?.filteringMode = .Nearest // fix for blurry pixel art
         sprite.size = size
         sprite.zPosition = 100
+        
         sprite.physicsBody = SKPhysicsBody(rectangleOfSize: size)
+        
         
         idleTexture.filteringMode = .Nearest // fix for blurry pixel art
         walkingFramesActions = animationActionsFactory.getActions()
@@ -62,8 +64,6 @@ class Player {
     
     // Move the player to a Tile
     func moveToTile(tile: Tile) {
-        println(tile.sprite.position.x)
-        println(tile.sprite.position.y)
         let newX = tile.sprite.position.x + self.size.width / 2
         let newY = tile.sprite.position.y + self.size.height / 2
         let newLocation = CGPoint(x: newX, y: newY)
@@ -163,7 +163,6 @@ class Player {
         position.y += 32
     
         var gridPoint = CGPoint(x: Int(position.x / 64) - 1, y: Int(position.y / 64) - 1)
-        println("x: \(Int(position.x / 64) - 1) y: \(Int(position.y / 64) - 1) ")
         
         currentGridPosition = gridPoint
     }
