@@ -78,22 +78,22 @@ class World {
         camera.sprite.position = player.sprite.position
         camera.centerOnNode(camera.sprite)
         
-        func changeTextureUnderPlayer() {
-            if let tile = getTile(gridPoint: player.currentGridPosition) {
-            
-                if let currentTile = player.currentTile {
-                    
-                    if tile !== player.currentTile! {
-                        currentTile.sprite.texture = SKTexture(imageNamed: "tile_floor")
-                        currentTile.sprite.texture?.filteringMode = .Nearest
-                        tile.sprite.texture = SKTexture(imageNamed: "tile_floor_selected")
-                        tile.sprite.texture?.filteringMode = .Nearest
-                        player.currentTile = tile
-                    }
-                }
-            }
-        }
+//        func changeTextureUnderPlayer() {
+//            if let tile = getTile(gridPoint: player.currentGridPosition) {
+//            
+//                if let currentTile = player.currentTile {
+//                    
+//                    if tile !== player.currentTile! {
+//                        currentTile.sprite.texture = SKTexture(imageNamed: "tile_floor")
+//                        currentTile.sprite.texture?.filteringMode = .Nearest
+//                        tile.sprite.texture = SKTexture(imageNamed: "tile_floor_selected")
+//                        tile.sprite.texture?.filteringMode = .Nearest
+//                        player.currentTile = tile
+//                    }
+//                }
+//            }
+//        }
         
-        changeTextureUnderPlayer()
+//        changeTextureUnderPlayer()
     }
 }

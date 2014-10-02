@@ -143,7 +143,7 @@ class Player {
             }
         }
         
-        println("ERROR, INVALID VECTOR AT DIRECTION FROM VECTOR")
+//        println("ERROR, INVALID VECTOR AT DIRECTION FROM VECTOR")
         return nil
     }
     
