@@ -26,7 +26,7 @@ class Joystick {
         self.init()
         sprite.position = position
     }
-
+    
     func updateVector(touchLocation: CGPoint?) {
         if touchLocation != nil {
             let dx = (touchLocation!.x - sprite.position.x)

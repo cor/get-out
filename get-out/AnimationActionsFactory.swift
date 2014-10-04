@@ -11,8 +11,8 @@ import SpriteKit
 
 class AnimationActionsFactory {
     var walkingFramesAtlas = SKTextureAtlas(named: "WalkImages")
-    var walkingFrames: [Player.Direction:[SKTexture]] = [:]
-    var walkingFramesActions: [Player.Direction:SKAction] = [:]
+    var walkingFrames: [Direction:[SKTexture]] = [:]
+    var walkingFramesActions: [Direction:SKAction] = [:]
     init() {
         importWalkingFrames()
         createActionsFromFrames()
@@ -28,7 +28,7 @@ class AnimationActionsFactory {
             let tempTexture = walkingFramesAtlas.textureNamed(textureName)
             tempWalkingFrames.append(tempTexture)
         }
-        self.walkingFrames[Player.Direction.North] = tempWalkingFrames
+        self.walkingFrames[Direction.North] = tempWalkingFrames
         
         
         tempWalkingFrames = []
@@ -37,7 +37,7 @@ class AnimationActionsFactory {
             let tempTexture = walkingFramesAtlas.textureNamed(textureName)
             tempWalkingFrames.append(tempTexture)
         }
-        self.walkingFrames[Player.Direction.East] = tempWalkingFrames
+        self.walkingFrames[Direction.East] = tempWalkingFrames
         
     
         tempWalkingFrames = []
@@ -46,7 +46,7 @@ class AnimationActionsFactory {
             let tempTexture = walkingFramesAtlas.textureNamed(textureName)
             tempWalkingFrames.append(tempTexture)
         }
-        self.walkingFrames[Player.Direction.South] = tempWalkingFrames
+        self.walkingFrames[Direction.South] = tempWalkingFrames
         
         
         tempWalkingFrames = []
@@ -55,7 +55,7 @@ class AnimationActionsFactory {
             let tempTexture = walkingFramesAtlas.textureNamed(textureName)
             tempWalkingFrames.append(tempTexture)
         }
-        self.walkingFrames[Player.Direction.West] = tempWalkingFrames
+        self.walkingFrames[Direction.West] = tempWalkingFrames
     }
     
     
@@ -63,7 +63,7 @@ class AnimationActionsFactory {
     private func createActionsFromFrames() {
         
         // All Direction values that have animations
-        let directionList = [Player.Direction.North, Player.Direction.East, Player.Direction.South, Player.Direction.West]
+        let directionList = [Direction.North, Direction.East, Direction.South, Direction.West]
         
         for direction in directionList {
             let animateAction = SKAction.animateWithTextures(walkingFrames[direction]!, timePerFrame: 0.1, resize: false, restore: true)
@@ -73,7 +73,7 @@ class AnimationActionsFactory {
         
     }
     
-    func getActions() -> [Player.Direction:SKAction] {
+    func getActions() -> [Direction:SKAction] {
         return walkingFramesActions
     }
 }

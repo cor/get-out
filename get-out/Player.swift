@@ -10,12 +10,6 @@ import SpriteKit
 
 class Player {
     
-    enum Direction {
-        case North
-        case East
-        case South
-        case West
-    }
     
     // the Sprite
     var sprite: SKSpriteNode
