@@ -24,6 +24,7 @@ class Player {
     // speeds
     let slowDownMultiplier: CGFloat = 0.7
     let speedMultiplier: CGFloat = 3
+    var slowDownEnabled: Bool = true
     
     var currentGridPosition: CGPoint
     var currentTile: Tile?
@@ -32,6 +33,8 @@ class Player {
     
     // stats
     var isAlive: Bool = true
+    
+    // MARK: Initializers
     
     init() {
         size = CGSize(width: 64, height: 64)
@@ -149,8 +152,10 @@ class Player {
             sprite.physicsBody?.velocity.dx = vector!.dx * speedMultiplier
             sprite.physicsBody?.velocity.dy = vector!.dy * speedMultiplier
         } else {
-            sprite.physicsBody?.velocity.dx *= slowDownMultiplier
-            sprite.physicsBody?.velocity.dy *= slowDownMultiplier
+            if slowDownEnabled {
+                sprite.physicsBody?.velocity.dx *= slowDownMultiplier
+                sprite.physicsBody?.velocity.dy *= slowDownMultiplier
+            }
         }
     }
     

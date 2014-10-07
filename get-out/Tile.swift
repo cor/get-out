@@ -17,6 +17,7 @@ class Tile {
     
     let size: CGSize
     
+    //MARK: Initializers
     init() {
         gridPosition = GridPoint(x: 0, y: 0)
         size = CGSize(width: 64, height: 64)
@@ -50,26 +51,32 @@ class Tile {
         updatePosition()
     }
     
-    // TODO: Fix this Initializer
+    convenience init(textureName: String, collides: Bool) {
+        self.init(textureName: textureName)
+        if collides {
+            self.enableCollisions()
+        }
+        
+    }
+    
     convenience init(textureName: String, gridPosition: GridPoint, collides: Bool) {
         self.init(textureName: textureName, gridPosition: gridPosition)
         if collides {
             self.enableCollisions()
         }
     }
-    
-    // Add a PhysicsBody to the sprite in order to use collisions.
-    func enableCollisions() {
-        
-        // Anchor point adjustments
-        let newX = CGFloat(0.5 * self.size.width)
-        let newY = CGFloat(0.5 * self.size.height)
-        let center = CGPoint(x: newX, y: newY)
-        
-        sprite.physicsBody = SKPhysicsBody(rectangleOfSize: sprite.size, center: center)
-        sprite.physicsBody?.dynamic = false
-        
+    convenience init(tileDefinition: TileDefinition) {
+        self.init(textureName: tileDefinition.textureName, collides: tileDefinition.collides)
     }
+    
+    convenience init(tileDefinition: TileDefinition, gridPosition: GridPoint) {
+        self.init(tileDefinition: tileDefinition)
+        self.gridPosition = gridPosition
+        updatePosition()
+    }
+    
+    
+    //MARK: Update functions
     
     // Update actual position to represent grid position
     func updatePosition() {
@@ -85,5 +92,19 @@ class Tile {
         sprite.texture?.filteringMode = SKTextureFilteringMode.Nearest
     }
     
+    //MARK: Sprite modifiers
+    
+    // Add a PhysicsBody to the sprite in order to use collisions.
+    func enableCollisions() {
+        
+        // Anchor point adjustments
+        let newX = CGFloat(0.5 * self.size.width)
+        let newY = CGFloat(0.5 * self.size.height)
+        let center = CGPoint(x: newX, y: newY)
+        
+        sprite.physicsBody = SKPhysicsBody(rectangleOfSize: sprite.size, center: center)
+        sprite.physicsBody?.dynamic = false
+        
+    }
 }
 

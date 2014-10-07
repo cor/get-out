@@ -20,6 +20,7 @@
 		8734317819BB74C400050D5B /* get_outTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8734317719BB74C400050D5B /* get_outTests.swift */; };
 		87694B1619D20FF90083C2E7 /* World.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87694B1519D20FF90083C2E7 /* World.swift */; };
 		87694B1819D212C60083C2E7 /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87694B1719D212C60083C2E7 /* Camera.swift */; };
+		87704FCF19E42A3000AC782F /* TileFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87704FCE19E42A3000AC782F /* TileFactory.swift */; };
 		878FE39419C5AA8A00E3DA63 /* Tile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878FE39319C5AA8A00E3DA63 /* Tile.swift */; };
 		87B6E5D819D8B31D00CDB949 /* LocationLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B6E5D719D8B31D00CDB949 /* LocationLogic.swift */; };
 		87C280CF19CC90B200CED293 /* AnimationActionsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C280CE19CC90B200CED293 /* AnimationActionsFactory.swift */; };
@@ -59,6 +60,7 @@
 		8734317719BB74C400050D5B /* get_outTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = get_outTests.swift; sourceTree = "<group>"; };
 		87694B1519D20FF90083C2E7 /* World.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = World.swift; sourceTree = "<group>"; };
 		87694B1719D212C60083C2E7 /* Camera.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
+		87704FCE19E42A3000AC782F /* TileFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TileFactory.swift; sourceTree = "<group>"; };
 		878FE39319C5AA8A00E3DA63 /* Tile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tile.swift; sourceTree = "<group>"; };
 		87B6E5D719D8B31D00CDB949 /* LocationLogic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationLogic.swift; sourceTree = "<group>"; };
 		87C280CE19CC90B200CED293 /* AnimationActionsFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationActionsFactory.swift; sourceTree = "<group>"; };
@@ -111,6 +113,7 @@
 			children = (
 				87694B1519D20FF90083C2E7 /* World.swift */,
 				878FE39319C5AA8A00E3DA63 /* Tile.swift */,
+				87704FCE19E42A3000AC782F /* TileFactory.swift */,
 				87D6421F19C5EA3600A12784 /* Player.swift */,
 				87694B1719D212C60083C2E7 /* Camera.swift */,
 				87B6E5D719D8B31D00CDB949 /* LocationLogic.swift */,
@@ -269,6 +272,7 @@
 			files = (
 				8734316519BB74C400050D5B /* GameScene.swift in Sources */,
 				87E4A90919DB403600E522A3 /* DebugLabel.swift in Sources */,
+				87704FCF19E42A3000AC782F /* TileFactory.swift in Sources */,
 				878FE39419C5AA8A00E3DA63 /* Tile.swift in Sources */,
 				87B6E5D819D8B31D00CDB949 /* LocationLogic.swift in Sources */,
 				87D6422019C5EA3600A12784 /* Player.swift in Sources */,

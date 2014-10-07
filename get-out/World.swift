@@ -11,6 +11,7 @@ import SpriteKit
 class World {
     
     private var tiles: [Tile] = []
+    let tileFactory = TileFactory()
     private let mapSize = CGSize(width: 4, height: 4)
     let sprite: SKSpriteNode
     let camera = Camera()
@@ -38,7 +39,7 @@ class World {
             for verticalTileRow in 0..<Int(self.mapSize.width) {
                 
                 let position = GridPoint(x: verticalTileRow, y: horizontalTileRow)
-                let tile = Tile(textureName: "tile_floor", gridPosition: position)
+                let tile = Tile(tileDefinition: tileFactory.tileDefinitions["floor"]!, gridPosition: position)
                 tiles.append(tile)
             }
             
@@ -64,8 +65,8 @@ class World {
     }
     
     //return optional tile from gridPoint
-    func getTile(#gridPoint: CGPoint) -> Tile? {
-        let possibleTileIndex = (Int(gridPoint.y) * Int(mapSize.width)) + Int(gridPoint.x)
+    func getTile(#gridPoint: GridPoint) -> Tile? {
+        let possibleTileIndex = gridPoint.y * Int(mapSize.width) + gridPoint.x
         if !(possibleTileIndex < 0 || possibleTileIndex > (tiles.count - 1)) {
             return tiles[possibleTileIndex]
         }
