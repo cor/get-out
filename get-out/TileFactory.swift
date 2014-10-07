@@ -17,7 +17,9 @@ class TileFactory {
     var tileDefinitions: [String : TileDefinition] = [:]
     
     init() {
-        tileDefinitions["floor"] = TileDefinition(textureName: "tile_floor", collides: false)
-        tileDefinitions["wall"] = TileDefinition(textureName: "tile_wall", collides: true)
+        tileDefinitions = [
+            "floor" : TileDefinition(textureName: "tile_floor", collides: false),
+            "wall" : TileDefinition(textureName: "tile_wall", collides: true)
+        ]
     }
 }

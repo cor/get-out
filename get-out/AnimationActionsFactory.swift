@@ -9,6 +9,7 @@
 import SpriteKit
 
 
+// class that generates animation SKActions at initialization and exports them using getActions()
 class AnimationActionsFactory {
     var walkingFramesAtlas = SKTextureAtlas(named: "WalkImages")
     var walkingFrames: [Direction:[SKTexture]] = [:]

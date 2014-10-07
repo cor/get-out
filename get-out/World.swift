@@ -10,13 +10,17 @@ import SpriteKit
 
 class World {
     
+    // MARK: Private properties
     private var tiles: [Tile] = []
-    let tileFactory = TileFactory()
     private let mapSize = CGSize(width: 4, height: 4)
+    
+    // MARK: Public properties
+    let tileFactory = TileFactory()
     let sprite: SKSpriteNode
     let camera = Camera()
     let player: Player
     
+    // MARK: Initialization
     init() {
         sprite = SKSpriteNode(color: UIColor.redColor(), size: CGSize(width: mapSize.width * 64, height: mapSize.height * 64))
         sprite.anchorPoint = CGPoint(x:0, y:0)
@@ -52,6 +56,8 @@ class World {
         }
         
     }
+    
+    // MARK: Tile Interaction methods
     
     // return optional tile from x y coord
     func getTile(#x: Int, y: Int) -> Tile? {
@@ -89,22 +95,5 @@ class World {
         camera.sprite.position = player.sprite.position
         camera.centerOnNode(camera.sprite)
         
-//        func changeTextureUnderPlayer() {
-//            if let tile = getTile(gridPoint: player.currentGridPosition) {
-//            
-//                if let currentTile = player.currentTile {
-//                    
-//                    if tile !== player.currentTile! {
-//                        currentTile.sprite.texture = SKTexture(imageNamed: "tile_floor")
-//                        currentTile.sprite.texture?.filteringMode = .Nearest
-//                        tile.sprite.texture = SKTexture(imageNamed: "tile_floor_selected")
-//                        tile.sprite.texture?.filteringMode = .Nearest
-//                        player.currentTile = tile
-//                    }
-//                }
-//            }
-//        }
-        
-//        changeTextureUnderPlayer()
     }
 }

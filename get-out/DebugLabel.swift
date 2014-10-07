@@ -13,6 +13,7 @@ class DebugLabel {
     var name: String
     var value: String
     
+    // MARK: Initializers
     init() {
         label = SKLabelNode()
         label.fontName = "Helvetica"
@@ -29,6 +30,7 @@ class DebugLabel {
         label.position = position
     }
     
+    // MARK: Update function
     func update(newValue: String) {
         value = newValue
         label.text = "\(name) : \(value)"

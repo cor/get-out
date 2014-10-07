@@ -55,6 +55,6 @@ func directionfromVector(vector:CGVector) -> Direction? {
         }
     }
     
-    //        println("ERROR, INVALID VECTOR AT DIRECTION FROM VECTOR")
+    // Invalid vector
     return nil
 }

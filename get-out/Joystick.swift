@@ -10,11 +10,16 @@ import SpriteKit
 
 class Joystick {
     
-    let sprite: SKSpriteNode
+    // MARK: Public properties
     var vector: CGVector? = nil
-    let vectorMultiplier: CGFloat = 1
-    let centerRadius: CGFloat = 10
     
+    // MARK: Private properties
+    private let sprite: SKSpriteNode
+    private let vectorMultiplier: CGFloat = 1
+    private let centerRadius: CGFloat = 10
+    
+    
+    // MARK: Initializers
     init() {
         sprite = SKSpriteNode(imageNamed: "joystick")
         sprite.size = CGSize(width: 128, height: 128)
@@ -27,6 +32,8 @@ class Joystick {
         sprite.position = position
     }
     
+    
+    // MARK: Update function
     func updateVector(touchLocation: CGPoint?) {
         if touchLocation != nil {
             let dx = (touchLocation!.x - sprite.position.x)

@@ -11,13 +11,23 @@ import SpriteKit
 class Tile {
     
     var sprite: SKSpriteNode
-    
     var gridPosition: GridPoint
     var textureName: String
     
     let size: CGSize
     
-    //MARK: Initializers
+    // MARK: Public Initializers
+    convenience init(tileDefinition: TileDefinition) {
+        self.init(textureName: tileDefinition.textureName, collides: tileDefinition.collides)
+    }
+    
+    convenience init(tileDefinition: TileDefinition, gridPosition: GridPoint) {
+        self.init(tileDefinition: tileDefinition)
+        self.gridPosition = gridPosition
+        updatePosition()
+    }
+    
+    //MARK: private initializers
     init() {
         gridPosition = GridPoint(x: 0, y: 0)
         size = CGSize(width: 64, height: 64)
@@ -31,27 +41,19 @@ class Tile {
         updateTexture()
     }
     
-    convenience init(gridPosition: GridPoint){
+    private convenience init(gridPosition: GridPoint){
         self.init()
         self.gridPosition = gridPosition
         updatePosition()
     }
     
-    convenience init(textureName: String) {
+    private convenience init(textureName: String) {
         self.init()
         self.textureName = textureName
         updateTexture()
     }
     
-    convenience init(textureName: String, gridPosition: GridPoint) {
-        self.init()
-        self.textureName = textureName
-        self.gridPosition = gridPosition
-        updateTexture()
-        updatePosition()
-    }
-    
-    convenience init(textureName: String, collides: Bool) {
+    private convenience init(textureName: String, collides: Bool) {
         self.init(textureName: textureName)
         if collides {
             self.enableCollisions()
@@ -59,22 +61,20 @@ class Tile {
         
     }
     
-    convenience init(textureName: String, gridPosition: GridPoint, collides: Bool) {
+    private convenience init(textureName: String, gridPosition: GridPoint) {
+        self.init()
+        self.textureName = textureName
+        self.gridPosition = gridPosition
+        updateTexture()
+        updatePosition()
+    }
+    
+    private convenience init(textureName: String, gridPosition: GridPoint, collides: Bool) {
         self.init(textureName: textureName, gridPosition: gridPosition)
         if collides {
             self.enableCollisions()
         }
     }
-    convenience init(tileDefinition: TileDefinition) {
-        self.init(textureName: tileDefinition.textureName, collides: tileDefinition.collides)
-    }
-    
-    convenience init(tileDefinition: TileDefinition, gridPosition: GridPoint) {
-        self.init(tileDefinition: tileDefinition)
-        self.gridPosition = gridPosition
-        updatePosition()
-    }
-    
     
     //MARK: Update functions
     
@@ -107,4 +107,3 @@ class Tile {
         
     }
 }
-

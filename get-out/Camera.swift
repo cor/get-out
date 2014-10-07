@@ -8,6 +8,8 @@
 
 import SpriteKit
 
+//the scene will center on this node
+
 class Camera {
     let sprite = SKNode.node()
     
@@ -18,8 +20,10 @@ class Camera {
     func centerOnNode(node: SKNode) {
         
         let cameraPositionInScene: CGPoint = sprite.scene!.convertPoint(sprite.position, fromNode: sprite.parent!)
-        let newPositoin = CGPoint(x: sprite.parent!.position.x - cameraPositionInScene.x, y: sprite.parent!.position.y - cameraPositionInScene.y)
-        let action = SKAction.moveTo(newPositoin, duration: 0.2)
+        let newPosition = CGPoint(x: sprite.parent!.position.x - cameraPositionInScene.x, y: sprite.parent!.position.y - cameraPositionInScene.y)
+        
+        // smooth camera movement using easings
+        let action = SKAction.moveTo(newPosition, duration: 0.2)
         action.timingMode = SKActionTimingMode.EaseOut
         
         sprite.parent!.runAction(action)

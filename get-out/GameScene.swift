@@ -29,9 +29,7 @@ class GameScene: SKScene {
         self.addChild(joystick.sprite)
         self.addChild(world.sprite)
         
-//         This line doesn't work, needs fix:
-        world.setTile(gridPoint: GridPoint(x: 3, y: 3), tile: Tile(textureName: "tile_wall", gridPosition: GridPoint(x: 3, y: 3), collides: true))
-        world.setTile(gridPoint: GridPoint(x: 3, y: 2), tile: Tile(textureName: "tile_wall", gridPosition: GridPoint(x: 3, y: 2), collides: true))
+        world.setTile(gridPoint: GridPoint(x: 3,y: 3), tile: Tile(tileDefinition: world.tileFactory.tileDefinitions["wall"]!, gridPosition: GridPoint(x: 3, y: 3)))
         
         debugLabel = DebugLabel(position: CGPoint(x: -(self.frame.width / 2), y: self.frame.height / 2))
         self.addChild(debugLabel.label)

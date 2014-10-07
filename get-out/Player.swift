@@ -15,17 +15,18 @@ class Player {
     var sprite: SKSpriteNode
     let size: CGSize
     
-    // Textures and Actions for animation
+    // MARK: Textures and animations
     var textureName: String
     let idleTexture = SKTexture(imageNamed: "player")
     let animationActionsFactory = AnimationActionsFactory()
     let walkingFramesActions: [Direction:SKAction]
     
-    // speeds
+    // MARK: Speed values
     let slowDownMultiplier: CGFloat = 0.7
     let speedMultiplier: CGFloat = 3
     var slowDownEnabled: Bool = true
     
+    // MARK: current values
     var currentGridPosition: CGPoint
     var currentTile: Tile?
     var currentDirection: Direction? = nil
@@ -104,46 +105,6 @@ class Player {
         updateAnimation()
         updateCurrentGridPosition()
      
-    }
-    
-    // returns an optional Direction value from a vector
-    func directionfromVector(vector:CGVector) -> Direction? {
-        
-        let minimumSpeedForDirection: CGFloat = 5
-        
-        let dxPositive = vector.dx > 0
-        let dyPositive = vector.dy > 0
-        let dx = vector.dx
-        let dy = vector.dy
-        
-        if !((dx > minimumSpeedForDirection || dx < -minimumSpeedForDirection) || (dy > minimumSpeedForDirection || dy < -minimumSpeedForDirection)) {
-            return nil
-        }
-        
-        if dyPositive {
-            
-            if dy > dx && dy > -dx {
-                return .North
-            }
-        }
-        if dxPositive {
-            if dx > dy && dx > -dy {
-                return .East
-            }
-        }
-        if !dyPositive {
-            if dy < dx && dy < -dx {
-                return .South
-            }
-        }
-        if !dxPositive {
-            if dx < dy && dx < -dy {
-                return .West
-            }
-        }
-        
-//        println("ERROR, INVALID VECTOR AT DIRECTION FROM VECTOR")
-        return nil
     }
     
     // moves the player by a vector, uses the speedMultiplier property
