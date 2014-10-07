@@ -13,8 +13,7 @@ class GameScene: SKScene {
     
     var joystick = Joystick()
     let world = World()
-    var debugLabel = DebugLabel()
-    var debugLabels: [DebugLabel] = []
+    var debugOverlay = DebugOverlay()
     
     
     override func didMoveToView(view: SKView) {
@@ -31,18 +30,27 @@ class GameScene: SKScene {
         
         world.setTile(gridPoint: GridPoint(x: 3,y: 3), tile: Tile(tileDefinition: world.tileFactory.tileDefinitions["wall"]!, gridPosition: GridPoint(x: 3, y: 3)))
         
-        debugLabel = DebugLabel(position: CGPoint(x: -(self.frame.width / 2), y: self.frame.height / 2))
-        self.addChild(debugLabel.label)
-        
-        
-        self.generateDebugLabels()
-        self.addDebugLabels()
-        
-        
+        debugOverlay = DebugOverlay(size: self.frame.size)
+        self.addChild(debugOverlay.sprite)
     }
     
-    
+    // MARK: input
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
+        
+        //toggle debugoverlay if three fingers are pressed at the top of the screep
+        if touches.count == 3 {
+            
+            var goingToEnable = true
+            for touch: AnyObject in touches {
+                let touchLocation = touch.locationInNode!(self)
+                if touchLocation.y < 200 {
+                    goingToEnable = false
+                }
+            }
+            if goingToEnable {
+                debugOverlay.toggle()
+            }
+        }
         
         for touch: AnyObject in touches {
             let touchLocation = touch.locationInNode!(self)
@@ -64,43 +72,13 @@ class GameScene: SKScene {
     
     override func update(currentTime: CFTimeInterval) {
         world.update(joystick.vector)
-//        debugLabel.update("\(world.player.sprite.position.x)")
         self.updateDebugLabels()
     }
     
-    
-    func generateDebugLabels() {
-        for index in 0...2 {
-            let newLabel = DebugLabel(position: CGPoint(x: -(self.frame.size.width / 2), y: ((self.frame.size.height / 2) - (16 * CGFloat(index)))))
-            
-            // this is kinda hacky... will think of a better solution.
-            // this might very well be the worst code i'll ever write, (combining a for loop and a switch), but i'm tired and i want this to work.
-            
-            switch index {
-            case 0:
-                newLabel.name = "x"
-            case 1:
-                newLabel.name = "y"
-            case 2:
-                newLabel.name = "player alive"
-            default:
-                println("invalid index at generate debuglabels")
-            }
-            
-            
-            debugLabels.append(newLabel)
-            
-        }
-    }
-    
-    func addDebugLabels() {
-        for label in debugLabels {
-            self.addChild(label.label)
-        }
-    }
-    
+ 
+    // FIXME:
     func updateDebugLabels() {
-        for label in debugLabels {
+        for label in debugOverlay.debugLabels {
             label.update("\(world.player.sprite.position.x)")
             
             switch label.name {

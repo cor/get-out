@@ -14,7 +14,7 @@ class Joystick {
     var vector: CGVector? = nil
     
     // MARK: Private properties
-    private let sprite: SKSpriteNode
+    let sprite: SKSpriteNode
     private let vectorMultiplier: CGFloat = 1
     private let centerRadius: CGFloat = 10
     
