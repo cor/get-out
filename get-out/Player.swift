@@ -47,6 +47,8 @@ class Player {
         sprite.zPosition = 100
         
         sprite.physicsBody = SKPhysicsBody(rectangleOfSize: size)
+        sprite.physicsBody?.allowsRotation = false
+    
         
         
         idleTexture.filteringMode = .Nearest // fix for blurry pixel art

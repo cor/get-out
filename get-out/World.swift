@@ -11,7 +11,7 @@ import SpriteKit
 class World {
     
     private var tiles: [Tile] = []
-    private let mapSize = CGSize(width: 10, height: 10)
+    private let mapSize = CGSize(width: 4, height: 4)
     let sprite: SKSpriteNode
     let camera = Camera()
     let player: Player
@@ -73,6 +73,16 @@ class World {
             return nil
         }
     }
+    
+    func setTile(#gridPoint: GridPoint, tile: Tile) {
+        let possibleTileIndex = gridPoint.y * Int(mapSize.width) + Int(gridPoint.x)
+        if !(possibleTileIndex < 0 || possibleTileIndex > (tiles.count - 1)) {
+            tiles[possibleTileIndex].sprite.removeFromParent()
+            tiles[possibleTileIndex] = tile
+            sprite.addChild(tiles[possibleTileIndex].sprite)
+        }
+    }
+    
     func update(joystickVector: CGVector?) {
         player.update(joystickVector)
         camera.sprite.position = player.sprite.position

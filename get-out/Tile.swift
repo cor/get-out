@@ -50,6 +50,27 @@ class Tile {
         updatePosition()
     }
     
+    // TODO: Fix this Initializer
+    convenience init(textureName: String, gridPosition: GridPoint, collides: Bool) {
+        self.init(textureName: textureName, gridPosition: gridPosition)
+        if collides {
+            self.enableCollisions()
+        }
+    }
+    
+    // Add a PhysicsBody to the sprite in order to use collisions.
+    func enableCollisions() {
+        
+        // Anchor point adjustments
+        let newX = CGFloat(0.5 * self.size.width)
+        let newY = CGFloat(0.5 * self.size.height)
+        let center = CGPoint(x: newX, y: newY)
+        
+        sprite.physicsBody = SKPhysicsBody(rectangleOfSize: sprite.size, center: center)
+        sprite.physicsBody?.dynamic = false
+        
+    }
+    
     // Update actual position to represent grid position
     func updatePosition() {
         let newX = CGFloat(gridPosition.x) * size.width
