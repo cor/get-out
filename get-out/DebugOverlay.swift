@@ -10,6 +10,7 @@ import SpriteKit
 
 class DebugOverlay {
     let sprite = SKSpriteNode()
+    let background: SKSpriteNode
     let size : CGSize
     var debugLabels : [DebugLabel] = []
     
@@ -18,13 +19,18 @@ class DebugOverlay {
     // don't use this initializer
     init() {
         self.size = CGSize(width: 0, height: 0)
+        background = SKSpriteNode()
     }
     
     // use this initializer
     init(size: CGSize) {
         self.size = size
+        background = SKSpriteNode(color: UIColor(red: 0.043, green: 0.094, blue: 0.247, alpha: 1), size: CGSize(width: size.width, height: 50))
+        background.position.y = (size.height / 2) - (background.size.height / 2)
+        sprite.addChild(background)
         generateDebugLabels()
         addDebugLabels()
+        sprite.hidden = true
     }
     
     func generateDebugLabels() {
