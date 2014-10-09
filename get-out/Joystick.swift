@@ -24,6 +24,7 @@ class Joystick {
         sprite = SKSpriteNode(imageNamed: "joystick")
         sprite.size = CGSize(width: 128, height: 128)
         sprite.position = CGPoint()
+        sprite.zPosition = 9000
         sprite.texture?.filteringMode = .Nearest
     }
     

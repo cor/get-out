@@ -11,9 +11,13 @@ import SpriteKit
 
 class GameScene: SKScene {
     
-    var joystick = Joystick()
     let world = World()
     var debugOverlay = DebugOverlay()
+    
+    // MARK: Input
+    var joystick = Joystick()
+    var button1 = Button()
+    var button2 = Button()
     
     
     override func didMoveToView(view: SKView) {
@@ -22,10 +26,15 @@ class GameScene: SKScene {
         self.physicsWorld.gravity = CGVector(dx: 0, dy: 0)
         self.anchorPoint = CGPoint(x: 0.5, y: 0.5)
         
-        joystick = Joystick(position: CGPoint(x: 0, y: -164))
-        joystick.sprite.zPosition = 9000
+        joystick = Joystick(position: CGPoint(x: 0, y: -(self.frame.height / 2) + joystick.sprite.size.height / 2)      )
+        button1 = Button(position: CGPoint(x: -(0.5 * joystick.sprite.size.width + button1.sprite.size.width / 2), y: -(self.frame.height / 2) + (joystick.sprite.size.height / 2) ) )
+        button2 = Button(position: CGPoint(x: (0.5 * joystick.sprite.size.width + button2.sprite.size.width / 2), y: -(self.frame.height / 2) + (joystick.sprite.size.height / 2) ) )
+        
+        
         
         self.addChild(joystick.sprite)
+        self.addChild(button1.sprite)
+        self.addChild(button2.sprite)
         self.addChild(world.sprite)
         
         world.setTile(gridPoint: GridPoint(x: 3,y: 3), tile: Tile(tileDefinition: world.tileFactory.tileDefinitions["wall"]!, gridPosition: GridPoint(x: 3, y: 3)))
@@ -69,10 +78,13 @@ class GameScene: SKScene {
     override func touchesEnded(touches: NSSet, withEvent event: UIEvent) {
         joystick.updateVector(nil)
     }
+   
     
     override func update(currentTime: CFTimeInterval) {
+        
         world.update(joystick.vector)
         self.updateDebugLabels()
+        
     }
     
  

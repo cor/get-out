@@ -12,13 +12,15 @@ class World {
     
     // MARK: Private properties
     private var tiles: [Tile] = []
-    private let mapSize = CGSize(width: 4, height: 4)
+    private let mapSize = CGSize(width: 10, height: 10)
     
     // MARK: Public properties
     let tileFactory = TileFactory()
     let sprite: SKSpriteNode
     let camera = Camera()
     let player: Player
+    
+    let enemy: Enemy
     
     // MARK: Initialization
     init() {
@@ -29,10 +31,12 @@ class World {
         sprite.physicsBody = SKPhysicsBody(edgeLoopFromRect: self.sprite.frame)
         
         player = Player(position: CGPoint(x: sprite.size.width / 2, y: sprite.size.height / 2))
-        addTiles()
+        enemy = Enemy(position: CGPoint(x: 64, y: 64))
         
+        addTiles()
         sprite.addChild(player.sprite)
         sprite.addChild(camera.sprite)
+        sprite.addChild(enemy.sprite)
     }
     
     private func addTiles() {
