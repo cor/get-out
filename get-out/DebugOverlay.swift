@@ -14,7 +14,7 @@ class DebugOverlay {
     let size : CGSize
     var debugLabels : [DebugLabel] = []
     
-    var hidden = true
+    var hidden = false
     
     // don't use this initializer
     init() {
@@ -30,7 +30,7 @@ class DebugOverlay {
         sprite.addChild(background)
         generateDebugLabels()
         addDebugLabels()
-        sprite.hidden = true
+        sprite.hidden = hidden
     }
     
     func generateDebugLabels() {

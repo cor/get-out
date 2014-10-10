@@ -12,6 +12,8 @@ class Joystick {
     
     // MARK: Public properties
     var vector: CGVector? = nil
+    let maxDx: CGFloat
+    let maxDy: CGFloat
     
     // MARK: Private properties
     let sprite: SKSpriteNode
@@ -26,6 +28,9 @@ class Joystick {
         sprite.position = CGPoint()
         sprite.zPosition = 9000
         sprite.texture?.filteringMode = .Nearest
+        
+        maxDx = sprite.size.width / 2
+        maxDy = sprite.size.height / 2
     }
     
     convenience init(position: CGPoint) {
@@ -35,27 +40,58 @@ class Joystick {
     
     
     // MARK: Update function
-    func updateVector(touchLocation: CGPoint?) {
-        if touchLocation != nil {
-            let dx = (touchLocation!.x - sprite.position.x)
-            let dy = (touchLocation!.y - sprite.position.y)
+    func updateVector(touchLocations: [CGPoint], ended: Bool) {
+        
+        if ended {
+            var locationInJoystick: CGPoint? = nil
             
-            let maxDx = sprite.size.width / 2
-            let maxDy = sprite.size.height / 2
-            
-            // if the vector is too big (IE, pressed outside sprite), change vector to nil
-            if (dx > +maxDx || dx < -maxDx || dy > +maxDy || dy < -maxDy) {
-               vector = nil
-            }
-            else {
-                vector = CGVector(
-                    dx: (dx > +centerRadius || dx < -centerRadius ? dx * vectorMultiplier : 0),
-                    dy: (dy > +centerRadius || dy < -centerRadius ? dy * vectorMultiplier : 0)
-                )
+            for location in touchLocations {
+                
+                let dx = (location.x - sprite.position.x)
+                let dy = (location.y - sprite.position.y)
+                
+                if !(dx > +maxDx || dx < -maxDx || dy > +maxDy || dy < -maxDy) {
+                    locationInJoystick = location
+                }
+                
             }
             
+            if  locationInJoystick != nil  {
+                vector = nil
+            }
         } else {
-            vector = nil
+            if touchLocations.count != 0 {
+                
+                
+                // look at all touchlocations to see if there is a location that is on the joystick
+                var locationInJoystick: CGPoint? = nil
+                for location in touchLocations {
+                    
+                    let dx = (location.x - sprite.position.x)
+                    let dy = (location.y - sprite.position.y)
+                    
+                    if !(dx > +maxDx || dx < -maxDx || dy > +maxDy || dy < -maxDy) {
+                        locationInJoystick = location
+                    }
+                    
+                }
+                
+                
+                // if there is a touchlocation on the joystick, update the vector
+                if locationInJoystick != nil {
+                    let dx = (locationInJoystick!.x - sprite.position.x)
+                    let dy = (locationInJoystick!.y - sprite.position.y)
+                    
+                    vector = CGVector(
+                        dx: (dx > +centerRadius || dx < -centerRadius ? dx * vectorMultiplier : 0),
+                        dy: (dy > +centerRadius || dy < -centerRadius ? dy * vectorMultiplier : 0)
+                    )
+                }
+                
+            } else {
+                // if there isn't any touch on the screen, set the vector to nil
+                vector = nil
+            }
         }
     }
 }

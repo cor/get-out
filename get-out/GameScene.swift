@@ -61,22 +61,39 @@ class GameScene: SKScene {
             }
         }
         
+        var touchLocations: [CGPoint] = []
         for touch: AnyObject in touches {
+            
+            
             let touchLocation = touch.locationInNode!(self)
-            joystick.updateVector(touchLocation)
+            touchLocations.append(touchLocation)
 
         }
+        
+        joystick.updateVector(touchLocations, ended: false)
     }
     
     override func touchesMoved(touches: NSSet, withEvent event: UIEvent) {
+        var touchLocations: [CGPoint] = []
         for touch: AnyObject in touches {
+            
+            
             let touchLocation = touch.locationInNode!(self)
-            joystick.updateVector(touchLocation)
+            touchLocations.append(touchLocation)
+
         }
+        
+        joystick.updateVector(touchLocations, ended: false)
     }
     
     override func touchesEnded(touches: NSSet, withEvent event: UIEvent) {
-        joystick.updateVector(nil)
+        var touchLocations: [CGPoint] = []
+        for touch: AnyObject in touches {
+            
+            let touchLocation = touch.locationInNode!(self)
+            touchLocations.append(touchLocation)
+        }
+        joystick.updateVector(touchLocations, ended: true)
     }
    
     
