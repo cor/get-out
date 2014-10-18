@@ -19,6 +19,8 @@ class Joystick {
     let sprite: SKSpriteNode
     private let vectorMultiplier: CGFloat = 1
     private let centerRadius: CGFloat = 10
+    private let disabledAlpha: CGFloat = 0.5
+    private let enabledAlpha: CGFloat = 0.7
     
     
     // MARK: Initializers
@@ -28,6 +30,7 @@ class Joystick {
         sprite.position = CGPoint()
         sprite.zPosition = 9000
         sprite.texture?.filteringMode = .Nearest
+        sprite.alpha = 0.5
         
         maxDx = sprite.size.width / 2
         maxDy = sprite.size.height / 2
@@ -92,6 +95,12 @@ class Joystick {
                 // if there isn't any touch on the screen, set the vector to nil
                 vector = nil
             }
+        }
+        
+        if vector != nil {
+            sprite.alpha = enabledAlpha
+        } else {
+            sprite.alpha = disabledAlpha
         }
     }
 }

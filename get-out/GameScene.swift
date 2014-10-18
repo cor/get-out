@@ -16,31 +16,31 @@ class GameScene: SKScene {
     
     // MARK: Input
     var joystick = Joystick()
-    var button1 = Button()
-    var button2 = Button()
+//    var button1 = Button()
+//    var button2 = Button()
     
     
     override func didMoveToView(view: SKView) {
         
-        
         self.physicsWorld.gravity = CGVector(dx: 0, dy: 0)
         self.anchorPoint = CGPoint(x: 0.5, y: 0.5)
         
-        joystick = Joystick(position: CGPoint(x: 0, y: -(self.frame.height / 2) + joystick.sprite.size.height / 2)      )
-        button1 = Button(position: CGPoint(x: -(0.5 * joystick.sprite.size.width + button1.sprite.size.width / 2), y: -(self.frame.height / 2) + (joystick.sprite.size.height / 2) ) )
-        button2 = Button(position: CGPoint(x: (0.5 * joystick.sprite.size.width + button2.sprite.size.width / 2), y: -(self.frame.height / 2) + (joystick.sprite.size.height / 2) ) )
+        joystick = Joystick(position: CGPoint(x: -(self.frame.width / 2) + joystick.sprite.size.width / 2, y: -(self.frame.height / 2) + joystick.sprite.size.height / 2)      )
+//        button1 = Button(position: CGPoint(x: -(0.5 * joystick.sprite.size.width + button1.sprite.size.width / 2), y: -(self.frame.height / 2) + (joystick.sprite.size.height / 2) ) )
+//        button2 = Button(position: CGPoint(x: (0.5 * joystick.sprite.size.width + button2.sprite.size.width / 2), y: -(self.frame.height / 2) + (joystick.sprite.size.height / 2) ) )
         
         
         
         self.addChild(joystick.sprite)
-        self.addChild(button1.sprite)
-        self.addChild(button2.sprite)
+//        self.addChild(button1.sprite)
+//        self.addChild(button2.sprite)
         self.addChild(world.sprite)
         
         world.setTile(gridPoint: GridPoint(x: 3,y: 3), tile: Tile(tileDefinition: world.tileFactory.tileDefinitions["wall"]!, gridPosition: GridPoint(x: 3, y: 3)))
         
         debugOverlay = DebugOverlay(size: self.frame.size)
         self.addChild(debugOverlay.sprite)
+        debugOverlay.toggle()
     }
     
     // MARK: input
@@ -52,7 +52,7 @@ class GameScene: SKScene {
             var goingToEnable = true
             for touch: AnyObject in touches {
                 let touchLocation = touch.locationInNode!(self)
-                if touchLocation.y < 200 {
+                if touchLocation.y < ( self.size.height / 2) - ( debugOverlay.background.size.height) {
                     goingToEnable = false
                 }
             }
@@ -64,8 +64,8 @@ class GameScene: SKScene {
         var touchLocations: [CGPoint] = []
         for touch: AnyObject in touches {
             
-            
             let touchLocation = touch.locationInNode!(self)
+            println("x: \(touchLocation.x) y: \(touchLocation.y)")
             touchLocations.append(touchLocation)
 
         }

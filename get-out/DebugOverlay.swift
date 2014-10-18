@@ -25,7 +25,7 @@ class DebugOverlay {
     // use this initializer
     init(size: CGSize) {
         self.size = size
-        background = SKSpriteNode(color: UIColor(red: 0.043, green: 0.094, blue: 0.247, alpha: 1), size: CGSize(width: size.width, height: 50))
+        background = SKSpriteNode(color: UIColor(red: 0.043, green: 0.094, blue: 0.247, alpha: 0.2), size: CGSize(width: size.width, height: 50))
         background.position.y = (size.height / 2) - (background.size.height / 2)
         sprite.addChild(background)
         generateDebugLabels()
