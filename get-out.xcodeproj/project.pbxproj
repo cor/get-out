@@ -28,8 +28,8 @@
 		87A441DE19E6C47600AC4970 /* Enemey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A441DD19E6C47600AC4970 /* Enemey.swift */; };
 		87B6E5D819D8B31D00CDB949 /* LocationLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B6E5D719D8B31D00CDB949 /* LocationLogic.swift */; };
 		87C280CF19CC90B200CED293 /* AnimationActionsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C280CE19CC90B200CED293 /* AnimationActionsFactory.swift */; };
+		87C9A20319F419D200A1D334 /* Joystick.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C9A20219F419D200A1D334 /* Joystick.swift */; };
 		87D6422019C5EA3600A12784 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D6421F19C5EA3600A12784 /* Player.swift */; };
-		87D6422419C5FE7300A12784 /* Joystick.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D6422319C5FE7300A12784 /* Joystick.swift */; };
 		87D93FD519D580D5000C2825 /* tile_example.png in Resources */ = {isa = PBXBuildFile; fileRef = 87D93FD419D580D5000C2825 /* tile_example.png */; };
 		87DA76F819E09C0200B9D52C /* tile_wall.png in Resources */ = {isa = PBXBuildFile; fileRef = 87DA76F719E09C0200B9D52C /* tile_wall.png */; };
 		87E4A90919DB403600E522A3 /* DebugLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E4A90819DB403600E522A3 /* DebugLabel.swift */; };
@@ -72,8 +72,8 @@
 		87A441DD19E6C47600AC4970 /* Enemey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enemey.swift; sourceTree = "<group>"; };
 		87B6E5D719D8B31D00CDB949 /* LocationLogic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationLogic.swift; sourceTree = "<group>"; };
 		87C280CE19CC90B200CED293 /* AnimationActionsFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationActionsFactory.swift; sourceTree = "<group>"; };
+		87C9A20219F419D200A1D334 /* Joystick.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Joystick.swift; sourceTree = "<group>"; };
 		87D6421F19C5EA3600A12784 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
-		87D6422319C5FE7300A12784 /* Joystick.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Joystick.swift; sourceTree = "<group>"; };
 		87D93FD419D580D5000C2825 /* tile_example.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tile_example.png; sourceTree = "<group>"; };
 		87DA76F719E09C0200B9D52C /* tile_wall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tile_wall.png; sourceTree = "<group>"; };
 		87E4A90819DB403600E522A3 /* DebugLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugLabel.swift; sourceTree = "<group>"; };
@@ -131,7 +131,7 @@
 				8734316419BB74C400050D5B /* GameScene.swift */,
 				87E4A90819DB403600E522A3 /* DebugLabel.swift */,
 				876DD9FB19E43AAF004FE675 /* DebugOverlay.swift */,
-				87D6422319C5FE7300A12784 /* Joystick.swift */,
+				87C9A20219F419D200A1D334 /* Joystick.swift */,
 				8739812619E736BC00466482 /* joystick.png */,
 				8739812819E73ABD00466482 /* button.png */,
 				870A6A7119C71E16001A2ABE /* WalkImages.atlas */,
@@ -290,13 +290,13 @@
 				878FE39419C5AA8A00E3DA63 /* Tile.swift in Sources */,
 				87B6E5D819D8B31D00CDB949 /* LocationLogic.swift in Sources */,
 				87D6422019C5EA3600A12784 /* Player.swift in Sources */,
-				87D6422419C5FE7300A12784 /* Joystick.swift in Sources */,
 				8734316719BB74C400050D5B /* GameViewController.swift in Sources */,
 				87A441DE19E6C47600AC4970 /* Enemey.swift in Sources */,
 				8734316119BB74C400050D5B /* AppDelegate.swift in Sources */,
 				8739812B19E73BD900466482 /* Button.swift in Sources */,
 				87694B1619D20FF90083C2E7 /* World.swift in Sources */,
 				876DD9FC19E43AAF004FE675 /* DebugOverlay.swift in Sources */,
+				87C9A20319F419D200A1D334 /* Joystick.swift in Sources */,
 				87C280CF19CC90B200CED293 /* AnimationActionsFactory.swift in Sources */,
 				87694B1819D212C60083C2E7 /* Camera.swift in Sources */,
 			);

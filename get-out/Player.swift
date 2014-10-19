@@ -98,7 +98,6 @@ class Player {
         
     }
     
-    // gets called aprox. 60 times per second by the GameScene
     func update(input: CGVector?) {
         
         move(vector: input)

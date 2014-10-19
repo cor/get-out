@@ -94,8 +94,7 @@ class World {
         }
     }
     
-    func update(joystickVector: CGVector?) {
-        player.update(joystickVector)
+    func update() {
         camera.sprite.position = player.sprite.position
         camera.centerOnNode(camera.sprite)
         
