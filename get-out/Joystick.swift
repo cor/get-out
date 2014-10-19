@@ -15,6 +15,8 @@ class Joystick {
     var vector : CGVector? // this is the "Output" of the Joystick
     var startTouch : UITouch? // the touch that is currently on the Joystick
     
+    private let disabledAlpha: CGFloat = 0.2
+    private let enabledAlpha: CGFloat = 1
     
     // MARK: Initializers
     init() {
@@ -25,6 +27,8 @@ class Joystick {
         sprite.position = CGPoint(x: 0, y: 0)
         sprite.texture?.filteringMode = .Nearest
         sprite.size = CGSize(width: 128, height: 128)
+        sprite.alpha = disabledAlpha
+        
     }
     
     convenience init(position: CGPoint) {
@@ -43,6 +47,8 @@ class Joystick {
         let dy = location.y - sprite.position.y
         vector = CGVector(dx: dx, dy: dy)
         
+        // update alpha
+        sprite.alpha = enabledAlpha
     }
     
     func updateControl(newLocation: CGPoint) {
@@ -73,6 +79,9 @@ class Joystick {
     func endControl() {
         startTouch = nil
         vector = nil
+        
+        // update alpha
+        sprite.alpha = disabledAlpha
     }
     
 }
