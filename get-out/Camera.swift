@@ -11,7 +11,7 @@ import SpriteKit
 //the scene will center on this node
 
 class Camera {
-    let sprite = SKNode.node()
+    let sprite = SKNode()
     
     init() {
         sprite.name = "camera"

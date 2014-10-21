@@ -11,17 +11,17 @@
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>E1DF98958E8FB6663BC06C29286555E4DE392B7E</key>
-		<string>https://github.com/CorPruijs/get-out.git</string>
+		<string>http://github.com/CorPruijs/get-out</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>get-out/get-out.xcodeproj</string>
+	<string>get-out.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>E1DF98958E8FB6663BC06C29286555E4DE392B7E</key>
-		<string>../../..</string>
+		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/CorPruijs/get-out.git</string>
+	<string>http://github.com/CorPruijs/get-out</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
