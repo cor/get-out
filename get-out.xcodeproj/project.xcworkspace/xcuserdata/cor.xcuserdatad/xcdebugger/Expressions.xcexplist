@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "get_out.Player.(updateCurrentGridPosition in _4BF4BD9C702210DFA0CB8673B1B9A9D5) (get_out.Player)() -&gt; ():Player.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "get_out.Player.move (get_out.Player)(vector : Swift.Optional&lt;C.CGVector&gt;) -&gt; ():Player.swift">
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>
