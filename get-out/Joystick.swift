@@ -10,7 +10,7 @@ import SpriteKit
 
 class Joystick {
     
-    let sprite: SKSpriteNode
+    var sprite: SKSpriteNode
 
     var vector : CGVector? // this is the "Output" of the Joystick
     var startTouch : UITouch? // the touch that is currently on the Joystick
@@ -19,22 +19,26 @@ class Joystick {
     private let enabledAlpha: CGFloat = 1
     
     // MARK: Initializers
+    
+    // don't use this one (the initialization part of this class needs some improvement)
     init() {
-        
-        // sprite setup
-        sprite = SKSpriteNode(imageNamed: "joystick")
-        sprite.name = "joystick"
-        sprite.position = CGPoint(x: 0, y: 0)
-        sprite.texture?.filteringMode = .Nearest
+        sprite = SKSpriteNode(imageNamed: "joystick_move")
         sprite.size = CGSize(width: 128, height: 128)
+    }
+    
+    // do use this one
+    convenience init(imageNamed: String, position: CGPoint, name: String) {
+        self.init()
+        // sprite setup
+        sprite = SKSpriteNode(imageNamed: imageNamed)
+        sprite.size = CGSize(width: 128, height: 128)
+        sprite.name = name
+        sprite.position = position
+        sprite.texture?.filteringMode = .Nearest
         sprite.alpha = disabledAlpha
         
     }
     
-    convenience init(position: CGPoint) {
-        self.init()
-        sprite.position = position
-    }
     
     // MARK: Control updates
     func startControl(touch: UITouch, location: CGPoint) {

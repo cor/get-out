@@ -20,7 +20,8 @@ class Camera {
     func centerOnNode(node: SKNode) {
         
         let cameraPositionInScene: CGPoint = sprite.scene!.convertPoint(sprite.position, fromNode: sprite.parent!)
-        let newPosition = CGPoint(x: sprite.parent!.position.x - cameraPositionInScene.x, y: sprite.parent!.position.y - cameraPositionInScene.y)
+        let newPosition = CGPoint(x: sprite.parent!.position.x - cameraPositionInScene.x,
+                                  y: sprite.parent!.position.y - cameraPositionInScene.y)
         
         // smooth camera movement using easings
         let action = SKAction.moveTo(newPosition, duration: 0.2)

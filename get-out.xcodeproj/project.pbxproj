@@ -17,13 +17,14 @@
 		8734316A19BB74C400050D5B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8734316819BB74C400050D5B /* Main.storyboard */; };
 		8734316C19BB74C400050D5B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8734316B19BB74C400050D5B /* Images.xcassets */; };
 		8734317819BB74C400050D5B /* get_outTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8734317719BB74C400050D5B /* get_outTests.swift */; };
-		8739812719E736BC00466482 /* joystick.png in Resources */ = {isa = PBXBuildFile; fileRef = 8739812619E736BC00466482 /* joystick.png */; };
+		8739812719E736BC00466482 /* joystick_move.png in Resources */ = {isa = PBXBuildFile; fileRef = 8739812619E736BC00466482 /* joystick_move.png */; };
 		8739812919E73ABD00466482 /* button.png in Resources */ = {isa = PBXBuildFile; fileRef = 8739812819E73ABD00466482 /* button.png */; };
 		8739812B19E73BD900466482 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8739812A19E73BD900466482 /* Button.swift */; };
 		87694B1619D20FF90083C2E7 /* World.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87694B1519D20FF90083C2E7 /* World.swift */; };
 		87694B1819D212C60083C2E7 /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87694B1719D212C60083C2E7 /* Camera.swift */; };
 		876DD9FC19E43AAF004FE675 /* DebugOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876DD9FB19E43AAF004FE675 /* DebugOverlay.swift */; };
 		87704FCF19E42A3000AC782F /* TileFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87704FCE19E42A3000AC782F /* TileFactory.swift */; };
+		878CF4B119F9849D00336E0F /* joystick_shoot.png in Resources */ = {isa = PBXBuildFile; fileRef = 878CF4B019F9849D00336E0F /* joystick_shoot.png */; };
 		878FE39419C5AA8A00E3DA63 /* Tile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878FE39319C5AA8A00E3DA63 /* Tile.swift */; };
 		87A441DE19E6C47600AC4970 /* Enemey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A441DD19E6C47600AC4970 /* Enemey.swift */; };
 		87B6E5D819D8B31D00CDB949 /* LocationLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B6E5D719D8B31D00CDB949 /* LocationLogic.swift */; };
@@ -61,13 +62,14 @@
 		8734317119BB74C400050D5B /* get-outTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "get-outTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8734317619BB74C400050D5B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8734317719BB74C400050D5B /* get_outTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = get_outTests.swift; sourceTree = "<group>"; };
-		8739812619E736BC00466482 /* joystick.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = joystick.png; sourceTree = "<group>"; };
+		8739812619E736BC00466482 /* joystick_move.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = joystick_move.png; sourceTree = "<group>"; };
 		8739812819E73ABD00466482 /* button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button.png; sourceTree = "<group>"; };
 		8739812A19E73BD900466482 /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		87694B1519D20FF90083C2E7 /* World.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = World.swift; sourceTree = "<group>"; };
 		87694B1719D212C60083C2E7 /* Camera.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
 		876DD9FB19E43AAF004FE675 /* DebugOverlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugOverlay.swift; sourceTree = "<group>"; };
 		87704FCE19E42A3000AC782F /* TileFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TileFactory.swift; sourceTree = "<group>"; };
+		878CF4B019F9849D00336E0F /* joystick_shoot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = joystick_shoot.png; sourceTree = "<group>"; };
 		878FE39319C5AA8A00E3DA63 /* Tile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tile.swift; sourceTree = "<group>"; };
 		87A441DD19E6C47600AC4970 /* Enemey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enemey.swift; sourceTree = "<group>"; };
 		87B6E5D719D8B31D00CDB949 /* LocationLogic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationLogic.swift; sourceTree = "<group>"; };
@@ -132,7 +134,8 @@
 				87E4A90819DB403600E522A3 /* DebugLabel.swift */,
 				876DD9FB19E43AAF004FE675 /* DebugOverlay.swift */,
 				87C9A20219F419D200A1D334 /* Joystick.swift */,
-				8739812619E736BC00466482 /* joystick.png */,
+				8739812619E736BC00466482 /* joystick_move.png */,
+				878CF4B019F9849D00336E0F /* joystick_shoot.png */,
 				8739812819E73ABD00466482 /* button.png */,
 				870A6A7119C71E16001A2ABE /* WalkImages.atlas */,
 				8734315E19BB74C400050D5B /* Supporting Files */,
@@ -257,12 +260,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				8739812919E73ABD00466482 /* button.png in Resources */,
+				878CF4B119F9849D00336E0F /* joystick_shoot.png in Resources */,
 				87262AA919C830760052C448 /* player.png in Resources */,
 				87DA76F819E09C0200B9D52C /* tile_wall.png in Resources */,
 				870A6A7219C71E16001A2ABE /* WalkImages.atlas in Resources */,
 				8734316C19BB74C400050D5B /* Images.xcassets in Resources */,
 				87D93FD519D580D5000C2825 /* tile_example.png in Resources */,
-				8739812719E736BC00466482 /* joystick.png in Resources */,
+				8739812719E736BC00466482 /* joystick_move.png in Resources */,
 				8734316319BB74C400050D5B /* GameScene.sks in Resources */,
 				87E4D24119D8B9CF00E4DE8C /* tile_floor_selected.png in Resources */,
 				870A6A7619C72193001A2ABE /* tile_floor.png in Resources */,

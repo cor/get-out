@@ -13,7 +13,8 @@ class GameScene: SKScene {
     
     let world = World()
     
-    var joystick = Joystick()
+    var joystickMove = Joystick()
+    var joystickShoot = Joystick()
     var debugOverlay = DebugOverlay()
     
     
@@ -32,11 +33,17 @@ class GameScene: SKScene {
         self.addChild(debugOverlay.sprite)
         debugOverlay.toggle()
         
-        //joystick
+        //joystick move
+        let joystickMovePosition = CGPoint(x: -(self.size.width / 2) + (joystickMove.sprite.size.width / 2),
+                                           y: -(self.size.height / 2) + (joystickMove.sprite.size.height / 2) )
+        joystickMove = Joystick(imageNamed: "joystick_move", position: joystickMovePosition, name: "joystickMove")
+        self.addChild(joystickMove.sprite)
         
-        let newPosition = CGPoint(x: -(self.size.width / 2) + (joystick.sprite.size.width / 2), y: -(self.size.height / 2) + (joystick.sprite.size.height / 2) )
-        joystick = Joystick(position: newPosition )
-        self.addChild(joystick.sprite)
+        //joystick shoot
+        let joystickShootPosition = CGPoint(x: +(self.size.width / 2) - (joystickShoot.sprite.size.width / 2),
+                                            y: -(self.size.height / 2) + (joystickMove.sprite.size.height / 2) )
+        joystickShoot = Joystick(imageNamed: "joystick_shoot", position: joystickShootPosition, name: "joystickShoot")
+        self.addChild(joystickShoot.sprite)
     }
     
     // MARK: input
@@ -47,9 +54,13 @@ class GameScene: SKScene {
             let touchedLocation: CGPoint = touch.locationInNode(self)
             let touchedNode: SKNode = self.nodeAtPoint(touchedLocation)
             
-            if touchedNode.name == "joystick" {
-                joystick.startControl(touch as UITouch, location: touchedLocation)
+            if touchedNode.name == "joystickMove" {
+                joystickMove.startControl(touch as UITouch, location: touchedLocation)
                 
+            }
+            
+            if touchedNode.name == "joystickShoot" {
+                joystickShoot.startControl(touch as UITouch, location: touchedLocation)
             }
         }
         
@@ -75,10 +86,15 @@ class GameScene: SKScene {
     override func touchesMoved(touches: NSSet, withEvent event: UIEvent) {
         for touch: AnyObject in touches {
             
-            // update joystick
-            if touch as? UITouch == joystick.startTouch {
+            // update joysticks
+            if touch as? UITouch == joystickMove.startTouch {
                 let touchLocation = touch.locationInNode!(self)
-                joystick.updateControl(touchLocation)
+                joystickMove.updateControl(touchLocation)
+            }
+            
+            if touch as? UITouch == joystickShoot.startTouch {
+                let touchLocation = touch.locationInNode!(self)
+                joystickShoot.updateControl(touchLocation)
             }
             
         }
@@ -87,9 +103,13 @@ class GameScene: SKScene {
     override func touchesEnded(touches: NSSet, withEvent event: UIEvent) {
         for touch: AnyObject in touches {
             
-            // update joystick
-            if touch as? UITouch == joystick.startTouch {
-                joystick.endControl()
+            // update joysticks
+            if touch as? UITouch == joystickMove.startTouch {
+                joystickMove.endControl()
+            }
+            
+            if touch as? UITouch == joystickShoot.startTouch {
+                joystickShoot.endControl()
             }
         }
     }
@@ -100,7 +120,7 @@ class GameScene: SKScene {
         
         self.updateDebugLabels()
         world.update()
-        world.player.update(joystick.vector)
+        world.player.update(joystickMove.vector)
         
     }
     
