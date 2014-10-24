@@ -50,7 +50,8 @@ class Player {
         sprite.size = size
         sprite.zPosition = 100
         
-        sprite.physicsBody = SKPhysicsBody(rectangleOfSize: size)
+//        sprite.physicsBody = SKPhysicsBody(rectangleOfSize: size)
+        sprite.physicsBody = SKPhysicsBody(circleOfRadius: 32)
         sprite.physicsBody?.allowsRotation = false
     
         

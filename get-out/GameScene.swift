@@ -26,6 +26,9 @@ class GameScene: SKScene {
         
         //world
         world.setTile(gridPoint: GridPoint(x: 3,y: 3), tile: Tile(tileDefinition: world.tileFactory.tileDefinitions["wall"]!, gridPosition: GridPoint(x: 3, y: 3)))
+        world.setTile(gridPoint: GridPoint(x: 4,y: 3), tile: Tile(tileDefinition: world.tileFactory.tileDefinitions["wall"]!, gridPosition: GridPoint(x: 4, y: 3)))
+        world.setTile(gridPoint: GridPoint(x: 5,y: 3), tile: Tile(tileDefinition: world.tileFactory.tileDefinitions["wall"]!, gridPosition: GridPoint(x: 5, y: 3)))
+        world.setTile(gridPoint: GridPoint(x: 5,y: 4), tile: Tile(tileDefinition: world.tileFactory.tileDefinitions["wall"]!, gridPosition: GridPoint(x: 5, y: 4)))
         self.addChild(world.sprite)
         
         //debug overlay
@@ -34,14 +37,12 @@ class GameScene: SKScene {
         debugOverlay.toggle()
         
         //joystick move
-        let joystickMovePosition = CGPoint(x: -(self.size.width / 2) + (joystickMove.sprite.size.width / 2),
-                                           y: -(self.size.height / 2) + (joystickMove.sprite.size.height / 2) )
+        let joystickMovePosition = CGPoint(x: -(self.size.width / 2) + (joystickMove.sprite.size.width / 2), y: -(self.size.height / 2) + (joystickMove.sprite.size.height / 2) )
         joystickMove = Joystick(imageNamed: "joystick_move", position: joystickMovePosition, name: "joystickMove")
         self.addChild(joystickMove.sprite)
         
         //joystick shoot
-        let joystickShootPosition = CGPoint(x: +(self.size.width / 2) - (joystickShoot.sprite.size.width / 2),
-                                            y: -(self.size.height / 2) + (joystickMove.sprite.size.height / 2) )
+        let joystickShootPosition = CGPoint(x: +(self.size.width / 2) - (joystickShoot.sprite.size.width / 2), y: -(self.size.height / 2) + (joystickMove.sprite.size.height / 2) )
         joystickShoot = Joystick(imageNamed: "joystick_shoot", position: joystickShootPosition, name: "joystickShoot")
         self.addChild(joystickShoot.sprite)
     }
