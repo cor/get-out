@@ -29,6 +29,7 @@ func directionfromVector(vector:CGVector) -> Direction? {
     let dx = vector.dx
     let dy = vector.dy
     
+    
     if !((dx > minimumSpeedForDirection || dx < -minimumSpeedForDirection) || (dy > minimumSpeedForDirection || dy < -minimumSpeedForDirection)) {
         return nil
     }

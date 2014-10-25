@@ -146,7 +146,9 @@ class Player {
     
     func shoot(#vector: CGVector) {
         
-        currentWeapon?.shoot(direction: vector)
+        if let weapon = currentWeapon {
+            weapon.shoot(direction: vector)
+        }
         
     }
     
