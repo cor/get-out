@@ -16,9 +16,11 @@ class Enemy {
     
     init() {
         size = CGSize(width: 64, height: 64)
-        sprite = SKSpriteNode(color: UIColor.redColor(), size: size)
-        sprite.physicsBody = SKPhysicsBody(rectangleOfSize: size)
+        sprite = SKSpriteNode(imageNamed: "enemy")
+        sprite.size = size
+        sprite.physicsBody = SKPhysicsBody(circleOfRadius: size.width / 2)
         sprite.physicsBody?.allowsRotation = false
+        sprite.texture?.filteringMode = .Nearest
         sprite.zPosition = 100
     }
     
