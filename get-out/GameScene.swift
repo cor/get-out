@@ -9,7 +9,7 @@
 import SpriteKit
 
 
-class GameScene: SKScene {
+class GameScene: SKScene, SKPhysicsContactDelegate {
     
     let world = World()
     
@@ -29,6 +29,7 @@ class GameScene: SKScene {
         world.setTile(gridPoint: GridPoint(x: 4,y: 3), tile: Tile(tileDefinition: world.tileFactory.tileDefinitions["wall"]!, gridPosition: GridPoint(x: 4, y: 3)))
         world.setTile(gridPoint: GridPoint(x: 5,y: 3), tile: Tile(tileDefinition: world.tileFactory.tileDefinitions["wall"]!, gridPosition: GridPoint(x: 5, y: 3)))
         world.setTile(gridPoint: GridPoint(x: 5,y: 4), tile: Tile(tileDefinition: world.tileFactory.tileDefinitions["wall"]!, gridPosition: GridPoint(x: 5, y: 4)))
+        self.physicsWorld.contactDelegate = world
         self.addChild(world.sprite)
         
         //debug overlay

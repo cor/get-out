@@ -19,7 +19,11 @@ class Enemy {
         sprite = SKSpriteNode(imageNamed: "enemy")
         sprite.size = size
         sprite.physicsBody = SKPhysicsBody(circleOfRadius: size.width / 2)
+        
         sprite.physicsBody?.allowsRotation = false
+        sprite.physicsBody?.categoryBitMask = ColliderType.Enemy.rawValue
+        sprite.physicsBody?.contactTestBitMask = ColliderType.Player.rawValue | ColliderType.Bullet.rawValue
+        
         sprite.texture?.filteringMode = .Nearest
         sprite.zPosition = 100
     }

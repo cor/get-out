@@ -39,8 +39,6 @@ class Weapon {
                 if let boost = positionAtDirection[bulletDirection] {
                     bullet.position.x = sprite.parent!.position.x + boost.x
                     bullet.position.y = sprite.parent!.position.y + boost.y
-                } else {
-                    println(" invalid boost value")
                 }
             }
             

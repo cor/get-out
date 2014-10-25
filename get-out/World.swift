@@ -8,7 +8,7 @@
 
 import SpriteKit
 
-class World {
+class World: NSObject, SKPhysicsContactDelegate  {
     
     // MARK: Private properties
     private var tiles: [Tile] = []
@@ -23,7 +23,7 @@ class World {
     let enemy: Enemy
     
     // MARK: Initialization
-    init() {
+    override init() {
         sprite = SKSpriteNode(color: UIColor.redColor(), size: CGSize(width: mapSize.width * 64, height: mapSize.height * 64))
         sprite.anchorPoint = CGPoint(x:0, y:0)
         sprite.zPosition = -100
@@ -31,8 +31,11 @@ class World {
         sprite.physicsBody = SKPhysicsBody(edgeLoopFromRect: self.sprite.frame)
         
         player = Player(position: CGPoint(x: sprite.size.width / 2, y: sprite.size.height / 2))
-        enemy = Enemy(position: CGPoint(x: 64, y: 64))
         
+        enemy = Enemy(position: CGPoint(x: 64, y: 64))
+        enemy.sprite.physicsBody!.categoryBitMask = ColliderType.Enemy.rawValue
+        
+        super.init()
         addTiles()
         sprite.addChild(player.sprite)
         sprite.addChild(camera.sprite)
@@ -60,6 +63,13 @@ class World {
         }
         
     }
+    
+    
+    func didBeginContact(contact: SKPhysicsContact) {
+        
+        // TODO: handle contact
+    }
+    
     
     // MARK: Tile Interaction methods
     

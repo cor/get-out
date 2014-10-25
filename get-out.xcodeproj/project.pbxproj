@@ -21,13 +21,14 @@
 		8739812719E736BC00466482 /* joystick_move.png in Resources */ = {isa = PBXBuildFile; fileRef = 8739812619E736BC00466482 /* joystick_move.png */; };
 		8739812919E73ABD00466482 /* button.png in Resources */ = {isa = PBXBuildFile; fileRef = 8739812819E73ABD00466482 /* button.png */; };
 		8739812B19E73BD900466482 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8739812A19E73BD900466482 /* Button.swift */; };
+		87520D8419FC67EA0041B8CF /* Collisions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87520D8319FC67EA0041B8CF /* Collisions.swift */; };
 		87694B1619D20FF90083C2E7 /* World.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87694B1519D20FF90083C2E7 /* World.swift */; };
 		87694B1819D212C60083C2E7 /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87694B1719D212C60083C2E7 /* Camera.swift */; };
 		876DD9FC19E43AAF004FE675 /* DebugOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876DD9FB19E43AAF004FE675 /* DebugOverlay.swift */; };
 		87704FCF19E42A3000AC782F /* TileFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87704FCE19E42A3000AC782F /* TileFactory.swift */; };
 		878CF4B119F9849D00336E0F /* joystick_shoot.png in Resources */ = {isa = PBXBuildFile; fileRef = 878CF4B019F9849D00336E0F /* joystick_shoot.png */; };
 		878FE39419C5AA8A00E3DA63 /* Tile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878FE39319C5AA8A00E3DA63 /* Tile.swift */; };
-		87A441DE19E6C47600AC4970 /* Enemey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A441DD19E6C47600AC4970 /* Enemey.swift */; };
+		87A441DE19E6C47600AC4970 /* Enemy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A441DD19E6C47600AC4970 /* Enemy.swift */; };
 		87B6E5D819D8B31D00CDB949 /* LocationLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B6E5D719D8B31D00CDB949 /* LocationLogic.swift */; };
 		87C280CF19CC90B200CED293 /* AnimationActionsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C280CE19CC90B200CED293 /* AnimationActionsFactory.swift */; };
 		87C8B36219FBB757006F6D54 /* enemy.png in Resources */ = {isa = PBXBuildFile; fileRef = 87C8B36119FBB757006F6D54 /* enemy.png */; };
@@ -68,13 +69,14 @@
 		8739812619E736BC00466482 /* joystick_move.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = joystick_move.png; sourceTree = "<group>"; };
 		8739812819E73ABD00466482 /* button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button.png; sourceTree = "<group>"; };
 		8739812A19E73BD900466482 /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
+		87520D8319FC67EA0041B8CF /* Collisions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Collisions.swift; sourceTree = "<group>"; };
 		87694B1519D20FF90083C2E7 /* World.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = World.swift; sourceTree = "<group>"; };
 		87694B1719D212C60083C2E7 /* Camera.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
 		876DD9FB19E43AAF004FE675 /* DebugOverlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugOverlay.swift; sourceTree = "<group>"; };
 		87704FCE19E42A3000AC782F /* TileFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TileFactory.swift; sourceTree = "<group>"; };
 		878CF4B019F9849D00336E0F /* joystick_shoot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = joystick_shoot.png; sourceTree = "<group>"; };
 		878FE39319C5AA8A00E3DA63 /* Tile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tile.swift; sourceTree = "<group>"; };
-		87A441DD19E6C47600AC4970 /* Enemey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enemey.swift; sourceTree = "<group>"; };
+		87A441DD19E6C47600AC4970 /* Enemy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enemy.swift; sourceTree = "<group>"; };
 		87B6E5D719D8B31D00CDB949 /* LocationLogic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationLogic.swift; sourceTree = "<group>"; };
 		87C280CE19CC90B200CED293 /* AnimationActionsFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationActionsFactory.swift; sourceTree = "<group>"; };
 		87C8B36119FBB757006F6D54 /* enemy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = enemy.png; sourceTree = "<group>"; };
@@ -127,8 +129,9 @@
 			children = (
 				87284FD219F98FE00050ACBC /* Weapon.swift */,
 				87694B1519D20FF90083C2E7 /* World.swift */,
+				87520D8319FC67EA0041B8CF /* Collisions.swift */,
 				8739812A19E73BD900466482 /* Button.swift */,
-				87A441DD19E6C47600AC4970 /* Enemey.swift */,
+				87A441DD19E6C47600AC4970 /* Enemy.swift */,
 				878FE39319C5AA8A00E3DA63 /* Tile.swift */,
 				87704FCE19E42A3000AC782F /* TileFactory.swift */,
 				87D6421F19C5EA3600A12784 /* Player.swift */,
@@ -331,11 +334,12 @@
 				87284FD319F98FE00050ACBC /* Weapon.swift in Sources */,
 				87E4A90919DB403600E522A3 /* DebugLabel.swift in Sources */,
 				87704FCF19E42A3000AC782F /* TileFactory.swift in Sources */,
+				87520D8419FC67EA0041B8CF /* Collisions.swift in Sources */,
 				878FE39419C5AA8A00E3DA63 /* Tile.swift in Sources */,
 				87B6E5D819D8B31D00CDB949 /* LocationLogic.swift in Sources */,
 				87D6422019C5EA3600A12784 /* Player.swift in Sources */,
 				8734316719BB74C400050D5B /* GameViewController.swift in Sources */,
-				87A441DE19E6C47600AC4970 /* Enemey.swift in Sources */,
+				87A441DE19E6C47600AC4970 /* Enemy.swift in Sources */,
 				8734316119BB74C400050D5B /* AppDelegate.swift in Sources */,
 				8739812B19E73BD900466482 /* Button.swift in Sources */,
 				87694B1619D20FF90083C2E7 /* World.swift in Sources */,

@@ -67,6 +67,8 @@ class Player {
         sprite.zPosition = 100
         
         sprite.physicsBody = SKPhysicsBody(circleOfRadius: 32)
+        sprite.physicsBody?.categoryBitMask = ColliderType.Player.rawValue
+        sprite.physicsBody?.contactTestBitMask = ColliderType.Enemy.rawValue | ColliderType.Bullet.rawValue
         sprite.physicsBody?.allowsRotation = false
     
         
