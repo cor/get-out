@@ -121,7 +121,7 @@ class GameScene: SKScene {
         
         self.updateDebugLabels()
         world.update()
-        world.player.update(joystickMove.vector)
+        world.player.update(inputMove: joystickMove.vector, inputShoot: joystickShoot.vector)
         
     }
     

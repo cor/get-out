@@ -34,6 +34,22 @@ class Player {
     
     // stats
     var isAlive: Bool = true
+    var currentWeapon: Weapon? {
+        
+        willSet {
+            // remove current weapon sprite
+            if currentWeapon != nil {
+                self.currentWeapon!.sprite.removeFromParent()
+            }
+        }
+        
+        didSet {
+            // add weapon sprite to player sprite
+            if currentWeapon != nil {
+                self.sprite.addChild(currentWeapon!.sprite)
+            }
+        }
+    }
     
     // MARK: Initializers
     
@@ -50,14 +66,17 @@ class Player {
         sprite.size = size
         sprite.zPosition = 100
         
-//        sprite.physicsBody = SKPhysicsBody(rectangleOfSize: size)
         sprite.physicsBody = SKPhysicsBody(circleOfRadius: 32)
         sprite.physicsBody?.allowsRotation = false
     
         
-        
+        //texture configuration
         idleTexture.filteringMode = .Nearest // fix for blurry pixel art
         walkingFramesActions = animationActionsFactory.getActions()
+        
+        //weapon configuration
+        self.currentWeapon = Weapon()
+        self.sprite.addChild(currentWeapon!.sprite)
      
     }
     
@@ -99,9 +118,14 @@ class Player {
         
     }
     
-    func update(input: CGVector?) {
+    func update(#inputMove: CGVector?, inputShoot: CGVector?) {
         
-        move(vector: input)
+        move(vector: inputMove)
+        
+        if inputShoot != nil {
+            shoot(vector: inputShoot!)
+        }
+        
         updateAnimation()
         updateCurrentGridPosition()
      
@@ -118,6 +142,12 @@ class Player {
                 sprite.physicsBody?.velocity.dy *= slowDownMultiplier
             }
         }
+    }
+    
+    func shoot(#vector: CGVector) {
+        
+        currentWeapon?.shoot(direction: vector)
+        
     }
     
     private func updateCurrentGridPosition() {
