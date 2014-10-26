@@ -27,6 +27,7 @@ class AnimationActionsFactory {
         for index in 1...imagesCount {
             let textureName = "player_walk_north_\(index)"
             let tempTexture = walkingFramesAtlas.textureNamed(textureName)
+            tempTexture.filteringMode = .Nearest
             tempWalkingFrames.append(tempTexture)
         }
         self.walkingFrames[Direction.North] = tempWalkingFrames
@@ -36,6 +37,7 @@ class AnimationActionsFactory {
         for index in 1...imagesCount {
             let textureName = "player_walk_east_\(index)"
             let tempTexture = walkingFramesAtlas.textureNamed(textureName)
+            tempTexture.filteringMode = .Nearest
             tempWalkingFrames.append(tempTexture)
         }
         self.walkingFrames[Direction.East] = tempWalkingFrames
@@ -45,6 +47,7 @@ class AnimationActionsFactory {
         for index in 1...imagesCount {
             let textureName = "player_walk_south_\(index)"
             let tempTexture = walkingFramesAtlas.textureNamed(textureName)
+            tempTexture.filteringMode = .Nearest
             tempWalkingFrames.append(tempTexture)
         }
         self.walkingFrames[Direction.South] = tempWalkingFrames
@@ -54,6 +57,7 @@ class AnimationActionsFactory {
         for index in 1...imagesCount {
             let textureName = "player_walk_west_\(index)"
             let tempTexture = walkingFramesAtlas.textureNamed(textureName)
+            tempTexture.filteringMode = .Nearest
             tempWalkingFrames.append(tempTexture)
         }
         self.walkingFrames[Direction.West] = tempWalkingFrames

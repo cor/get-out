@@ -8,13 +8,11 @@
 
 import SpriteKit
 
-class Tile {
+class Tile: SubclassNode {
     
-    var sprite: SKSpriteNode
-    var gridPosition: GridPoint
-    var textureName: String
+    var gridPosition: GridPoint = GridPoint(x: 0, y: 0)
+    var textureName: String = "tile_floor"
     
-    let size: CGSize
     
     // MARK: Public Initializers
     convenience init(tileDefinition: TileDefinition) {
@@ -28,14 +26,20 @@ class Tile {
     }
     
     //MARK: private initializers
-    init() {
-        gridPosition = GridPoint(x: 0, y: 0)
-        size = CGSize(width: 64, height: 64)
-        textureName = "tile_floor"
+    override init() {
         
-        sprite = SKSpriteNode()
-        sprite.size = size
-        sprite.anchorPoint = CGPoint(x: 0, y: 0)
+        super.init(texture: nil, color: nil, size: CGSize())
+        
+        //sprite configuration
+        name = "tile"
+        size = CGSize(width: 64, height: 64)
+        texture = SKTexture(imageNamed: textureName)
+        texture?.filteringMode = .Nearest
+        anchorPoint = CGPoint(x: 0, y: 0)
+        
+        //position
+        gridPosition = GridPoint(x: 0, y: 0)
+        
         
         updatePosition()
         updateTexture()
@@ -83,16 +87,15 @@ class Tile {
         let newX = CGFloat(gridPosition.x) * size.width
         let newY = CGFloat(gridPosition.y) * size.height
         let newPosition = CGPoint(x: newX, y: newY)
-        sprite.position = newPosition
+        position = newPosition
     }
     
     // Update actual image to represent imageName
     func updateTexture() {
-        sprite.texture = SKTexture(imageNamed: textureName)
-        sprite.texture?.filteringMode = SKTextureFilteringMode.Nearest
+        texture = SKTexture(imageNamed: textureName)
+        texture?.filteringMode = SKTextureFilteringMode.Nearest
     }
     
-    //MARK: Sprite modifiers
     
     // Add a PhysicsBody to the sprite in order to use collisions.
     func enableCollisions() {
@@ -102,8 +105,8 @@ class Tile {
         let newY = CGFloat(0.5 * self.size.height)
         let center = CGPoint(x: newX, y: newY)
         
-        sprite.physicsBody = SKPhysicsBody(rectangleOfSize: sprite.size, center: center)
-        sprite.physicsBody?.dynamic = false
+        physicsBody = SKPhysicsBody(rectangleOfSize: size, center: center)
+        physicsBody?.dynamic = false
         
     }
 }

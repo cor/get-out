@@ -14,16 +14,21 @@ class Enemy: SubclassNode {
         
         super.init(texture: nil, color: nil, size: CGSize())
         
+        //sprite configuration
+        name = "enemy"
         size = CGSize(width: 64, height: 64)
         texture = SKTexture(imageNamed: "enemy")
-        physicsBody = SKPhysicsBody(circleOfRadius: size.width / 2)
+        texture?.filteringMode = .Nearest
         
+        //position
+        zPosition = 100
+        
+        //physics
+        physicsBody = SKPhysicsBody(circleOfRadius: size.width / 2)
         physicsBody?.allowsRotation = false
         physicsBody?.categoryBitMask = ColliderType.Enemy.rawValue
         physicsBody?.contactTestBitMask = ColliderType.Player.rawValue | ColliderType.Bullet.rawValue
         
-        texture?.filteringMode = .Nearest
-        zPosition = 100
     }
     
     convenience init(position: CGPoint) {
@@ -33,10 +38,12 @@ class Enemy: SubclassNode {
     
     // Move the Enemy to a Tile
     func moveToTile(tile: Tile) {
-        let newX = tile.sprite.position.x + self.size.width / 2
-        let newY = tile.sprite.position.y + self.size.height / 2
+        
+        let newX = tile.position.x + self.size.width / 2
+        let newY = tile.position.y + self.size.height / 2
         let newLocation = CGPoint(x: newX, y: newY)
         let moveAction = SKAction.moveTo(newLocation, duration: 1)
+        
         runAction(moveAction)
     }
 }

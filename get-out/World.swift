@@ -57,8 +57,8 @@ class World: SubclassNode, SKPhysicsContactDelegate  {
         
         // Add tiles from the tiles array to the scene
         for tile in tiles {
-            tile.sprite.zPosition = 10
-            addChild(tile.sprite)
+            tile.zPosition = 10
+            addChild(tile)
         }
         
     }
@@ -67,6 +67,8 @@ class World: SubclassNode, SKPhysicsContactDelegate  {
     func didBeginContact(contact: SKPhysicsContact) {
         
         // TODO: handle contact
+        println("body A: \(contact.bodyA.description)")
+        println("body B: \(contact.bodyB.description)")
     }
     
     
@@ -97,9 +99,9 @@ class World: SubclassNode, SKPhysicsContactDelegate  {
     func setTile(#gridPoint: GridPoint, tile: Tile) {
         let possibleTileIndex = gridPoint.y * Int(mapSize.width) + Int(gridPoint.x)
         if !(possibleTileIndex < 0 || possibleTileIndex > (tiles.count - 1)) {
-            tiles[possibleTileIndex].sprite.removeFromParent()
+            tiles[possibleTileIndex].removeFromParent()
             tiles[possibleTileIndex] = tile
-            addChild(tiles[possibleTileIndex].sprite)
+            addChild(tiles[possibleTileIndex])
         }
     }
     

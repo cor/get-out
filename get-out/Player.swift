@@ -12,7 +12,6 @@ import SpriteKit
 class Player: SubclassNode {
     
     // MARK: Textures and animations
-    var textureName: String = "player"
     let idleTexture = SKTexture(imageNamed: "player")
     let animationActionsFactory = AnimationActionsFactory()
     let walkingFramesActions: [Direction:SKAction]
@@ -23,7 +22,7 @@ class Player: SubclassNode {
     var slowDownEnabled: Bool = true
     
     // MARK: current values
-    var currentGridPosition: CGPoint
+    var currentGridPosition: CGPoint = CGPoint()
     var currentTile: Tile?
     var currentDirection: Direction? = nil
     var currentAnimation: Direction? = nil
@@ -49,33 +48,29 @@ class Player: SubclassNode {
     
     // MARK: Initializers
     
-    //FIXME:
     override init() {
-        textureName = "player_walk_south_1"
         
         walkingFramesActions = animationActionsFactory.getActions()
-        idleTexture.filteringMode = .Nearest // fix for blurry pixel art
-        
-        
-        currentGridPosition = CGPoint()
         
         super.init(texture: nil, color: nil, size: CGSize())
         
         //sprite configuration
-        texture = SKTexture(imageNamed: textureName)
+        name = "player"
         size = CGSize(width: 64, height: 64)
+        texture = SKTexture(imageNamed: "player")
+        texture?.filteringMode = .Nearest
+    
+        //position
+        zPosition = 100
         currentGridPosition = CGPoint()
         currentTile = Tile()
         
-        texture?.filteringMode = .Nearest // fix for blurry pixel art
-        zPosition = 100
-        
+        //physicis
         physicsBody = SKPhysicsBody(circleOfRadius: 32)
+        physicsBody?.allowsRotation = false
         physicsBody?.categoryBitMask = ColliderType.Player.rawValue
         physicsBody?.contactTestBitMask = ColliderType.Enemy.rawValue | ColliderType.Bullet.rawValue
-        physicsBody?.allowsRotation = false
     
-        
         //weapon configuration
         currentWeapon = Weapon()
         addChild(currentWeapon!)
@@ -90,10 +85,12 @@ class Player: SubclassNode {
     
     // Move the player to a Tile
     func moveToTile(tile: Tile) {
-        let newX = tile.sprite.position.x + self.size.width / 2
-        let newY = tile.sprite.position.y + self.size.height / 2
+        
+        let newX = tile.position.x + self.size.width / 2
+        let newY = tile.position.y + self.size.height / 2
         let newLocation = CGPoint(x: newX, y: newY)
         let moveAction = SKAction.moveTo(newLocation, duration: 1)
+        
         runAction(moveAction)
     }
     
