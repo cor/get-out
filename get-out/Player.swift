@@ -8,13 +8,8 @@
 
 import SpriteKit
 
-class HideRequired: SKSpriteNode {
-    
-}
 
-
-class Player: HideRequired {
-    
+class Player: SubclassNode {
     
     // MARK: Textures and animations
     var textureName: String = "player"
@@ -40,14 +35,14 @@ class Player: HideRequired {
         willSet {
             // remove current weapon sprite
             if currentWeapon != nil {
-                self.currentWeapon!.sprite.removeFromParent()
+                self.currentWeapon!.removeFromParent()
             }
         }
         
         didSet {
             // add weapon sprite to player sprite
             if currentWeapon != nil {
-                self.addChild(currentWeapon!.sprite)
+                self.addChild(currentWeapon!)
             }
         }
     }
@@ -61,18 +56,17 @@ class Player: HideRequired {
         walkingFramesActions = animationActionsFactory.getActions()
         idleTexture.filteringMode = .Nearest // fix for blurry pixel art
         
-        //weapon configuration
-        currentWeapon = Weapon()
+        
         currentGridPosition = CGPoint()
         
         super.init(texture: nil, color: nil, size: CGSize())
         
+        //sprite configuration
         texture = SKTexture(imageNamed: textureName)
         size = CGSize(width: 64, height: 64)
         currentGridPosition = CGPoint()
         currentTile = Tile()
         
-        //sprite configuration
         texture?.filteringMode = .Nearest // fix for blurry pixel art
         zPosition = 100
         
@@ -81,7 +75,10 @@ class Player: HideRequired {
         physicsBody?.contactTestBitMask = ColliderType.Enemy.rawValue | ColliderType.Bullet.rawValue
         physicsBody?.allowsRotation = false
     
-        addChild(currentWeapon!.sprite)
+        
+        //weapon configuration
+        currentWeapon = Weapon()
+        addChild(currentWeapon!)
         
     }
     

@@ -22,6 +22,7 @@
 		8739812919E73ABD00466482 /* button.png in Resources */ = {isa = PBXBuildFile; fileRef = 8739812819E73ABD00466482 /* button.png */; };
 		8739812B19E73BD900466482 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8739812A19E73BD900466482 /* Button.swift */; };
 		87520D8419FC67EA0041B8CF /* Collisions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87520D8319FC67EA0041B8CF /* Collisions.swift */; };
+		876041C919FD3BA20027ADE5 /* SubclassNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876041C819FD3BA20027ADE5 /* SubclassNode.swift */; };
 		87694B1619D20FF90083C2E7 /* World.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87694B1519D20FF90083C2E7 /* World.swift */; };
 		87694B1819D212C60083C2E7 /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87694B1719D212C60083C2E7 /* Camera.swift */; };
 		876DD9FC19E43AAF004FE675 /* DebugOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876DD9FB19E43AAF004FE675 /* DebugOverlay.swift */; };
@@ -70,6 +71,7 @@
 		8739812819E73ABD00466482 /* button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button.png; sourceTree = "<group>"; };
 		8739812A19E73BD900466482 /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		87520D8319FC67EA0041B8CF /* Collisions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Collisions.swift; sourceTree = "<group>"; };
+		876041C819FD3BA20027ADE5 /* SubclassNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubclassNode.swift; sourceTree = "<group>"; };
 		87694B1519D20FF90083C2E7 /* World.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = World.swift; sourceTree = "<group>"; };
 		87694B1719D212C60083C2E7 /* Camera.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
 		876DD9FB19E43AAF004FE675 /* DebugOverlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugOverlay.swift; sourceTree = "<group>"; };
@@ -135,6 +137,7 @@
 				878FE39319C5AA8A00E3DA63 /* Tile.swift */,
 				87704FCE19E42A3000AC782F /* TileFactory.swift */,
 				87D6421F19C5EA3600A12784 /* Player.swift */,
+				876041C819FD3BA20027ADE5 /* SubclassNode.swift */,
 				87694B1719D212C60083C2E7 /* Camera.swift */,
 				87B6E5D719D8B31D00CDB949 /* LocationLogic.swift */,
 				87C280CE19CC90B200CED293 /* AnimationActionsFactory.swift */,
@@ -337,6 +340,7 @@
 				87520D8419FC67EA0041B8CF /* Collisions.swift in Sources */,
 				878FE39419C5AA8A00E3DA63 /* Tile.swift in Sources */,
 				87B6E5D819D8B31D00CDB949 /* LocationLogic.swift in Sources */,
+				876041C919FD3BA20027ADE5 /* SubclassNode.swift in Sources */,
 				87D6422019C5EA3600A12784 /* Player.swift in Sources */,
 				8734316719BB74C400050D5B /* GameViewController.swift in Sources */,
 				87A441DE19E6C47600AC4970 /* Enemy.swift in Sources */,

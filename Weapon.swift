@@ -9,9 +9,8 @@
 import SpriteKit
 
 
-class Weapon {
+class Weapon: SubclassNode {
     
-    let sprite = SKSpriteNode()
     let positionAtDirection: [Direction : CGPoint] = [.North : CGPoint(x: 0, y: 32), .East : CGPoint(x: 32, y: 0), .South : CGPoint(x: 0, y: -32), .West : CGPoint(x: -32, y: 0)]
     let speedmultiplier: CGFloat = 10
     let timeUntillDespawn: NSTimeInterval = 2
@@ -21,11 +20,14 @@ class Weapon {
     var previousTime = NSDate.timeIntervalSinceReferenceDate()
     
     
-    init() {
+    override init() {
+        
         // despawnAction
         let waitAction = SKAction.waitForDuration(timeUntillDespawn)
         let removeAction = SKAction.removeFromParent()
         bulletAction = SKAction.sequence([waitAction, removeAction])
+        
+        super.init(texture: nil, color: nil, size: CGSize())
     }
     
     func shoot(#direction: CGVector) {
@@ -37,8 +39,8 @@ class Weapon {
             
             if let bulletDirection = directionfromVector(direction) {
                 if let boost = positionAtDirection[bulletDirection] {
-                    bullet.position.x = sprite.parent!.position.x + boost.x
-                    bullet.position.y = sprite.parent!.position.y + boost.y
+                    bullet.position.x = parent!.position.x + boost.x
+                    bullet.position.y = parent!.position.y + boost.y
                 }
             }
             
@@ -50,7 +52,7 @@ class Weapon {
             bullet.physicsBody?.velocity.dy *= speedmultiplier
             bullet.runAction(bulletAction)
             
-            sprite.parent?.parent?.addChild(bullet)
+            parent?.parent?.addChild(bullet)
             
             previousTime = NSDate.timeIntervalSinceReferenceDate()
         }
