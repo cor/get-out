@@ -38,7 +38,7 @@ class World: NSObject, SKPhysicsContactDelegate  {
         super.init()
         addTiles()
         sprite.addChild(player)
-        sprite.addChild(camera.sprite)
+        sprite.addChild(camera)
         sprite.addChild(enemy.sprite)
     }
     
@@ -105,8 +105,8 @@ class World: NSObject, SKPhysicsContactDelegate  {
     }
     
     func update() {
-        camera.sprite.position = player.position
-        camera.centerOnNode(camera.sprite)
+        camera.position = player.position
+        camera.centerOnNode(camera)
         
     }
 }
