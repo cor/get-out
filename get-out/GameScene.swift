@@ -38,14 +38,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         debugOverlay.toggle()
         
         //joystick move
-        let joystickMovePosition = CGPoint(x: -(self.size.width / 2) + (joystickMove.sprite.size.width / 2), y: -(self.size.height / 2) + (joystickMove.sprite.size.height / 2) )
+        let joystickMovePosition = CGPoint(x: -(self.size.width / 2) + (joystickMove.size.width / 2), y: -(self.size.height / 2) + (joystickMove.size.height / 2) )
         joystickMove = Joystick(imageNamed: "joystick_move", position: joystickMovePosition, name: "joystickMove")
-        self.addChild(joystickMove.sprite)
+        self.addChild(joystickMove)
         
         //joystick shoot
-        let joystickShootPosition = CGPoint(x: +(self.size.width / 2) - (joystickShoot.sprite.size.width / 2), y: -(self.size.height / 2) + (joystickMove.sprite.size.height / 2) )
+        let joystickShootPosition = CGPoint(x: +(self.size.width / 2) - (joystickShoot.size.width / 2), y: -(self.size.height / 2) + (joystickMove.size.height / 2) )
         joystickShoot = Joystick(imageNamed: "joystick_shoot", position: joystickShootPosition, name: "joystickShoot")
-        self.addChild(joystickShoot.sprite)
+        self.addChild(joystickShoot)
     }
     
     // MARK: input
@@ -58,7 +58,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             if touchedNode.name == "joystickMove" {
                 joystickMove.startControl(touch as UITouch, location: touchedLocation)
-                
             }
             
             if touchedNode.name == "joystickShoot" {
