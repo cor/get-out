@@ -130,13 +130,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     // FIXME:
     func updateDebugLabels() {
         for label in debugOverlay.debugLabels {
-            label.update("\(world.player.sprite.position.x)")
+            label.update("\(world.player.position.x)")
             
             switch label.name {
             case "x":
-                label.update("\(Int(world.player.sprite.position.x))")
+                label.update("\(Int(world.player.position.x))")
             case "y":
-                label.update("\(Int(world.player.sprite.position.y))")
+                label.update("\(Int(world.player.position.y))")
             case "player alive":
                 label.update("\(world.player.isAlive)")
             default:

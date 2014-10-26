@@ -8,15 +8,16 @@
 
 import SpriteKit
 
-class Player {
+class HideRequired: SKSpriteNode {
     
+}
+
+
+class Player: HideRequired {
     
-    // the Sprite
-    var sprite: SKSpriteNode
-    let size: CGSize
     
     // MARK: Textures and animations
-    var textureName: String
+    var textureName: String = "player"
     let idleTexture = SKTexture(imageNamed: "player")
     let animationActionsFactory = AnimationActionsFactory()
     let walkingFramesActions: [Direction:SKAction]
@@ -46,46 +47,49 @@ class Player {
         didSet {
             // add weapon sprite to player sprite
             if currentWeapon != nil {
-                self.sprite.addChild(currentWeapon!.sprite)
+                self.addChild(currentWeapon!.sprite)
             }
         }
     }
     
     // MARK: Initializers
     
-    init() {
-        size = CGSize(width: 64, height: 64)
+    //FIXME:
+    override init() {
         textureName = "player_walk_south_1"
         
+        walkingFramesActions = animationActionsFactory.getActions()
+        idleTexture.filteringMode = .Nearest // fix for blurry pixel art
+        
+        //weapon configuration
+        currentWeapon = Weapon()
+        currentGridPosition = CGPoint()
+        
+        super.init(texture: nil, color: nil, size: CGSize())
+        
+        texture = SKTexture(imageNamed: textureName)
+        size = CGSize(width: 64, height: 64)
         currentGridPosition = CGPoint()
         currentTile = Tile()
         
         //sprite configuration
-        sprite = SKSpriteNode(imageNamed: textureName)
-        sprite.texture?.filteringMode = .Nearest // fix for blurry pixel art
-        sprite.size = size
-        sprite.zPosition = 100
+        texture?.filteringMode = .Nearest // fix for blurry pixel art
+        zPosition = 100
         
-        sprite.physicsBody = SKPhysicsBody(circleOfRadius: 32)
-        sprite.physicsBody?.categoryBitMask = ColliderType.Player.rawValue
-        sprite.physicsBody?.contactTestBitMask = ColliderType.Enemy.rawValue | ColliderType.Bullet.rawValue
-        sprite.physicsBody?.allowsRotation = false
+        physicsBody = SKPhysicsBody(circleOfRadius: 32)
+        physicsBody?.categoryBitMask = ColliderType.Player.rawValue
+        physicsBody?.contactTestBitMask = ColliderType.Enemy.rawValue | ColliderType.Bullet.rawValue
+        physicsBody?.allowsRotation = false
     
+        addChild(currentWeapon!.sprite)
         
-        //texture configuration
-        idleTexture.filteringMode = .Nearest // fix for blurry pixel art
-        walkingFramesActions = animationActionsFactory.getActions()
-        
-        //weapon configuration
-        self.currentWeapon = Weapon()
-        self.sprite.addChild(currentWeapon!.sprite)
-     
     }
     
     convenience init(position: CGPoint) {
         self.init()
-        sprite.position = position
+        self.position = position
     }
+    
     
     // Move the player to a Tile
     func moveToTile(tile: Tile) {
@@ -93,23 +97,23 @@ class Player {
         let newY = tile.sprite.position.y + self.size.height / 2
         let newLocation = CGPoint(x: newX, y: newY)
         let moveAction = SKAction.moveTo(newLocation, duration: 1)
-        sprite.runAction(moveAction)
+        runAction(moveAction)
     }
     
     //Update Sprite to use the corerct animation from walkingFramesActions[:]
     private func updateAnimation() {
     
         func stopAnimation() {
-            sprite.removeActionForKey("playerMoving")
-            sprite.texture = idleTexture
+            removeActionForKey("playerMoving")
+            texture = idleTexture
         }
         
-        let velocity = sprite.physicsBody?.velocity
+        let velocity = physicsBody?.velocity
         let direction = directionfromVector(velocity!)
         
         if direction != currentAnimation {
             if direction != nil {
-                sprite.runAction(self.walkingFramesActions[direction!]!, withKey: "playerMoving")
+                runAction(self.walkingFramesActions[direction!]!, withKey: "playerMoving")
                 currentAnimation = direction
             }
             else {
@@ -136,12 +140,12 @@ class Player {
     // moves the player by a vector, uses the speedMultiplier property
     func move(#vector: CGVector?) {
         if vector != nil {
-            sprite.physicsBody?.velocity.dx = vector!.dx * speedMultiplier
-            sprite.physicsBody?.velocity.dy = vector!.dy * speedMultiplier
+            physicsBody?.velocity.dx = vector!.dx * speedMultiplier
+            physicsBody?.velocity.dy = vector!.dy * speedMultiplier
         } else {
             if slowDownEnabled {
-                sprite.physicsBody?.velocity.dx *= slowDownMultiplier
-                sprite.physicsBody?.velocity.dy *= slowDownMultiplier
+                physicsBody?.velocity.dx *= slowDownMultiplier
+                physicsBody?.velocity.dy *= slowDownMultiplier
             }
         }
     }
@@ -155,7 +159,7 @@ class Player {
     }
     
     private func updateCurrentGridPosition() {
-        var position = sprite.position
+        var position = self.position
         
         // adjust position to represent feet
         position.x += 64
