@@ -33,13 +33,12 @@ class World: NSObject, SKPhysicsContactDelegate  {
         player = Player(position: CGPoint(x: sprite.size.width / 2, y: sprite.size.height / 2))
         
         enemy = Enemy(position: CGPoint(x: 64, y: 64))
-        enemy.sprite.physicsBody!.categoryBitMask = ColliderType.Enemy.rawValue
         
         super.init()
         addTiles()
         sprite.addChild(player)
         sprite.addChild(camera)
-        sprite.addChild(enemy.sprite)
+        sprite.addChild(enemy)
     }
     
     private func addTiles() {

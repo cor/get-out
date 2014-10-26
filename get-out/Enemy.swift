@@ -8,29 +8,27 @@
 
 import SpriteKit
 
-class Enemy {
-    var sprite: SKSpriteNode
-    let size: CGSize
+class Enemy: SubclassNode {
     
-    // MARK: Initializers
-    
-    init() {
+    override init() {
+        
+        super.init(texture: nil, color: nil, size: CGSize())
+        
         size = CGSize(width: 64, height: 64)
-        sprite = SKSpriteNode(imageNamed: "enemy")
-        sprite.size = size
-        sprite.physicsBody = SKPhysicsBody(circleOfRadius: size.width / 2)
+        texture = SKTexture(imageNamed: "enemy")
+        physicsBody = SKPhysicsBody(circleOfRadius: size.width / 2)
         
-        sprite.physicsBody?.allowsRotation = false
-        sprite.physicsBody?.categoryBitMask = ColliderType.Enemy.rawValue
-        sprite.physicsBody?.contactTestBitMask = ColliderType.Player.rawValue | ColliderType.Bullet.rawValue
+        physicsBody?.allowsRotation = false
+        physicsBody?.categoryBitMask = ColliderType.Enemy.rawValue
+        physicsBody?.contactTestBitMask = ColliderType.Player.rawValue | ColliderType.Bullet.rawValue
         
-        sprite.texture?.filteringMode = .Nearest
-        sprite.zPosition = 100
+        texture?.filteringMode = .Nearest
+        zPosition = 100
     }
     
     convenience init(position: CGPoint) {
         self.init()
-        sprite.position = position
+        self.position = position
     }
     
     // Move the Enemy to a Tile
@@ -39,6 +37,6 @@ class Enemy {
         let newY = tile.sprite.position.y + self.size.height / 2
         let newLocation = CGPoint(x: newX, y: newY)
         let moveAction = SKAction.moveTo(newLocation, duration: 1)
-        sprite.runAction(moveAction)
+        runAction(moveAction)
     }
 }
