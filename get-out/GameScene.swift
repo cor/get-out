@@ -11,7 +11,7 @@ import SpriteKit
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
-    let world = World()
+    let world = World(fileNamed: "levels/1")
     
     var joystickMove = Joystick()
     var joystickShoot = Joystick()

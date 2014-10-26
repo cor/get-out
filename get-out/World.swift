@@ -39,6 +39,21 @@ class World: SubclassNode, SKPhysicsContactDelegate  {
         addChild(player)
         addChild(camera)
         addChild(enemy)
+        
+        
+    }
+    
+    convenience init(fileNamed fileName: String) {
+        self.init()
+        
+        if let filePath = NSBundle.mainBundle().pathForResource(fileName, ofType: "txt") {
+            if let testString = String(contentsOfFile: filePath, encoding: NSUTF8StringEncoding, error: nil) {
+                println(testString)
+            }
+        } else {
+            println("invalid path")
+        }
+        
     }
     
     private func addTiles() {
@@ -67,8 +82,8 @@ class World: SubclassNode, SKPhysicsContactDelegate  {
     func didBeginContact(contact: SKPhysicsContact) {
         
         // TODO: handle contact
-        println("body A: \(contact.bodyA.description)")
-        println("body B: \(contact.bodyB.description)")
+//        println("body A: \(contact.bodyA.description)")
+//        println("body B: \(contact.bodyB.description)")
     }
     
     

@@ -18,6 +18,7 @@
 		8734316A19BB74C400050D5B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8734316819BB74C400050D5B /* Main.storyboard */; };
 		8734316C19BB74C400050D5B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8734316B19BB74C400050D5B /* Images.xcassets */; };
 		8734317819BB74C400050D5B /* get_outTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8734317719BB74C400050D5B /* get_outTests.swift */; };
+		8734572C19FD94EF008EA491 /* levels in Resources */ = {isa = PBXBuildFile; fileRef = 8734572B19FD94EF008EA491 /* levels */; };
 		8739812719E736BC00466482 /* joystick_move.png in Resources */ = {isa = PBXBuildFile; fileRef = 8739812619E736BC00466482 /* joystick_move.png */; };
 		8739812919E73ABD00466482 /* button.png in Resources */ = {isa = PBXBuildFile; fileRef = 8739812819E73ABD00466482 /* button.png */; };
 		8739812B19E73BD900466482 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8739812A19E73BD900466482 /* Button.swift */; };
@@ -67,6 +68,7 @@
 		8734317119BB74C400050D5B /* get-outTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "get-outTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8734317619BB74C400050D5B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8734317719BB74C400050D5B /* get_outTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = get_outTests.swift; sourceTree = "<group>"; };
+		8734572B19FD94EF008EA491 /* levels */ = {isa = PBXFileReference; lastKnownFileType = folder; path = levels; sourceTree = "<group>"; };
 		8739812619E736BC00466482 /* joystick_move.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = joystick_move.png; sourceTree = "<group>"; };
 		8739812819E73ABD00466482 /* button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button.png; sourceTree = "<group>"; };
 		8739812A19E73BD900466482 /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 		8734315D19BB74C400050D5B /* get-out */ = {
 			isa = PBXGroup;
 			children = (
+				8734572B19FD94EF008EA491 /* levels */,
 				87284FD219F98FE00050ACBC /* Weapon.swift */,
 				876041C819FD3BA20027ADE5 /* SubclassNode.swift */,
 				8734316419BB74C400050D5B /* GameScene.swift */,
@@ -314,6 +317,7 @@
 				8739812919E73ABD00466482 /* button.png in Resources */,
 				878CF4B119F9849D00336E0F /* joystick_shoot.png in Resources */,
 				87262AA919C830760052C448 /* player.png in Resources */,
+				8734572C19FD94EF008EA491 /* levels in Resources */,
 				87DA76F819E09C0200B9D52C /* tile_wall.png in Resources */,
 				870A6A7219C71E16001A2ABE /* WalkImages.atlas in Resources */,
 				8734316C19BB74C400050D5B /* Images.xcassets in Resources */,

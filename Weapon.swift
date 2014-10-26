@@ -36,20 +36,25 @@ class Weapon: SubclassNode {
         if NSDate.timeIntervalSinceReferenceDate() > previousTime + shootDelay {
         
             let bullet = SKSpriteNode(color: UIColor.redColor(), size: CGSize(width: 2, height: 2))
+            bullet.name = "bullet"
             
+            //position
             if let bulletDirection = directionfromVector(direction) {
                 if let boost = positionAtDirection[bulletDirection] {
                     bullet.position.x = parent!.position.x + boost.x
                     bullet.position.y = parent!.position.y + boost.y
                 }
             }
-            
             bullet.zPosition = 100
+            
             bullet.physicsBody = SKPhysicsBody(rectangleOfSize: bullet.size)
             bullet.physicsBody?.mass *= 100
+            
+            //velocity
             bullet.physicsBody?.velocity = direction
             bullet.physicsBody?.velocity.dx *= speedmultiplier
             bullet.physicsBody?.velocity.dy *= speedmultiplier
+            
             bullet.runAction(bulletAction)
             
             parent?.parent?.addChild(bullet)
