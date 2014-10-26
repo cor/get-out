@@ -30,7 +30,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         world.setTile(gridPoint: GridPoint(x: 5,y: 3), tile: Tile(tileDefinition: world.tileFactory.tileDefinitions["wall"]!, gridPosition: GridPoint(x: 5, y: 3)))
         world.setTile(gridPoint: GridPoint(x: 5,y: 4), tile: Tile(tileDefinition: world.tileFactory.tileDefinitions["wall"]!, gridPosition: GridPoint(x: 5, y: 4)))
         self.physicsWorld.contactDelegate = world
-        self.addChild(world.sprite)
+        self.addChild(world)
         
         //debug overlay
         debugOverlay = DebugOverlay(size: self.frame.size)

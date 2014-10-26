@@ -130,25 +130,12 @@
 			isa = PBXGroup;
 			children = (
 				87284FD219F98FE00050ACBC /* Weapon.swift */,
-				87694B1519D20FF90083C2E7 /* World.swift */,
-				87520D8319FC67EA0041B8CF /* Collisions.swift */,
-				8739812A19E73BD900466482 /* Button.swift */,
-				87A441DD19E6C47600AC4970 /* Enemy.swift */,
-				878FE39319C5AA8A00E3DA63 /* Tile.swift */,
-				87704FCE19E42A3000AC782F /* TileFactory.swift */,
-				87D6421F19C5EA3600A12784 /* Player.swift */,
 				876041C819FD3BA20027ADE5 /* SubclassNode.swift */,
-				87694B1719D212C60083C2E7 /* Camera.swift */,
-				87B6E5D719D8B31D00CDB949 /* LocationLogic.swift */,
-				87C280CE19CC90B200CED293 /* AnimationActionsFactory.swift */,
 				8734316419BB74C400050D5B /* GameScene.swift */,
-				87E4A90819DB403600E522A3 /* DebugLabel.swift */,
-				876DD9FB19E43AAF004FE675 /* DebugOverlay.swift */,
-				87C9A20219F419D200A1D334 /* Joystick.swift */,
-				87C8B35E19FBB4B9006F6D54 /* tile images */,
-				87C8B35F19FBB4D8006F6D54 /* control images */,
-				87C8B36019FBB64C006F6D54 /* player images */,
-				87C8B36319FBB75D006F6D54 /* enemy images */,
+				876041CA19FD427F0027ADE5 /* World */,
+				87C8B36019FBB64C006F6D54 /* player */,
+				87C8B36319FBB75D006F6D54 /* enemy */,
+				87C8B35F19FBB4D8006F6D54 /* ui */,
 				8734315E19BB74C400050D5B /* Supporting Files */,
 				8734316B19BB74C400050D5B /* Images.xcassets */,
 				8734316019BB74C400050D5B /* AppDelegate.swift */,
@@ -184,42 +171,63 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		87C8B35E19FBB4B9006F6D54 /* tile images */ = {
+		876041CA19FD427F0027ADE5 /* World */ = {
 			isa = PBXGroup;
 			children = (
+				87694B1519D20FF90083C2E7 /* World.swift */,
+				87520D8319FC67EA0041B8CF /* Collisions.swift */,
+				87694B1719D212C60083C2E7 /* Camera.swift */,
+				87B6E5D719D8B31D00CDB949 /* LocationLogic.swift */,
+				87C8B35E19FBB4B9006F6D54 /* tiles */,
+			);
+			name = World;
+			sourceTree = "<group>";
+		};
+		87C8B35E19FBB4B9006F6D54 /* tiles */ = {
+			isa = PBXGroup;
+			children = (
+				878FE39319C5AA8A00E3DA63 /* Tile.swift */,
+				87704FCE19E42A3000AC782F /* TileFactory.swift */,
 				87E4D24019D8B9CF00E4DE8C /* tile_floor_selected.png */,
 				87D93FD419D580D5000C2825 /* tile_example.png */,
 				870A6A7519C72193001A2ABE /* tile_floor.png */,
 				87DA76F719E09C0200B9D52C /* tile_wall.png */,
 			);
-			name = "tile images";
+			name = tiles;
 			sourceTree = "<group>";
 		};
-		87C8B35F19FBB4D8006F6D54 /* control images */ = {
+		87C8B35F19FBB4D8006F6D54 /* ui */ = {
 			isa = PBXGroup;
 			children = (
+				87C9A20219F419D200A1D334 /* Joystick.swift */,
+				8739812A19E73BD900466482 /* Button.swift */,
+				87E4A90819DB403600E522A3 /* DebugLabel.swift */,
+				876DD9FB19E43AAF004FE675 /* DebugOverlay.swift */,
 				8739812619E736BC00466482 /* joystick_move.png */,
 				878CF4B019F9849D00336E0F /* joystick_shoot.png */,
 				8739812819E73ABD00466482 /* button.png */,
 			);
-			name = "control images";
+			name = ui;
 			sourceTree = "<group>";
 		};
-		87C8B36019FBB64C006F6D54 /* player images */ = {
+		87C8B36019FBB64C006F6D54 /* player */ = {
 			isa = PBXGroup;
 			children = (
+				87D6421F19C5EA3600A12784 /* Player.swift */,
+				87C280CE19CC90B200CED293 /* AnimationActionsFactory.swift */,
 				87262AA819C830760052C448 /* player.png */,
 				870A6A7119C71E16001A2ABE /* WalkImages.atlas */,
 			);
-			name = "player images";
+			name = player;
 			sourceTree = "<group>";
 		};
-		87C8B36319FBB75D006F6D54 /* enemy images */ = {
+		87C8B36319FBB75D006F6D54 /* enemy */ = {
 			isa = PBXGroup;
 			children = (
+				87A441DD19E6C47600AC4970 /* Enemy.swift */,
 				87C8B36119FBB757006F6D54 /* enemy.png */,
 			);
-			name = "enemy images";
+			name = enemy;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

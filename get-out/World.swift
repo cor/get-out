@@ -8,7 +8,7 @@
 
 import SpriteKit
 
-class World: NSObject, SKPhysicsContactDelegate  {
+class World: SubclassNode, SKPhysicsContactDelegate  {
     
     // MARK: Private properties
     private var tiles: [Tile] = []
@@ -16,7 +16,6 @@ class World: NSObject, SKPhysicsContactDelegate  {
     
     // MARK: Public properties
     let tileFactory = TileFactory()
-    let sprite: SKSpriteNode
     let camera = Camera()
     let player: Player
     
@@ -24,21 +23,22 @@ class World: NSObject, SKPhysicsContactDelegate  {
     
     // MARK: Initialization
     override init() {
-        sprite = SKSpriteNode(color: UIColor.redColor(), size: CGSize(width: mapSize.width * 64, height: mapSize.height * 64))
-        sprite.anchorPoint = CGPoint(x:0, y:0)
-        sprite.zPosition = -100
         
-        sprite.physicsBody = SKPhysicsBody(edgeLoopFromRect: self.sprite.frame)
-        
-        player = Player(position: CGPoint(x: sprite.size.width / 2, y: sprite.size.height / 2))
-        
+        player = Player()
         enemy = Enemy(position: CGPoint(x: 64, y: 64))
+        super.init(texture: nil, color: UIColor.redColor(), size: CGSize(width: mapSize.width * 64, height: mapSize.height * 64))
         
-        super.init()
+        
+        player.position = CGPoint(x: size.width / 2, y: size.height / 2)
+        anchorPoint = CGPoint(x:0, y:0)
+        zPosition = -100
+        physicsBody = SKPhysicsBody(edgeLoopFromRect: self.frame)
+        
+        
         addTiles()
-        sprite.addChild(player)
-        sprite.addChild(camera)
-        sprite.addChild(enemy)
+        addChild(player)
+        addChild(camera)
+        addChild(enemy)
     }
     
     private func addTiles() {
@@ -58,7 +58,7 @@ class World: NSObject, SKPhysicsContactDelegate  {
         // Add tiles from the tiles array to the scene
         for tile in tiles {
             tile.sprite.zPosition = 10
-            self.sprite.addChild(tile.sprite)
+            addChild(tile.sprite)
         }
         
     }
@@ -99,7 +99,7 @@ class World: NSObject, SKPhysicsContactDelegate  {
         if !(possibleTileIndex < 0 || possibleTileIndex > (tiles.count - 1)) {
             tiles[possibleTileIndex].sprite.removeFromParent()
             tiles[possibleTileIndex] = tile
-            sprite.addChild(tiles[possibleTileIndex].sprite)
+            addChild(tiles[possibleTileIndex].sprite)
         }
     }
     
