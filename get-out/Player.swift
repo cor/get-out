@@ -28,7 +28,12 @@ class Player: SubclassNode {
     var currentAnimation: Direction? = nil
     
     // stats
-    var isAlive: Bool = true
+    var health: Int = 100
+    
+    var isAlive: Bool {
+        return health > 0
+    }
+    
     var currentWeapon: Weapon? {
         
         willSet {
@@ -66,7 +71,7 @@ class Player: SubclassNode {
         currentTile = Tile()
         
         //physicis
-        physicsBody = SKPhysicsBody(circleOfRadius: 32)
+        physicsBody = SKPhysicsBody(circleOfRadius: size.width / 2 - 1)
         physicsBody?.allowsRotation = false
         physicsBody?.categoryBitMask = ColliderType.Player.rawValue
         physicsBody?.contactTestBitMask = ColliderType.Enemy.rawValue | ColliderType.Bullet.rawValue

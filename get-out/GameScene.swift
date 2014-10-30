@@ -16,6 +16,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var joystickMove = Joystick()
     var joystickShoot = Joystick()
     var debugOverlay = DebugOverlay()
+    var healthBar = HealthBar()
     
     
     override func didMoveToView(view: SKView) {
@@ -25,10 +26,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.anchorPoint = CGPoint(x: 0.5, y: 0.5)
         
         //world
-        world.setTile(gridPoint: GridPoint(x: 3,y: 3), tile: Tile(tileDefinition: world.tileFactory.tileDefinitions["wall"]!, gridPosition: GridPoint(x: 3, y: 3)))
-        world.setTile(gridPoint: GridPoint(x: 4,y: 3), tile: Tile(tileDefinition: world.tileFactory.tileDefinitions["wall"]!, gridPosition: GridPoint(x: 4, y: 3)))
-        world.setTile(gridPoint: GridPoint(x: 5,y: 3), tile: Tile(tileDefinition: world.tileFactory.tileDefinitions["wall"]!, gridPosition: GridPoint(x: 5, y: 3)))
-        world.setTile(gridPoint: GridPoint(x: 5,y: 4), tile: Tile(tileDefinition: world.tileFactory.tileDefinitions["wall"]!, gridPosition: GridPoint(x: 5, y: 4)))
         self.physicsWorld.contactDelegate = world
         self.addChild(world)
         
@@ -46,10 +43,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let joystickShootPosition = CGPoint(x: +(self.size.width / 2) - (joystickShoot.size.width / 2), y: -(self.size.height / 2) + (joystickMove.size.height / 2) )
         joystickShoot = Joystick(imageNamed: "joystick_shoot", position: joystickShootPosition, name: "joystickShoot")
         self.addChild(joystickShoot)
+        
+        //health bar
+        healthBar.position  = CGPoint(x: -(self.size.width / 2), y: +(self.size.height / 2))
+        self.addChild(healthBar)
+        
     }
     
     // MARK: input
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
+        
         
         for touch: AnyObject in touches {
             

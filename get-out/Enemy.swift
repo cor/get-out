@@ -10,6 +10,14 @@ import SpriteKit
 
 class Enemy: SubclassNode {
     
+    
+    var health: Int = 100
+    
+    var isAlive: Bool {
+        return health > 0
+    }
+    
+    
     override init() {
         
         super.init(texture: nil, color: nil, size: CGSize())
@@ -24,7 +32,7 @@ class Enemy: SubclassNode {
         zPosition = 100
         
         //physics
-        physicsBody = SKPhysicsBody(circleOfRadius: size.width / 2)
+        physicsBody = SKPhysicsBody(circleOfRadius: size.width / 2 - 1)
         physicsBody?.allowsRotation = false
         physicsBody?.categoryBitMask = ColliderType.Enemy.rawValue
         physicsBody?.contactTestBitMask = ColliderType.Player.rawValue | ColliderType.Bullet.rawValue

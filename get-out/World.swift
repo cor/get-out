@@ -43,15 +43,55 @@ class World: SubclassNode, SKPhysicsContactDelegate  {
         
     }
     
+    // load level from text file
     convenience init(fileNamed fileName: String) {
         self.init()
         
+        // delete default tiles
+        for tile in tiles {
+            tile.removeFromParent()
+        }
+        tiles = []
+        
+        
+        // FIXME
         if let filePath = NSBundle.mainBundle().pathForResource(fileName, ofType: "txt") {
+            
             if let testString = String(contentsOfFile: filePath, encoding: NSUTF8StringEncoding, error: nil) {
-                println(testString)
+                
+                // split lines of level
+                let stringArray = testString.componentsSeparatedByString("\n")
+                
+                var lineIndex = 0
+                
+                for var index = stringArray.count - 1; index >= 0; index-- {
+                
+                    var indexInLine = 0
+                    
+                    for character in stringArray[index] {
+                        
+                        let position = GridPoint(x: indexInLine, y: lineIndex)
+                        if character == "O" {
+                            let tile = Tile(tileDefinition: tileFactory.tileDefinitions["floor"]!, gridPosition: position)
+                            tiles.append(tile)
+                        } else if character == "X" {
+                            let tile = Tile(tileDefinition: tileFactory.tileDefinitions["wall"]!, gridPosition: position)
+                            tiles.append(tile)
+                        }
+                        
+                        ++indexInLine
+                        
+                    }
+                    
+                    ++lineIndex
+                }
+                
             }
-        } else {
-            println("invalid path")
+        }
+        // Add tiles from the tiles array to the scene
+        for tile in tiles {
+            tile.zPosition = 10
+            addChild(tile)
         }
         
     }

@@ -32,6 +32,8 @@
 		878FE39419C5AA8A00E3DA63 /* Tile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878FE39319C5AA8A00E3DA63 /* Tile.swift */; };
 		87A441DE19E6C47600AC4970 /* Enemy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A441DD19E6C47600AC4970 /* Enemy.swift */; };
 		87B6E5D819D8B31D00CDB949 /* LocationLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B6E5D719D8B31D00CDB949 /* LocationLogic.swift */; };
+		87B779E11A0252CC00323172 /* Healthbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B779E01A0252CC00323172 /* Healthbar.swift */; };
+		87B779E31A025FE900323172 /* healthbar.png in Resources */ = {isa = PBXBuildFile; fileRef = 87B779E21A025FE900323172 /* healthbar.png */; };
 		87C280CF19CC90B200CED293 /* AnimationActionsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C280CE19CC90B200CED293 /* AnimationActionsFactory.swift */; };
 		87C8B36219FBB757006F6D54 /* enemy.png in Resources */ = {isa = PBXBuildFile; fileRef = 87C8B36119FBB757006F6D54 /* enemy.png */; };
 		87C9A20319F419D200A1D334 /* Joystick.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C9A20219F419D200A1D334 /* Joystick.swift */; };
@@ -82,6 +84,8 @@
 		878FE39319C5AA8A00E3DA63 /* Tile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tile.swift; sourceTree = "<group>"; };
 		87A441DD19E6C47600AC4970 /* Enemy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enemy.swift; sourceTree = "<group>"; };
 		87B6E5D719D8B31D00CDB949 /* LocationLogic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationLogic.swift; sourceTree = "<group>"; };
+		87B779E01A0252CC00323172 /* Healthbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Healthbar.swift; sourceTree = "<group>"; };
+		87B779E21A025FE900323172 /* healthbar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = healthbar.png; sourceTree = "<group>"; };
 		87C280CE19CC90B200CED293 /* AnimationActionsFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationActionsFactory.swift; sourceTree = "<group>"; };
 		87C8B36119FBB757006F6D54 /* enemy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = enemy.png; sourceTree = "<group>"; };
 		87C9A20219F419D200A1D334 /* Joystick.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Joystick.swift; sourceTree = "<group>"; };
@@ -202,13 +206,15 @@
 		87C8B35F19FBB4D8006F6D54 /* ui */ = {
 			isa = PBXGroup;
 			children = (
+				87B779E01A0252CC00323172 /* Healthbar.swift */,
+				87B779E21A025FE900323172 /* healthbar.png */,
 				87C9A20219F419D200A1D334 /* Joystick.swift */,
-				8739812A19E73BD900466482 /* Button.swift */,
-				87E4A90819DB403600E522A3 /* DebugLabel.swift */,
-				876DD9FB19E43AAF004FE675 /* DebugOverlay.swift */,
 				8739812619E736BC00466482 /* joystick_move.png */,
 				878CF4B019F9849D00336E0F /* joystick_shoot.png */,
+				8739812A19E73BD900466482 /* Button.swift */,
 				8739812819E73ABD00466482 /* button.png */,
+				87E4A90819DB403600E522A3 /* DebugLabel.swift */,
+				876DD9FB19E43AAF004FE675 /* DebugOverlay.swift */,
 			);
 			name = ui;
 			sourceTree = "<group>";
@@ -325,6 +331,7 @@
 				8739812719E736BC00466482 /* joystick_move.png in Resources */,
 				8734316319BB74C400050D5B /* GameScene.sks in Resources */,
 				87E4D24119D8B9CF00E4DE8C /* tile_floor_selected.png in Resources */,
+				87B779E31A025FE900323172 /* healthbar.png in Resources */,
 				870A6A7619C72193001A2ABE /* tile_floor.png in Resources */,
 				87C8B36219FBB757006F6D54 /* enemy.png in Resources */,
 				8734316A19BB74C400050D5B /* Main.storyboard in Resources */,
@@ -353,6 +360,7 @@
 				878FE39419C5AA8A00E3DA63 /* Tile.swift in Sources */,
 				87B6E5D819D8B31D00CDB949 /* LocationLogic.swift in Sources */,
 				876041C919FD3BA20027ADE5 /* SubclassNode.swift in Sources */,
+				87B779E11A0252CC00323172 /* Healthbar.swift in Sources */,
 				87D6422019C5EA3600A12784 /* Player.swift in Sources */,
 				8734316719BB74C400050D5B /* GameViewController.swift in Sources */,
 				87A441DE19E6C47600AC4970 /* Enemy.swift in Sources */,
