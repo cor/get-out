@@ -27,4 +27,8 @@ class HealthBar: SubclassNode {
         addChild(progressNode)
         
     }
+    
+    func setHealth(health: Int) {
+        progressNode.size.width = CGFloat(health) * 2
+    }
 }

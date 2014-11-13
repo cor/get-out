@@ -28,7 +28,7 @@ class Player: SubclassNode {
     var currentAnimation: Direction? = nil
     
     // stats
-    var health: Int = 100
+    var health: Int = 100 
     
     var isAlive: Bool {
         return health > 0

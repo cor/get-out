@@ -125,7 +125,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.updateDebugLabels()
         world.update()
         world.player.update(inputMove: joystickMove.vector, inputShoot: joystickShoot.vector)
+        updateUI()
         
+    }
+    
+    func updateUI() {
+        healthBar.setHealth(world.player.health)
     }
     
  

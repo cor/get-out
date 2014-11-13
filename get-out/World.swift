@@ -24,10 +24,13 @@ class World: SubclassNode, SKPhysicsContactDelegate  {
     // MARK: Initialization
     override init() {
         
+        
         player = Player()
         enemy = Enemy(position: CGPoint(x: 64, y: 64))
         super.init(texture: nil, color: UIColor.redColor(), size: CGSize(width: mapSize.width * 64, height: mapSize.height * 64))
         
+        //world setup
+        name = "world"
         
         player.position = CGPoint(x: size.width / 2, y: size.height / 2)
         anchorPoint = CGPoint(x:0, y:0)
@@ -121,9 +124,12 @@ class World: SubclassNode, SKPhysicsContactDelegate  {
     
     func didBeginContact(contact: SKPhysicsContact) {
         
-        // TODO: handle contact
-//        println("body A: \(contact.bodyA.description)")
-//        println("body B: \(contact.bodyB.description)")
+        let bodyAName:String = contact.bodyA.node!.name!
+        let bodyBName:String = contact.bodyB.node!.name!
+        
+        if bodyAName == "player" && bodyBName == "enemy" {
+            player.health--
+        }
     }
     
     
@@ -138,6 +144,7 @@ class World: SubclassNode, SKPhysicsContactDelegate  {
         } else {
             return nil
         }
+
     }
     
     //return optional tile from gridPoint
