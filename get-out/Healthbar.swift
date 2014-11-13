@@ -8,38 +8,23 @@
 
 import SpriteKit
 
-class HealthBar: SKCropNode {
+class HealthBar: SubclassNode {
     
-    private let progressNode = SKSpriteNode(imageNamed: "healthbar")
-    let maxHealth = 100
+    // the inner part of the healthbar, that displays the amount of health left
+    private let progressNode = SKSpriteNode(color: UIColor.redColor(), size: CGSize(width: 200, height: 20))
     
     override init() {
+        // TODO
+        super.init(texture: nil, color: UIColor.blackColor(), size: CGSize(width: 204, height: 24) )
         
-        super.init()
+        // set the anchorpoint to the top left corner, since it will be there in the screen
+        anchorPoint = CGPoint(x: 0, y: 1)
         
-        //sprite setup
-        let maskNodez = SKSpriteNode(color: SKColor.blackColor(), size: CGSize(width: 200, height: 20))
-        maskNodez.anchorPoint = CGPoint(x: 0, y: 1)
-        maskNode = maskNodez
         
+        // progressnode setup
         progressNode.anchorPoint = CGPoint(x: 0, y: 1)
+        progressNode.position = CGPoint(x: 2, y: -2)
+        addChild(progressNode)
         
-        
-        // progress bar
-        self.addChild(progressNode)
-        
-    }
-
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    func setProgress(health: Int) {
-        
-        
-        // fixme
-        let xScale: CGFloat = CGFloat((health / maxHealth) * 100)
-        println(xScale)
-        self.maskNode?.xScale = xScale
     }
 }
